@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="Mr.Wang">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Mr.Wang">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="To be or not to be, that is a question.">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>StubbornBug`s Studio</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/assets/favicon2222.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin="">
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin="">
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/">StubbornBug`s Studio</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name"></a>
+            </div>
+    </div>
+    
+    <a class="home-link" href="/">StubbornBug`s Studio</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            [Untitled Post]
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">5.7k</span>阅读时长: <span class="post-count reading-time">21 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/01/08</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h4 id="一-Linux命令格式"><a href="#一-Linux命令格式" class="headerlink" title="一. Linux命令格式"></a>一. Linux命令格式</h4><p>command 【-options】 【parameter1】…</p>
+<p><em>注:</em></p>
+<p>&emsp;&emsp;<em>command：命令名，相应功能的英文单词或单词的缩写</em></p>
+<p>&emsp;&emsp;<em>【-options】：选项，可用来对命令进行控制，也可以省略</em></p>
+<p>&emsp;&emsp;<em>【parameter】：传给命令的参数，可以是0个1个或多个</em></p>
+<p>&emsp;&emsp;<em>[]里的内容是代表可选</em></p>
+<h4 id="二-查看帮助文档"><a href="#二-查看帮助文档" class="headerlink" title="二. 查看帮助文档"></a>二. 查看帮助文档</h4><ol>
+<li>command –help</li>
+<li>man(manual)</li>
+</ol>
+<p><em>注:</em></p>
+<p>&emsp;&emsp;man是linux提供的一个手册，包含了绝大部分的命令以及函数使用说明<br>涉及到功能键及功能：</p>
+<p><em>空格： 显示手册页的下一屏</em></p>
+<p><em>Enter：一次滚动手册页的一行</em></p>
+<p><em>b：      回滚一屏</em></p>
+<p><em>f：       前滚一屏</em></p>
+<p><em>q：      退出</em></p>
+<p><em>h：      列出所有功能键</em></p>
+<p><em>/word：搜索word字符串</em></p>
+<h4 id="三-历史命令"><a href="#三-历史命令" class="headerlink" title="三. 历史命令"></a>三. 历史命令</h4><p><strong><em>上下键或用history将执行过的命令列举出来</em></strong></p>
+<h4 id="四-Linux命令–文件-磁盘管理"><a href="#四-Linux命令–文件-磁盘管理" class="headerlink" title="四. Linux命令–文件, 磁盘管理"></a>四. Linux命令–文件, 磁盘管理</h4><ol>
+<li><p><strong>ll&amp;ls</strong></p>
+<p> 1.1  文件管理</p>
+<p> <strong>ls</strong> 查看文件信息</p>
+<p> <em>注:</em></p>
+<p> 以.(点)开头的文件为隐藏文件， 需要用<strong>-a</strong>参数才能显示<br> <strong>-a</strong> 显示制定目录下所有子目录与文件，包括隐藏文件<br> <strong>-l</strong>  以列表方式显示文件的详细信息<br> <strong>-h</strong> 配合<strong>-l</strong>以人性化的方式显示文件大小<br> 其实一个<strong>ll</strong>解决一切</p>
+<p> 1.2 通配符</p>
+<p> &emsp;&emsp;*（<strong>星号</strong>）代表文件名中所有字符,<br><strong>?</strong>（问号）代表文件名中任意一个字符,<br><strong>[]</strong> (方括号) 将字符组括起来，表示可以匹配字符组中的任意一个。其中‘<strong>-</strong>（中杠）’表示字符范围.</p>
+<p> &emsp;&emsp;如： ls [a-f]* 查找并显示a到f范围内的任意一个字符开头的文件<br><strong>\</strong> (反斜杠) 如果想使通配符作为普通字符用，可以在其前面加上转义字符。另外‘?’和‘*’处于方括号内时不需要使用转义字符就失去了通配符的作用<br>如： ls *a  查找文件名为*a的文件</p>
+</li>
+<li><p>输出重定向命令：<strong>&gt;</strong></p>
+<p> &emsp;&emsp;<strong>将命令执行结果重定向到一个文件， 本应该显示在终端上的内容保存到制定文件中</strong></p>
+<p> &emsp;&emsp;如： ls &gt; test.txt(文件若不存在，则创建，若存在则覆盖其中的内容)</p>
+<p> &emsp;&emsp;注： 可以用cat查看文件的内容，<strong>&gt;</strong> 输出重定向会覆盖原来的内容， <strong>&gt;&gt;</strong> 输出重定向则会追加到文件的尾部</p>
+</li>
+<li><p>分屏显示: <strong>more</strong></p>
+<p> &emsp;&emsp;查看内容时， 在信息过长无法在一屏上显示时，会出现快速滚屏，使得用户无法看清文件的内容，此时可以使用more命令，每次只显示一页，按空格键可以显示下一页，按q键退出显示，按h键获取帮助。</p>
+</li>
+<li><p>管道: <strong>|</strong></p>
+<p> &emsp;&emsp;什么是管道，就是一个命令的输出可以通过管道作为另一个命令的输入，通俗一点来讲就是将查寻到或者其他方式得到的数据放到所谓的管道里面，然后对数据继续进行操作</p>
+</li>
+<li><p>清屏：<strong>clear</strong>或<strong>Ctrl + l</strong></p>
+</li>
+<li><p>切换工作目录： <strong>cd</strong></p>
+<p> &emsp;&emsp;其后可以跟绝对路径，也可以跟相对路径，如果省略目录的话，就默认切换到当前用户的主目录（此时相当于<strong>cd~</strong>）</p>
+<p> cd . 切换到当前目录</p>
+<p> cd .. 切换到上级目录</p>
+<p> cd - 切换到上次所在的目录</p>
+<p> <em>注:</em></p>
+<p> &emsp;&emsp;Linux所有的目录和文件名大小写敏感，如果路径是从根据径开始的，其前面需要加上<strong>‘/’</strong>， 而通常进入某个目录里的文件夹，前面不需要加</p>
+</li>
+<li><p>显示当前路径： <strong>pwd</strong></p>
+</li>
+<li><p>创建目录：<strong>mkdir</strong></p>
+<p> <strong>参数-p可递归创建目录</strong></p>
+<p> &emsp;&emsp;注意新建目录的名称不能与当前目录中已有的目录或文件同名，并且目录创建者必须对当前目录具有写的权限</p>
+<p> <strong>tree</strong>： 以目录树的方式显示，显示文件夹层级关系是极好的</p>
+</li>
+<li><p>删除目录：rmdir</p>
+</li>
+<li><p>删除文件： <strong>rm</strong></p>
+<p><strong>rm可以删除文件和目录。</strong></p>
+<p>注意： 文件删除后是不能恢复的，为了防止文件误删，可以在rm后使用<strong>-i</strong>参数来逐个确认要删除的文件</p>
+<p>-i 以进行交互式方式执行</p>
+<p>-f 强制删除，忽略不存在的文件，无需提示</p>
+<p>-r 递归删除目录下的内容，删除文件夹时必须加这个参数</p>
+</li>
+<li><p>建立链接文件: ln(了解一下)</p>
+<p><strong>类似与Windows下的快捷方式，分为软连接和硬链接</strong></p>
+<p>11.1  软连接：不占用磁盘空间，源文件删除软链接就失效 </p>
+<pre><code>格式: ln -s 源文件 链接文件
+</code></pre><p>11.2 硬链接: 只能链接普通文件，不能链接目录</p>
+<pre><code>格式: ln 源文件 链接文件
+</code></pre><p><em>注:</em></p>
+<p>&emsp;&emsp;建立起的硬链接文件，两个文件占用相同大小的磁盘空间，即使删除了源文件，链接文件还是存在的，因此类似于Windows的快捷方式，软连接是更常见的一种形式； 另外，如果软连接文件和源文件不在同一个目录，源文件要使用绝对路径，不能使用相对路径</p>
+</li>
+<li><p>查看或者合并文件内容：<strong>cat</strong></p>
+<p>例如: cat test.txt test2.txt &gt; helloworld.txt</p>
+<p><em>注:</em></p>
+<p>&emsp;&emsp;linux的文件不是通过后缀区分的，不一定非是*.txt才是文本文件，通常通过文件的颜色就能区分出是文件或者文件夹    </p>
+</li>
+<li><p>文本搜索: <strong>grep</strong></p>
+<p><strong>是一个强大的文本搜索工具，允许对文本文件进行模式查找。如果找到匹配模式，grep打印包含模式的所有行</strong></p>
+<p>13.1 一般格式</p>
+<pre><code>grep [-选项] &apos;搜索内容串&apos;文件名
+</code></pre><p><em>注:</em></p>
+<p>&emsp;&emsp;在grep命令中输入字符串参数时，最好用<strong>引号</strong>括起来，如：grep ‘a’ text.txt,另，linux里是不区分单引号还是双引号的</p>
+<p>13.2 常规选项说明</p>
+<pre><code>-v: 显示不包含匹配文本的所有行（相当于求反）
+-n: 显示匹配行及行号
+-i: 忽略大小写
+注: grep搜索的内容串也可以是正则表达式
+</code></pre><p>todo: 图片1</p>
+</li>
+<li><p>查找文件：<strong>find</strong></p>
+<p>&emsp;&emsp;通常用来在特定的目录下搜索符合条件的文件，也可以用来搜索特定用户属主的文件<br>常用语法：</p>
+<p>todo: 图片2</p>
+</li>
+<li><p>拷贝文件 <strong>cp</strong></p>
+<p><strong>其主要功能是将给出的文件或目录复制到另一个文件或目录中</strong></p>
+<p>常用选项:</p>
+<pre><code>-a：该选项通常在复制目录时使用，它会保留链接，文件属性，并递归地复制目录，简而言之，保持文件的原有属性
+-f：已经存在的目标文件而不提示，直接覆盖
+-i：交互式复制，在覆盖目标文件之前给出提示要求用户确认
+-r：若给出的源文件时目录文件，则cp将递归复制该目录下所有的子目录和文件，目标文件必须为一个目录名
+-v：显示拷贝进度
+</code></pre></li>
+<li><p>移动文件 <strong>mv</strong></p>
+<p><strong>用户可以使用mv命令来移动文件或目录，也可以给文件或目录重命名</strong></p>
+<p>常用选项:</p>
+<pre><code>-f：禁止交互式操作，即使有覆盖也不给出提示
+-i：交互式操作
+-v: 显示移动进度    
+</code></pre></li>
+<li><p>归档管理  <strong>tar</strong></p>
+<p>&emsp;&emsp;<strong>tar是Linux中最常用的备份工具，此命令可以把一系列文件归档到一个大文件中，亦可以将档案文件解开以恢复数据</strong></p>
+<p>17.1 使用格式</p>
+<p>   tar [参数] 打包文件名 文件<br>   注:      tar命令的参数前面既可以使用‘-’，也可以不使用</p>
+<p>17.2 常用参数:</p>
+<p>   -z：制定压缩包的格式为：file.tar.gz<br>   -c：生成档案文件，创建打包文件<br>   -v：列出归档解档的详细过程，显示进度<br>   -t：列出档案中包含的文件<br>   -x：解开档案文件<br>   -f：指定档案文件名称，f后面一定是.tar文件，因此务必要放选项最后，但其他参数随意</p>
+</li>
+<li><p>文件压缩与解压缩 gzip</p>
+<p>&emsp;&emsp;tar与gzip命令结合使用方可实现文件打包，压缩。tar只负责打包文件，但不压缩，用gzip压缩tar打包后的文件，其扩展名一般用xxx.tar.gz</p>
+<p>18.1 使用格式:</p>
+<pre><code>gzip [选项] 被压缩文件
+</code></pre><p>18.2 常用选项:</p>
+<pre><code>-d：解压
+-r：压缩所有子目录（默认不加选项也是压缩）
+注：上面的其实没多大卵用，并且麻烦的雅痞，因此在tar命令中增加了一个选项（-z），此时就可以调用gzip从而实现一个压缩的功能，完成先打包后压缩的过程
+</code></pre><p>18.3 压缩用法</p>
+<pre><code>tar -zcvf 压缩包包名 文件1 文件2...
+
+注：不同的压缩方式算法不同，因此压缩的速度以及大小均不同，综合起来而言，推荐使用的是tar -zcvf
+</code></pre><p>18.4 解压缩用法</p>
+<pre><code>tar -zxvf 压缩包包名
+注：默认是解压到当前路径下，要解压到指定目录下可以用选项‘-C’
+</code></pre></li>
+<li><p>文件压缩与解压缩 bzip2</p>
+<p>&emsp;&emsp;<strong>其用法和gzip一样，压缩文件的扩展名一般用：xxx.tar.gz2, 具体实现方式在tar命令中增加一个（-j）选项即可</strong></p>
+<p>压缩及解压缩用法：</p>
+<pre><code>如：
+    tar -jcvf demo.tar.bz2 *.test
+    tar -jxvf demo.tar.bz2
+</code></pre></li>
+<li><p>文件压缩与解压缩：zip 、unzip</p>
+<p><strong>通过zip压缩文件的目标文件不需要指定扩展名，默认扩展名为zip。    </strong></p>
+<p>压缩及解压缩用法：</p>
+<pre><code>zip [-r] 目标文件（无需扩展名） 源文件
+unzip -d 解压后目录文件 压缩文件
+</code></pre></li>
+<li><p>查看命令位置 which</p>
+<p>&emsp;&emsp;如果找到就显示这个命令的路径，找不到就不显示呗，了解一下，没什么卵用</p>
+</li>
+</ol>
+<h4 id="五-Linux命令-系统管理"><a href="#五-Linux命令-系统管理" class="headerlink" title="五.  Linux命令-系统管理"></a>五.  Linux命令-系统管理</h4><ol>
+<li><p>查看当前日历 cal（-y显示整年）</p>
+</li>
+<li><p>显示或设置时间： date</p>
+<p> 2.1 设置时间格式(需要管理员权限)</p>
+<pre><code>date [MMDDhhmm[[CC]YY][.ss]] +format 
+注：CC为年前两位yy为年的后两位，前两位的mm为⽉，后两位的mm为分钟，dd为天，hh为 ⼩时，ss为秒。如： date 010203042016.55。 
+</code></pre><p> 2.2 显示时间格式</p>
+<pre><code>date &apos;+%y,%m,%d,%H,%M,%S&apos;
+如：date &apos;+%Y/%m/%d&apos; ==&gt;xxxx/xx/xx
+注：y/Y效果一样
+</code></pre></li>
+<li><p>查看进程信息 <strong>ps</strong></p>
+<p> <strong>此命令可以查看进程的详细状况</strong></p>
+<p> 常用选项（‘-可以省略’）:</p>
+<pre><code>-a：显示终端上的所有进程，包括其他用户的进程
+-u：显示进程的详细状态
+-x：显示没有控制终端的进程
+-w：显示加宽，以便显示更多的信息
+-r：只显示正在运行的进程
+</code></pre></li>
+<li><p>动态显示进程 <strong>top</strong></p>
+<p> &emsp;&emsp;用来动态显示运行中的进程，能够再运行之后，在指定的时间间隔更新显示信息，可以通过加选项[-d<br> ]来指定显示信息更新的时间间隔</p>
+<p> 常用按键：</p>
+<pre><code>M：根据内存使用量排序
+P：根据CPU占有率排序
+T：根据进程运行时间长短排序
+U：根据后面输入的用户名来筛选进程
+K：根据后面输入的PID杀死进程
+q：退出
+h：帮助    
+</code></pre></li>
+<li><p>终止进程：<strong>kill    </strong>    </p>
+<p> <strong>杀死指定进程号的进程，需要配合ps使用</strong></p>
+<p> 格式: </p>
+<pre><code>kill [-signal] pid
+注: 其中信号值选项从0到15，9为绝对终止，可以处理一般信号无法终止的进程
+</code></pre></li>
+<li><p>关机重启：reboot、shutdown、init</p>
+<p> 如: </p>
+<pre><code>reboot  重新启动操作系统
+shutdown -h now  立刻关机
+shutdown -h 20:25  定时关机
+shutdown -h +10  系统过十分钟自动关机
+init 0  关机
+init 6  重启
+</code></pre></li>
+<li><p>检测磁盘空间: df</p>
+<p> &emsp;&emsp;用于检测文件系统的磁盘空间占用和空余情况，可以显示所有文件系统对节点和磁盘块的使用情况</p>
+<p> 常用选项：</p>
+<pre><code>-a：显示所有文件系统的磁盘使用情况
+-m：以1024字节为单位显示
+-t：显示各指定文件系统的磁盘空间使用情况
+-T：显示文件系统
+</code></pre></li>
+<li><p>检测目录所占磁盘空间：du</p>
+<p> &emsp;&emsp;用于统计目录或文件所占磁盘空间的大小，该命令的执行结果与df类似，du更测重于磁盘的使用情况</p>
+<p> 格式: </p>
+<pre><code>du [选项] 目录或文件名
+
+-a：递归显示指定目录中各文件和子目录中文件占用的数据块
+-s：显示指定文件或目录占用的数据块
+-b：以字节为单位显示磁盘占用情况
+-l：计算所有文件大小，对硬链接文件计算多次
+注：在后面加-h可以转换单位，如：du -s build/ -h 显示指定文件占用的数据块，并转换单位
+</code></pre></li>
+<li><p>查看或配置网卡信息：<strong>ifconfig</strong></p>
+<p> <strong>默认显示所有的网卡信息</strong></p>
+<p> &emsp;&emsp;另外，修改网卡的ip地址信息：ifconfig + 网卡名 + 新ip地址，如果权限不足，加sudo，或者通过sudo su切换到root用户操作</p>
+</li>
+<li><p>测试远程主机联通性：<strong>ping</strong></p>
+<pre><code>ping www.baidu.com
+ping 192.168.1.1
+</code></pre></li>
+</ol>
+<h4 id="六-Linux命令-用户、权限管理"><a href="#六-Linux命令-用户、权限管理" class="headerlink" title="六.  Linux命令-用户、权限管理"></a>六.  Linux命令-用户、权限管理</h4><p>&emsp;&emsp;<strong>用户管理包括用户与组账号的管理，无论是由本机或是远程登陆系统，每个系统必须拥有一个账号，并且对于不同的系统资源拥有不同的使用权限，root是用于系统的维护和管理的，拥有不受限制的访问权限；再Linux的安装过程中系统会自动创建许多用户账号，这些默认被创建的用户称为‘标准用户’，通常不推荐直接使用root账号登陆系统</strong></p>
+<ol>
+<li><p>查看当前用户：<strong>whoami</strong></p>
+<p> &emsp;&emsp;用户可以使用该命令查看当前系统当前账号的用户名，还可以通过cat /etc/passwd查看系统用户信息</p>
+</li>
+<li><p>查看登陆用户：who</p>
+<p> 用于查看当前所有登录系统的用户信息，通俗点就是谁登陆了此系统都会显示出来</p>
+<p> 常用选项:</p>
+<pre><code>-m或am I ：只显示运行who命令的用户名、登陆终端和登陆时间
+-q或--count：只显示用户的登陆账号和登陆用户的数量
+-u或--heading：显示列标题
+</code></pre></li>
+<li><p>退出登陆用户：exit</p>
+<pre><code>如果是图形界面，退出当前终端；
+如果是使用ssh远程登陆，退出登陆用户；
+如果是切换后的登陆用户，退出并返回上一个登陆账号
+</code></pre></li>
+<li><p>添加用户账号 <strong>useradd</strong></p>
+<p> 使用格式：</p>
+<pre><code>useradd [选项] 新建用户账号
+</code></pre><p> 常用选项:</p>
+<pre><code>-d：指定用户登陆系统时的主目录，如果不使用该参数，系统就自动再/home目录下面建立与用户名同名目录作为主目录
+-m：自动建立目录
+-g：指定组名称
+注：adduser的命令是指向useradd的一个链接，两个命令的格式完全一样，作用也是一样的；
+
+Linux每个用户都有一个主目录，主目录即第一次登陆系统，用户的默认当前目录               （/home/user）；
+
+创建用户的时候，一定要给用户指定一个主目录，因为每一个用户必须要有一个主目录；
+
+用户的主目录一般要放在根目录的home目录下，用户的主目录和用户名是相同的，走默认的即可，前面的约等于扯犊子；
+
+如果创建用户的时候没有指定组名，那么系统也会自动创建一个和用户名一样的组名
+一句话，走默认，就够了
+
+如：useradd -d /home/a a -g test
+创建一个用户名字叫a，主目录在/home/a, 如果主目录不存在，就自动创建主目录，同时用户属于test组
+</code></pre></li>
+<li><p>设置用户密码 <strong>passwd</strong></p>
+<p> &emsp;&emsp;超级用户可以使用passwd命令为普通用户设置或修改用户口令；用户也可以直接使用该命令来修改自己的口令，并且不需要在命令后面使用用户名</p>
+</li>
+<li><p>删除用户 userdel</p>
+<p> 常用格式：</p>
+<pre><code>userdel abc : 删除abc用户，但并不会自动删除用户的主目录
+userdel -r abc : 删除用户同时删除用户的主目录
+</code></pre></li>
+<li><p>切换用户 <strong>su</strong></p>
+<p> &emsp;&emsp;通过此命令切换用户，后面也可以加‘-’中杠，其作用是在切换到对应的用户时会将当前的工作目录自动转换到切换后的用户主目录</p>
+<p> <em>注:</em></p>
+<p> &emsp;&emsp;在命令前加‘sudo’ 允许系统管理员让普通用户执行全部root权限命令，减少了root用户的登陆和管理时间；（sudo）su 默认切换到root用户；$表示普通用户， #表示root用户</p>
+</li>
+<li><p>查看有哪些用户组</p>
+</li>
+</ol>
+<pre><code>method1: cat /etc/group
+method2: groupmod + 三次tab键
+</code></pre><ol start="9">
+<li><p>添加、删除组账号 <strong>groupadd  groupdel</strong></p>
+<p> 格式: </p>
+<pre><code>groupadd / groupdel + 组账号
+注：一般会报权限不足，应在命令前加sudo
+</code></pre></li>
+<li><p>修改用户所在的组 <strong>usermod</strong></p>
+<p>格式: </p>
+<pre><code>usermod -g 用户组  用户名
+注: 查询是否修改成功 cat /etc/group | grep XXX
+</code></pre></li>
+<li><p>查看用户在哪些组  groups</p>
+<p>todo: 图片3</p>
+</li>
+<li><p>为创建的普通用户添加sudo权限</p>
+<pre><code>sudo usermod -a -G adm 用户名
+sudo usermod -a -G sudo 用户名
+注：usermod -g 与 -G的区别
+-g：用来指定这个用户默认的用户组
+-G：一般配合-a来完成向其它组添加
+</code></pre></li>
+<li><p>修改文件权限 <strong>chmod</strong></p>
+<p>13.1 字母法：</p>
+<pre><code>注：
+u（user）表示该文件的所有者
+g（group）表示与该文件的所有者属于同一组者，也即用户组
+o（other） 表示其他以外的用户
+a（all） 表示所有，包括以上三者
++ 增加权限
+- 撤销权限
+= 设定权限
+</code></pre><p>todo: 图片4 5     </p>
+<p>13.2 <strong>数字法</strong>: </p>
+<p><strong>rwx这些权限是可以用数字来代替的</strong></p>
+<pre><code>r：读取权限，数字代号为4
+w：写入权限，数字代号为2
+x：执行权限，数字代号为1
+-：不具备任何权限，数字代号为0
+如：执行chmod u=rwx，g=rx, o=r filename等同于：chmod u=7,g=5,o=4 filename也等同于
+chmod 751 filename；
+另，若想递归所有目录加上相同权限，需加上参数‘-R’ 如：chmod 777 test/ -R
+可递归test目录下所有文件并加777权限
+</code></pre></li>
+<li><p>修改文件所有者 <strong>chown</strong></p>
+<pre><code>格式： chown + 文件所有者 + 文件名
+</code></pre></li>
+<li><p>修改文件所属组 chgrp</p>
+<pre><code>格式：chgrp + 文件所属组 + 文件名    
+</code></pre></li>
+</ol>
+<h4 id="七-Vim编辑器及相关命令"><a href="#七-Vim编辑器及相关命令" class="headerlink" title="七. Vim编辑器及相关命令"></a>七. Vim编辑器及相关命令</h4><p>&emsp;&emsp;<strong>vi（Visual interface）,即可视化界面，分为三种基本工作模式：命令模式、文本输入模式、末行模式<br>vim是从vi发展出来的一个文本编辑器，下面为它的基础操作</strong></p>
+<ol>
+<li><p>进入插入模式:</p>
+<pre><code>i：插入光标前一个字符
+I：插入行首
+a：插入光标后一个字符
+A：插入行末
+o：向下新开一行，插入行首
+O：向上新开一行，插入行首
+</code></pre></li>
+<li><p>进入命令模式：</p>
+<pre><code>ESC：会从插入模式或末行模式进入命令模式
+</code></pre></li>
+<li><p>移动光标：</p>
+<pre><code>h: 左移
+ j: 下移 
+k: 上移 
+l: 右移 
+M: 光标移动到中间行 
+L: 光标移动到屏幕最后一行行首 
+G: 移动到指定行,行号 -G 
+w: 向后一次移动一个字 
+b: 向前一次移动一个字 
+{: 按段移动,上移 
+}: 按段移动,下移 
+Ctr-d: 向下翻半屏 
+Ctr-u: 向上翻半屏 
+Ctr-f: 向下翻一屏 
+Ctr-b: 向上翻一屏 
+gg: 光标移动文件开头 
+G: 光标移动到文件末尾
+</code></pre></li>
+<li><p>删除命令</p>
+<pre><code>x: 删除光标后一个字符,相当于 Del 
+X: 删除光标前一个字符,相当于 Backspace 
+dd: 删除光标所在行,n dd 删除指定的行数 
+D: 删除光标后本行所有内容,包含光标所在字符 
+d0: 删除光标前本行所有内容,不包含光标所在字符 
+dw: 删除光标开始位置的字,包含光标所在字符
+</code></pre></li>
+<li><p>撤销命令</p>
+<pre><code>u：一步步撤销
+Ctrl - r：反撤销
+</code></pre></li>
+<li><p>重复命令</p>
+<pre><code>.(点): 重复上一次操作的命令
+</code></pre></li>
+<li><p>文本行移动</p>
+<pre><code>&gt;&gt;: 文本行右移
+&lt;&lt;: 文本行左移
+</code></pre></li>
+<li><p>复制粘贴</p>
+<pre><code>yy：复制当前行，n yy 复制n行
+p：在光标所在位置向下开辟一行并粘贴
+</code></pre></li>
+<li><p>可视模式</p>
+<pre><code>v：按字符移动，选中文本
+V：按行移动，选中文本可视模式可以配合d，y，&gt;&gt;, &lt;&lt;实现对文本块的删除，复制以及左右移动
+</code></pre></li>
+<li><p>替换操作</p>
+<pre><code>r：替换当前字符
+R：替换当前行光标后的字符
+</code></pre></li>
+<li><p>查找命令</p>
+<pre><code>/：str查找
+n：下一个
+N：上一个    
+</code></pre></li>
+<li><p>替换命令</p>
+<pre><code>如：把abc全部替换成123
+末行模式下，将当前文件中的所有abc替换成123
+：%s/abc/123/g
+末行模式下，将第一行至第10行之间的abc替换成123
+：1，10s/abc/123/g
+注: 若在vim里执行shell下命令，可以通过在末行模式里输入！，后面跟命令即可
+</code></pre></li>
+</ol>
+<h4 id="八-分屏操作-进阶"><a href="#八-分屏操作-进阶" class="headerlink" title="八. 分屏操作(进阶)"></a>八. 分屏操作(进阶)</h4><ol>
+<li><p>常用分屏操作:</p>
+<pre><code>sp：上下分屏，后可跟文件名
+vsp：左右分屏，后可跟文件名
+Ctrl+w+w：在多个窗口切换
+</code></pre></li>
+<li><p>启动分屏:</p>
+<p> 2.1 使用大写O选项进行垂直分屏</p>
+<pre><code>格式：vim -On file1 file2 ...
+</code></pre><p> 2.2 使用小写o参数进行水平分屏</p>
+<pre><code>格式：vim -on file1 file2 ...
+注：n是数字，表示分屏的数量，要保证n大于等于文件的个数    
+</code></pre></li>
+<li><p>关闭分屏:</p>
+<p> 3.1 关闭当前窗口</p>
+<pre><code>Ctrl + w c
+</code></pre><p> 3.2 关闭当前窗口，如果只剩最后一个，则退出vim</p>
+<pre><code>Ctrl + w a
+</code></pre></li>
+<li><p>编辑中分屏</p>
+<p>4.1 上下分割当前打开的文件</p>
+<p> Ctrl+w s<br>4.2 上下分割，并打开一个新的文件</p>
+<p> ：sp filename<br>4.3 左右分割当前打开的文件</p>
+<p> ctrl+w v<br>4.4 左右分割，并打开一个新的文件</p>
+<p> ：vsp filename</p>
+</li>
+<li><p>分屏编辑中光标的移动</p>
+<p> &emsp;&emsp;vi中的光标键是h，j，k，l，要想在各个屏之间切换，只需要先按一下Ctrl+w</p>
+<pre><code>把光标移动到上边的屏
+ctrl + w k
+把光标移动到下一个屏
+ctrl + w w
+</code></pre></li>
+<li><p>移动分屏</p>
+<pre><code>如: 向上移动：ctrl+w K(大写，其他参考光标键)
+</code></pre></li>
+<li><p>屏幕尺寸</p>
+<p> 7.1 增加高度</p>
+<pre><code>ctrl+w +
+</code></pre><p> 7.2 减少高度</p>
+<pre><code>ctrl+w -
+</code></pre><p> 7.3 让所有的屏高度一致</p>
+<pre><code>ctrl+w =
+</code></pre><p> 7.4 左加宽度</p>
+<pre><code>ctrl+w &gt;    
+</code></pre><p> 7.5 右加宽度</p>
+<pre><code>ctrl+w &lt;
+</code></pre><p> 7.6 右增加n宽(如: n = 30)</p>
+<pre><code>ctrl + w n &lt;
+</code></pre></li>
+</ol>
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>原文作者：<a href="http://yoursite.com">Mr.Wang</a>
+            </p><p>原文链接：<a href="http://yoursite.com/2019/01/08/linux02/">http://yoursite.com/2019/01/08/linux02/</a>
+            </p><p>发表日期：<a href="http://yoursite.com/2019/01/08/linux02/">January 8th 2019, 4:05:26 pm</a>
+            </p><p>更新日期：<a href="http://yoursite.com/2019/01/08/linux02/">January 8th 2019, 4:05:26 pm</a>
+            </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2019/01/04/linux01/" title="初识Linux">
+                    <div class="prevTitle">初识Linux</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:wangzhiyang199602@163.com" class="iconfont-archer email" title="email"></a>
+            
+        
+    
+        
+            
+                <a href="https://github.com/StubbornBug" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title="wechat">
+                  
+                  <img class="profile-qr" src="/assets/example_qr.png">
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#一-Linux命令格式"><span class="toc-number">1.</span> <span class="toc-text">一. Linux命令格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二-查看帮助文档"><span class="toc-number">2.</span> <span class="toc-text">二. 查看帮助文档</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三-历史命令"><span class="toc-number">3.</span> <span class="toc-text">三. 历史命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#四-Linux命令–文件-磁盘管理"><span class="toc-number">4.</span> <span class="toc-text">四. Linux命令–文件, 磁盘管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#五-Linux命令-系统管理"><span class="toc-number">5.</span> <span class="toc-text">五.  Linux命令-系统管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#六-Linux命令-用户、权限管理"><span class="toc-number">6.</span> <span class="toc-text">六.  Linux命令-用户、权限管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#七-Vim编辑器及相关命令"><span class="toc-number">7.</span> <span class="toc-text">七. Vim编辑器及相关命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#八-分屏操作-进阶"><span class="toc-number">8.</span> <span class="toc-text">八. 分屏操作(进阶)</span></a></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 4
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/01/04/linux01/">初识Linux</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/08</span><a class="archive-post-title" href="/2019/01/08/linux02/">[Untitled Post]</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/04</span><a class="archive-post-title" href="/2019/01/04/helloskills/">Java学习路线</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/03</span><a class="archive-post-title" href="/2019/01/03/firstblog/">Follow your Heart, don`t run on gasoline</a>
+        </li>
+    
+    </ul></div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br>
+    1、请确保node版本大于6.2<br>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Mr.Wang"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+
