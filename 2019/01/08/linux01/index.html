@@ -22,7 +22,7 @@
     <meta name="description" content="To be or not to be, that is a question.">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Spring Boot · StubbornBug`s Studio</title>
+    <title>初识Linux · StubbornBug`s Studio</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/">StubbornBug`s Studio</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">Spring Boot</a>
+                <a href="#" class="post-name">初识Linux</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Spring Boot
+            初识Linux
             <!-- 404 -->
             
         </h1>
@@ -266,7 +266,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">694</span>阅读时长: <span class="post-count reading-time">2 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">1.2k</span>阅读时长: <span class="post-count reading-time">4 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -395,59 +395,51 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h5 id="一-Spring的java配置方式"><a href="#一-Spring的java配置方式" class="headerlink" title="一. Spring的java配置方式"></a>一. Spring的java配置方式</h5><p>Spring4.x推荐的配置方式，可以完全替代xml配置, 常用注解:</p>
-<pre><code>@Configuration（作用于类上，相当于一个xml配置文件）；
-@Bean（作用于方法上，相当于xml配置中的bean标签）
-@ComponentScan（basePackages = &quot;配置类所在包&quot;）
-@PropertySource（value=&quot;指定配置文件&quot;，ignoreResourceNotFound = true）
-@Value（&quot;${key}&quot;）获取配置文件中的值
-</code></pre><h5 id="二-Spring-Boot"><a href="#二-Spring-Boot" class="headerlink" title="二. Spring Boot"></a>二. Spring Boot</h5><p> &emsp;&emsp;<strong>“习惯优于配置”（项目中存在大量的配置，此外还内置一个习惯性的配置，无需手动），项目独立运行（运行jar，内嵌Servlet容器），使用它可以不用或只需要很少的Spring配置。</strong></p>
-<ol>
-<li><p>常用注解</p>
-<pre><code>@SpringBootApplication（核心注解，用于开启自动配置）
-注：自动配置的东西会很多，若想关闭某一项配置
-@SpringBootApplication(exclude = {RedisAutoConfiguration.class}) 手动关闭Redis配置
-@Configuration
-@ConditionalOnMissingBean（当容器里没有指定的Bean的情况下创建该对象）
-@AutoConfigureAfter（*.class）保证在括号内的类实例化完成之后在实例化该类，注解加在类上
-注：
-@ResponseBody：两个作用，首先，将响应结果直接写入HTTP response body中，不会被解析为跳转路径；直接将响应结果以json形式返回；
-启动应用通过main方法启动，启动类应在被扫描包的同级或上级包里
-</code></pre></li>
-<li><p>全局配置文件</p>
-<p> &emsp;&emsp;application.properties 或 application.yml,可以放在resources目录下或者类路径下的/config下，一般是放到resources目录下的</p>
-<p> 比如：修改tomcat的端口为8088<br><strong>server.port=8088</strong>,<br>更多的配置在文件里有参考</p>
-</li>
-<li><p>Starter pom</p>
-<p> &emsp;&emsp;个人理解为SpringBoot为我们提供了绝大多数的配置，放置在parent里面，应用的时候，根据具体的业务场景导入相应的依赖也就是Starter pom，就可以实现零配置使用默认配置好的bean，也可以在全局配置里修改默认的配置。</p>
-</li>
-<li><p>xml配置文件</p>
-<p> &emsp;&emsp;可能有一些特殊要求必须使用xml配置，应用注解<strong>@ImportResource</strong>来加载xml配置</p>
-<p> <em>注:</em></p>
-<p> &emsp;&emsp;<em>在进行SpringApplication对象实例化的时候会加载META-INF/spring.factories文件，并将该配置文件载入到Spring容器</em></p>
-</li>
-<li><p>自定义配置</p>
-<p> &emsp;&emsp;如：SpringMVC配置，比如增加一个拦截器，这个时候可以通过继承WebMvcConfigurerAdapter然后重写父类中的方法进行扩展。</p>
-</li>
-<li><p>事务的配置</p>
-<p> &emsp;&emsp;在引入jdbc依赖之后，直接使用<strong>@Transactional</strong>注解即可，可加在类上，也可以加在方法上</p>
-</li>
+        <p><strong>Linux系统没有盘符的概念, 只有一个根目录”/“, 所有的文件都在这个根目录下面</strong></p>
+<h4 id="一-目录"><a href="#一-目录" class="headerlink" title="一. 目录"></a>一. 目录</h4><h5 id="1-“-“"><a href="#1-“-“" class="headerlink" title="1. “/“"></a>1. “/“</h5><p>&emsp;&emsp;根目录，一般根目录下只存放目录，在Linux下有且只有一个根目录。所有的东西 都是从这里开始。当你在终端里输入“/home”，你其实是在告诉电脑，先从/（根目 录）开始，再进入到home目录。</p>
+<h5 id="2-bin、-usr-bin"><a href="#2-bin、-usr-bin" class="headerlink" title="2. /bin、/usr/bin"></a>2. /bin、/usr/bin</h5><p>&emsp;&emsp;可执行二进制文件的目录，如常用的命令ls、tar、mv、cat等。</p>
+<h5 id="3-dev"><a href="#3-dev" class="headerlink" title="3. /dev"></a>3. /dev</h5><p>&emsp;&emsp;存放linux系统下的设备文件，访问该目录下某个文件，相当于访问某个设备， 常用的是挂载光驱 mount /dev/cdrom /mnt。</p>
+<h5 id="4-etc"><a href="#4-etc" class="headerlink" title="4. /etc"></a>4. /etc</h5><p>&emsp;&emsp;系统配置文件存放的目录，不建议在此目录下存放可执行文件，重要的配置文 件有 /etc/inittab、/etc/fstab、/etc/init.d、/etc/X11、/etc/sysconfig、/etc/xinetd.d等。</p>
+<h5 id="5-home"><a href="#5-home" class="headerlink" title="5. /home"></a>5. /home</h5><p>&emsp;&emsp;系统默认的用户家目录，新增用户账号时，用户的家目录都存放在此目录 下，~表示当前用户的家目录，如: ~edu 表示用户 edu 的家目录。</p>
+<h5 id="6-lib、-usr-lib、-usr-local-lib"><a href="#6-lib、-usr-lib、-usr-local-lib" class="headerlink" title="6. /lib、/usr/lib、/usr/local/lib"></a>6. /lib、/usr/lib、/usr/local/lib</h5><p>&emsp;&emsp;系统使用的函数库的目录，程序在执行过程中，需要调 用一些额外的参数时需要函数库的协助。</p>
+<h5 id="7-lost-fount"><a href="#7-lost-fount" class="headerlink" title="7. /lost+fount"></a>7. /lost+fount</h5><p>&emsp;&emsp;系统异常产生错误时，会将一些遗失的片段放置于此目录下。</p>
+<h5 id="8-opt"><a href="#8-opt" class="headerlink" title="8. /opt"></a>8. /opt</h5><p>&emsp;&emsp;给主机额外安装软件所摆放的目录。</p>
+<h5 id="9-proc"><a href="#9-proc" class="headerlink" title="9. /proc"></a>9. /proc</h5><p>&emsp;&emsp;此目录的数据都在内存中，如系统核心，外部设备，网络状态，由于数据都存放于内存中，所以不占用磁盘空间，比较重要的目录有<br>/proc/cpuinfo、/proc/interrupts、/proc/dma、/proc/ioports、/proc/net/* 等。</p>
+<h5 id="10-root"><a href="#10-root" class="headerlink" title="10. /root"></a>10. /root</h5><p>&emsp;&emsp;系统管理员root的家目录。</p>
+<h5 id="11-sbin、-usr-sbin、-usr-local-sbin"><a href="#11-sbin、-usr-sbin、-usr-local-sbin" class="headerlink" title="11. /sbin、/usr/sbin、/usr/local/sbin"></a>11. /sbin、/usr/sbin、/usr/local/sbin</h5><p>&emsp;&emsp;放置系统管理员使用的可执行命令，如fdisk、 shutdown、mount 等。与 /bin 不同的是，这几个目录是给系统管理员 root使用的命 令，一般用户只能”查看”而不能设置和使用。</p>
+<h5 id="12-boot"><a href="#12-boot" class="headerlink" title="12. /boot"></a>12. /boot</h5><p>&emsp;&emsp;放置linux系统启动时用到的一些文件，如Linux的内核文件：/boot/vmlinuz</p>
+<h5 id="13-tmp"><a href="#13-tmp" class="headerlink" title="13. /tmp"></a>13. /tmp</h5><p>&emsp;&emsp;一般用户或正在执行的程序临时存放文件的目录，任何⼈都可以访问，重要数据不可放置在此目录下。</p>
+<h5 id="14-srv"><a href="#14-srv" class="headerlink" title="14. /srv"></a>14. /srv</h5><p>&emsp;&emsp;服务启动之后需要访问的数据目录，如 www 服务需要访问的⽹⻚数据存放在 /srv/www 内。</p>
+<h5 id="15-usr"><a href="#15-usr" class="headerlink" title="15. /usr"></a>15. /usr</h5><p>&emsp;&emsp;应用程序存放目录，/usr/bin 存放应用程序，/usr/share 存放共享数据，/usr/lib 存放不能直接运行的，却是许多程序运行所必需的一些函数库文件。/usr/local: 存放 软件升级包。/usr/share/doc: 系统说明文件存放目录。/usr/share/man: 程序说明文件存放目录。</p>
+<h5 id="16-var"><a href="#16-var" class="headerlink" title="16. /var"></a>16. /var</h5><p>&emsp;&emsp;放置系统执行过程中经常变化的文件，如随时更改的日志文件 /var/log，/var/log/message：所有的登录文件存放目录，/var/spool/mail：邮件存放 的目录，/var/run:程序或服务启动后，其PID存放在该目录下。</p>
+<h4 id="二-路径"><a href="#二-路径" class="headerlink" title="二. 路径"></a>二. 路径</h4><ol>
+<li>相对路径: 从当前位置开始描述的路径为相对路径</li>
+<li>绝对路径: 从”/“目录开始描述的路径为绝对路径</li>
 </ol>
-<pre><code>注：内嵌的tomcat是不支持jsp页面的，因此应导入额外的包才能解决
-&lt;dependency&gt;
-&lt;groupId&gt;org.apache.tomcat.embed&lt;/groupId&gt;
-&lt;artifactId&gt;tomcat-embed-jasper&lt;/artifactId&gt;
-&lt;scope&gt;provided&lt;/scope&gt;
-  &lt;/dependency&gt;
-</code></pre>
+<h4 id="三-点-和点点"><a href="#三-点-和点点" class="headerlink" title="三. 点(.)和点点(..)"></a>三. 点(.)和点点(..)</h4><ol>
+<li>每个目录下都有点和点点</li>
+<li>点表示当前目录</li>
+<li>点点表示上一级目录也就是父目录</li>
+<li>“/“路径下的点和点点都表示当前目录</li>
+</ol>
+<h4 id="四-访问权限"><a href="#四-访问权限" class="headerlink" title="四. 访问权限"></a>四. 访问权限</h4><p><strong><em>用户能够控制一个给定的文件或目录的访问程度，一个文件或目录可能有读，写，及执行的权限</em></strong></p>
+<ol>
+<li>读权限（r） 对文件而言，具有读取文件内容的权限；对目录来说，具有浏览目录的 权限。</li>
+<li>写权限（w） 对文件而言，具有新增、修改文件内容的权限；对目录来说，具有删 除、移动目录内文件的权限。</li>
+<li>可执行权限（x） 对文件而言，具有执行文件的权限；对目录了来说该用户具有进入 目录的权限。</li>
+</ol>
+<p>注: </p>
+<p>&emsp;&emsp;<em>第1个字母代表文件的类型：“d” 代表文件夹、“-” 代表普通文件、“c” 代表硬件字符设 备、“b” 代表硬件块设备、“s”表示管道文件、“l” 代表软链接文件。 后 9 个字母分别代表三 组权限：文件所有者、用户组、其他用户拥有的权限。 每一个用户都有它自身的读、写和执行权限。</em><br>&emsp;&emsp;<em>这三组权限赋予用户不同类型（即所有者、用户组和其他用户）的读、写及执行权限就构 成了一个有9种类型的权限组。</em></p>
+<p><img src="https://github.com/StubbornBug/stubbornbug.github.io/blob/master/images/clipboard.png?raw=true" alt="附图"></p>
+
     </article>
     <!-- license  -->
     
         <div class="license-wrapper">
             <p>原文作者：<a href="http://yoursite.com">Mr.Wang</a>
-            </p><p>原文链接：<a href="http://yoursite.com/2019/01/08/springboot01/">http://yoursite.com/2019/01/08/springboot01/</a>
-            </p><p>发表日期：<a href="http://yoursite.com/2019/01/08/springboot01/">January 8th 2019, 5:13:53 pm</a>
-            </p><p>更新日期：<a href="http://yoursite.com/2019/01/08/springboot01/">January 8th 2019, 5:15:32 pm</a>
+            </p><p>原文链接：<a href="http://yoursite.com/2019/01/08/linux01/">http://yoursite.com/2019/01/08/linux01/</a>
+            </p><p>发表日期：<a href="http://yoursite.com/2019/01/08/linux01/">January 8th 2019, 6:15:07 pm</a>
+            </p><p>更新日期：<a href="http://yoursite.com/2019/01/08/linux01/">January 8th 2019, 1:45:09 pm</a>
             </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -455,17 +447,12 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href="/2019/01/08/linux01/" title="初识Linux">
-                    <div class="nextTitle">初识Linux</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href="/2019/01/08/git01/" title="git从github下载内容">
-                    <div class="prevTitle">git从github下载内容</div>
+                <a href="/2019/01/08/springboot01/" title="Spring Boot">
+                    <div class="prevTitle">Spring Boot</div>
                 </a>
             
         </li>
@@ -584,7 +571,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#一-Spring的java配置方式"><span class="toc-number">1.</span> <span class="toc-text">一. Spring的java配置方式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#二-Spring-Boot"><span class="toc-number">2.</span> <span class="toc-text">二. Spring Boot</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#一-目录"><span class="toc-number">1.</span> <span class="toc-text">一. 目录</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-“-“"><span class="toc-number">1.1.</span> <span class="toc-text">1. “/“</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-bin、-usr-bin"><span class="toc-number">1.2.</span> <span class="toc-text">2. /bin、/usr/bin</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-dev"><span class="toc-number">1.3.</span> <span class="toc-text">3. /dev</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-etc"><span class="toc-number">1.4.</span> <span class="toc-text">4. /etc</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-home"><span class="toc-number">1.5.</span> <span class="toc-text">5. /home</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-lib、-usr-lib、-usr-local-lib"><span class="toc-number">1.6.</span> <span class="toc-text">6. /lib、/usr/lib、/usr/local/lib</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-lost-fount"><span class="toc-number">1.7.</span> <span class="toc-text">7. /lost+fount</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-opt"><span class="toc-number">1.8.</span> <span class="toc-text">8. /opt</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#9-proc"><span class="toc-number">1.9.</span> <span class="toc-text">9. /proc</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-root"><span class="toc-number">1.10.</span> <span class="toc-text">10. /root</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#11-sbin、-usr-sbin、-usr-local-sbin"><span class="toc-number">1.11.</span> <span class="toc-text">11. /sbin、/usr/sbin、/usr/local/sbin</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#12-boot"><span class="toc-number">1.12.</span> <span class="toc-text">12. /boot</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#13-tmp"><span class="toc-number">1.13.</span> <span class="toc-text">13. /tmp</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#14-srv"><span class="toc-number">1.14.</span> <span class="toc-text">14. /srv</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#15-usr"><span class="toc-number">1.15.</span> <span class="toc-text">15. /usr</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#16-var"><span class="toc-number">1.16.</span> <span class="toc-text">16. /var</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二-路径"><span class="toc-number">2.</span> <span class="toc-text">二. 路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三-点-和点点"><span class="toc-number">3.</span> <span class="toc-text">三. 点(.)和点点(..)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#四-访问权限"><span class="toc-number">4.</span> <span class="toc-text">四. 访问权限</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
