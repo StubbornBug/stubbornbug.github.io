@@ -1,400 +1,216 @@
 <!DOCTYPE html>
 <html lang="">
-    <!-- title -->
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.8.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
 
-<!-- keywords -->
-
-
-
-
-<head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="author" content="Mr.Wang">
-    <meta name="renderer" content="webkit">
-    <meta name="copyright" content="Mr.Wang">
-    
-    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
-    
-    <meta name="description" content="To be or not to be, that is a question.">
-    <meta http-equiv="Cache-control" content="no-cache">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>初识Linux · StubbornBug`s Studio</title>
-    <style type="text/css">
-    @font-face {
-        font-family: 'Oswald-Regular';
-        src: url("/font/Oswald-Regular.ttf");
-    }
-
-    body {
-        margin: 0;
-    }
-
-    header,
-    footer,
-    .back-top,
-    .sidebar,
-    .container,
-    .site-intro-meta,
-    .toc-wrapper {
-        display: none;
-    }
-
-    .site-intro {
-        position: relative;
-        z-index: 3;
-        width: 100%;
-        /* height: 50vh; */
-        overflow: hidden;
-    }
-
-    .site-intro-placeholder {
-        position: absolute;
-        z-index: -2;
-        top: 0;
-        left: 0;
-        width: calc(100% + 300px);
-        height: 100%;
-        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
-        background-position: center center;
-        transform: translate3d(-226px, 0, 0);
-        animation: gradient-move 2.5s ease-out 0s infinite;
-    }
-
-    @keyframes gradient-move {
-        0% {
-            transform: translate3d(-226px, 0, 0);
-        }
-        100% {
-            transform: translate3d(0, 0, 0);
-        }
-    }
-
-</style>
-
-    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
-    
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    
-    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
-/* This file is meant as a standalone workflow for
-- testing support for link[rel=preload]
-- enabling async CSS loading in browsers that do not support rel=preload
-- applying rel preload css once loaded, whether supported or not.
-*/ -->
-<script>
-(function( w ){
-	"use strict";
-	// rel=preload support test
-	if( !w.loadCSS ){
-		w.loadCSS = function(){};
-	}
-	// define on the loadCSS obj
-	var rp = loadCSS.relpreload = {};
-	// rel=preload feature support test
-	// runs once and returns a function for compat purposes
-	rp.support = (function(){
-		var ret;
-		try {
-			ret = w.document.createElement( "link" ).relList.supports( "preload" );
-		} catch (e) {
-			ret = false;
-		}
-		return function(){
-			return ret;
-		};
-	})();
-
-	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
-	// then change that media back to its intended value on load
-	rp.bindMediaToggle = function( link ){
-		// remember existing media attr for ultimate state, or default to 'all'
-		var finalMedia = link.media || "all";
-
-		function enableStylesheet(){
-			link.media = finalMedia;
-		}
-
-		// bind load handlers to enable media
-		if( link.addEventListener ){
-			link.addEventListener( "load", enableStylesheet );
-		} else if( link.attachEvent ){
-			link.attachEvent( "onload", enableStylesheet );
-		}
-
-		// Set rel and non-applicable media type to start an async request
-		// note: timeout allows this to happen async to let rendering continue in IE
-		setTimeout(function(){
-			link.rel = "stylesheet";
-			link.media = "only x";
-		});
-		// also enable media after 3 seconds,
-		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
-		setTimeout( enableStylesheet, 3000 );
-	};
-
-	// loop through link elements in DOM
-	rp.poly = function(){
-		// double check this to prevent external calls from running
-		if( rp.support() ){
-			return;
-		}
-		var links = w.document.getElementsByTagName( "link" );
-		for( var i = 0; i < links.length; i++ ){
-			var link = links[ i ];
-			// qualify links to those with rel=preload and as=style attrs
-			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
-				// prevent rerunning on link
-				link.setAttribute( "data-loadcss", true );
-				// bind listeners to toggle media back
-				rp.bindMediaToggle( link );
-			}
-		}
-	};
-
-	// if unsupported, run the polyfill
-	if( !rp.support() ){
-		// run once at least
-		rp.poly();
-
-		// rerun poly on an interval until onload
-		var run = w.setInterval( rp.poly, 500 );
-		if( w.addEventListener ){
-			w.addEventListener( "load", function(){
-				rp.poly();
-				w.clearInterval( run );
-			} );
-		} else if( w.attachEvent ){
-			w.attachEvent( "onload", function(){
-				rp.poly();
-				w.clearInterval( run );
-			} );
-		}
-	}
-
-
-	// commonjs
-	if( typeof exports !== "undefined" ){
-		exports.loadCSS = loadCSS;
-	}
-	else {
-		w.loadCSS = loadCSS;
-	}
-}( typeof global !== "undefined" ? global : this ) );
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Muse',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
 </script>
 
-    <link rel="icon" href="/assets/favicon2222.ico">
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
-    <link rel="preload" href="/scripts/main.js" as="script">
-    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin="">
-    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin="">
-    
-    <!-- fancybox -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
-    <!-- 百度统计  -->
-    
-    <!-- 谷歌统计  -->
-    
+  <meta name="description" content="Linux系统没有盘符的概念, 只有一个根目录”/“, 所有的文件都在这个根目录下面 一. 目录1. “/“&amp;emsp;&amp;emsp;根目录，一般根目录下只存放目录，在Linux下有且只有一个根目录。所有的东西 都是从这里开始。当你在终端里输入“/home”，你其实是在告诉电脑，先从/（根目 录）开始，再进入到home目录。 2. /bin、/usr/bin&amp;emsp;&amp;emsp;可执行二进制文件的">
+<meta name="keywords" content="Interest Stubborn Persevere">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初识Linux">
+<meta property="og:url" content="http://yoursite.com/2019/01/08/linux01/index.html">
+<meta property="og:site_name" content="Footprints of Growth">
+<meta property="og:description" content="Linux系统没有盘符的概念, 只有一个根目录”/“, 所有的文件都在这个根目录下面 一. 目录1. “/“&amp;emsp;&amp;emsp;根目录，一般根目录下只存放目录，在Linux下有且只有一个根目录。所有的东西 都是从这里开始。当你在终端里输入“/home”，你其实是在告诉电脑，先从/（根目 录）开始，再进入到home目录。 2. /bin、/usr/bin&amp;emsp;&amp;emsp;可执行二进制文件的">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://github.com/StubbornBug/stubbornbug.github.io/blob/master/images/clipboard.png?raw=true">
+<meta property="og:updated_time" content="2019-01-08T05:45:09.350Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初识Linux">
+<meta name="twitter:description" content="Linux系统没有盘符的概念, 只有一个根目录”/“, 所有的文件都在这个根目录下面 一. 目录1. “/“&amp;emsp;&amp;emsp;根目录，一般根目录下只存放目录，在Linux下有且只有一个根目录。所有的东西 都是从这里开始。当你在终端里输入“/home”，你其实是在告诉电脑，先从/（根目 录）开始，再进入到home目录。 2. /bin、/usr/bin&amp;emsp;&amp;emsp;可执行二进制文件的">
+<meta name="twitter:image" content="https://github.com/StubbornBug/stubbornbug.github.io/blob/master/images/clipboard.png?raw=true">
+
+<link rel="canonical" href="http://yoursite.com/2019/01/08/linux01/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>初识Linux | Footprints of Growth</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
 </head>
 
-    
-        <body class="post-body">
-    
-    
-<header class="header">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
 
-    <div class="read-progress"></div>
-    <div class="header-sidebar-menu">&#xe775;</div>
-    <!-- post页的toggle banner  -->
-    
-    <div class="banner">
-            <div class="blog-title">
-                <a href="/">StubbornBug`s Studio</a>
-            </div>
-            <div class="post-title">
-                <a href="#" class="post-name">初识Linux</a>
-            </div>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Footprints of Growth</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
     </div>
-    
-    <a class="home-link" href="/">StubbornBug`s Studio</a>
-</header>
-    <div class="wrapper">
-        <div class="site-intro" style="
+        <p class="site-subtitle">Note when going straight for success of Mr.Wang</p>
+  </div>
 
-
-
-
-
-
-
-height:50vh;
-">
-    
-    <!-- 主页  -->
-    
-    
-    <!-- 404页  -->
-            
-    <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
-    <div class="site-intro-meta">
-        <!-- 标题  -->
-        <h1 class="intro-title">
-            <!-- 主页  -->
-            
-            初识Linux
-            <!-- 404 -->
-            
-        </h1>
-        <!-- 副标题 -->
-        <p class="intro-subtitle">
-            <!-- 主页副标题  -->
-            
-            
-            <!-- 404 -->
-            
-        </p>
-        <!-- 文章页meta -->
-        
-            <div class="post-intros">
-                <!-- 文章页标签  -->
-                
-                
-                    <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">1.2k</span>阅读时长: <span class="post-count reading-time">4 min</span></span>
-                    </div>
-                
-                <div class="post-intro-meta">
-                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2019/01/08</span>
-                    
-                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
-                        <span class="iconfont-archer">&#xe602;</span>
-                        <span id="busuanzi_value_page_pv"></span>
-                    </span>
-                    
-                    <span class="shareWrapper">
-                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
-                        <span class="shareText">Share</span>
-                        <ul class="shareList">
-                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
-                                <div class="share-qrcode"></div>
-                            </li>
-                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
-                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
-                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
-                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
-                        </ul>
-                    </span>
-                </div>
-            </div>
-        
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Navigationsleiste an/ausschalten">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
+  </div>
 </div>
-        <script>
- 
-  // get user agent
-  var browser = {
-    versions: function () {
-      var u = window.navigator.userAgent;
-      return {
-        userAgent: u,
-        trident: u.indexOf('Trident') > -1, //IE内核
-        presto: u.indexOf('Presto') > -1, //opera内核
-        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
-        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
-        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
-        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
-        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
-        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
-        iPad: u.indexOf('iPad') > -1, //是否为iPad
-        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
-        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
-        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
-      };
-    }()
-  }
-  console.log("userAgent:" + browser.versions.userAgent);
 
-  // callback
-  function fontLoaded() {
-    console.log('font loaded');
-    if (document.getElementsByClassName('site-intro-meta')) {
-      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
-      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
-      var postIntros = document.getElementsByClassName('post-intros')[0]
-      if (postIntros) {
-        postIntros.classList.add('post-fade-in');
-      }
-    }
-  }
 
-  // UC不支持跨域，所以直接显示
-  function asyncCb(){
-    if (browser.versions.uc) {
-      console.log("UCBrowser");
-      fontLoaded();
-    } else {
-      WebFont.load({
-        custom: {
-          families: ['Oswald-Regular']
-        },
-        loading: function () {  //所有字体开始加载
-          // console.log('loading');
-        },
-        active: function () {  //所有字体已渲染
-          fontLoaded();
-        },
-        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
-          console.log('inactive: timeout');
-          fontLoaded();
-        },
-        timeout: 5000 // Set the timeout to two seconds
-      });
-    }
-  }
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
 
-  function asyncErr(){
-    console.warn('script load from CDN failed, will load local script')
-  }
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Startseite</a>
 
-  // load webfont-loader async, and add callback function
-  function async(u, cb, err) {
-    var d = document, t = 'script',
-      o = d.createElement(t),
-      s = d.getElementsByTagName(t)[0];
-    o.src = u;
-    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
-    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
-    s.parentNode.insertBefore(o, s);
-  }
+  </li>
+        <li class="menu-item menu-item-archives">
 
-  var asyncLoadWithFallBack = function(arr, success, reject) {
-      var currReject = function(){
-        reject()
-        arr.shift()
-        if(arr.length)
-          async(arr[0], success, currReject)
-        }
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archiv</a>
 
-      async(arr[0], success, currReject)
-  }
+  </li>
+  </ul>
 
-  asyncLoadWithFallBack([
-    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
-    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
-    "/lib/webfontloader.min.js"
-  ], asyncCb, asyncErr)
-</script>        
-        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
-        <div class="container container-unloaded">
-            <main class="main post-page">
-    <article class="article-entry">
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-block " lang="default">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/08/linux01/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mr.Wang">
+      <meta itemprop="description" content="To be or not to be, that is a question.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Footprints of Growth">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          初识Linux
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              <time title="Erstellt: 2019-01-08 18:15:07 / Geändert am: 13:45:09" itemprop="dateCreated datePublished" datetime="2019-01-08T18:15:07+08:00">2019-01-08</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
         <p><strong>Linux系统没有盘符的概念, 只有一个根目录”/“, 所有的文件都在这个根目录下面</strong></p>
 <h4 id="一-目录"><a href="#一-目录" class="headerlink" title="一. 目录"></a>一. 目录</h4><h5 id="1-“-“"><a href="#1-“-“" class="headerlink" title="1. “/“"></a>1. “/“</h5><p>&emsp;&emsp;根目录，一般根目录下只存放目录，在Linux下有且只有一个根目录。所有的东西 都是从这里开始。当你在终端里输入“/home”，你其实是在告诉电脑，先从/（根目 录）开始，再进入到home目录。</p>
 <h5 id="2-bin、-usr-bin"><a href="#2-bin、-usr-bin" class="headerlink" title="2. /bin、/usr/bin"></a>2. /bin、/usr/bin</h5><p>&emsp;&emsp;可执行二进制文件的目录，如常用的命令ls、tar、mv、cat等。</p>
@@ -432,389 +248,180 @@ height:50vh;
 <p>&emsp;&emsp;<em>第1个字母代表文件的类型：“d” 代表文件夹、“-” 代表普通文件、“c” 代表硬件字符设 备、“b” 代表硬件块设备、“s”表示管道文件、“l” 代表软链接文件。 后 9 个字母分别代表三 组权限：文件所有者、用户组、其他用户拥有的权限。 每一个用户都有它自身的读、写和执行权限。</em><br>&emsp;&emsp;<em>这三组权限赋予用户不同类型（即所有者、用户组和其他用户）的读、写及执行权限就构 成了一个有9种类型的权限组。</em></p>
 <p><img src="https://github.com/StubbornBug/stubbornbug.github.io/blob/master/images/clipboard.png?raw=true" alt="附图"></p>
 
-    </article>
-    <!-- license  -->
-    
-        <div class="license-wrapper">
-            <p>原文作者：<a href="http://yoursite.com">Mr.Wang</a>
-            </p><p>原文链接：<a href="http://yoursite.com/2019/01/08/linux01/">http://yoursite.com/2019/01/08/linux01/</a>
-            </p><p>发表日期：<a href="http://yoursite.com/2019/01/08/linux01/">January 8th 2019, 6:15:07 pm</a>
-            </p><p>更新日期：<a href="http://yoursite.com/2019/01/08/linux01/">January 8th 2019, 1:45:09 pm</a>
-            </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
-        </div>
-    
-    <!-- paginator  -->
-    <ul class="post-paginator">
-        <li class="next">
-            
-                <div class="nextSlogan">Next Post</div>
-                <a href="/2019/01/18/exception/" title="异常">
-                    <div class="nextTitle">异常</div>
-                </a>
-            
-        </li>
-        <li class="previous">
-            
-                <div class="prevSlogan">Previous Post</div>
-                <a href="/2019/01/08/springboot01/" title="Spring Boot">
-                    <div class="prevTitle">Spring Boot</div>
-                </a>
-            
-        </li>
-    </ul>
-    <!-- 评论插件 -->
-    <!-- 来必力City版安装代码 -->
-
-<!-- City版安装代码已完成 -->
-    
-    
-    <!-- partial('_partial/comment/changyan') -->
-    <!--PC版-->
-
-
-    
-    
-
-    <!-- 评论 -->
-</main>
-            <!-- profile -->
-            
-        </div>
-        <footer class="footer footer-unloaded">
-    <!-- social  -->
-    
-    <div class="social">
-        
-    
-        
-            
-                <a href="mailto:wangzhiyang199602@163.com" class="iconfont-archer email" title="email"></a>
-            
-        
-    
-        
-            
-                <a href="https://github.com/StubbornBug" class="iconfont-archer github" target="_blank" title="github"></a>
-            
-        
-    
-        
-            
-                <span class="iconfont-archer wechat" title="wechat">
-                  
-                  <img class="profile-qr" src="/assets/example_qr.png">
-                </span>
-            
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-
     </div>
+
     
-    <!-- powered by Hexo  -->
-    <div class="copyright">
-        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
-    </div>
-    <!-- 不蒜子  -->
     
-    <div class="busuanzi-container">
-    
-     
-    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
-    
-    </div>
-    
-</footer>
-    </div>
-    <!-- toc -->
-    
-    <div class="toc-wrapper" style=
     
 
+      <footer class="post-footer">
 
-
-
-
-
-
-top:50vh;
-
-    >
-        <div class="toc-catalog">
-            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
-        </div>
-        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#一-目录"><span class="toc-number">1.</span> <span class="toc-text">一. 目录</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-“-“"><span class="toc-number">1.1.</span> <span class="toc-text">1. “/“</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-bin、-usr-bin"><span class="toc-number">1.2.</span> <span class="toc-text">2. /bin、/usr/bin</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-dev"><span class="toc-number">1.3.</span> <span class="toc-text">3. /dev</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-etc"><span class="toc-number">1.4.</span> <span class="toc-text">4. /etc</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-home"><span class="toc-number">1.5.</span> <span class="toc-text">5. /home</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-lib、-usr-lib、-usr-local-lib"><span class="toc-number">1.6.</span> <span class="toc-text">6. /lib、/usr/lib、/usr/local/lib</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-lost-fount"><span class="toc-number">1.7.</span> <span class="toc-text">7. /lost+fount</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-opt"><span class="toc-number">1.8.</span> <span class="toc-text">8. /opt</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#9-proc"><span class="toc-number">1.9.</span> <span class="toc-text">9. /proc</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-root"><span class="toc-number">1.10.</span> <span class="toc-text">10. /root</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#11-sbin、-usr-sbin、-usr-local-sbin"><span class="toc-number">1.11.</span> <span class="toc-text">11. /sbin、/usr/sbin、/usr/local/sbin</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#12-boot"><span class="toc-number">1.12.</span> <span class="toc-text">12. /boot</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#13-tmp"><span class="toc-number">1.13.</span> <span class="toc-text">13. /tmp</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#14-srv"><span class="toc-number">1.14.</span> <span class="toc-text">14. /srv</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#15-usr"><span class="toc-number">1.15.</span> <span class="toc-text">15. /usr</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#16-var"><span class="toc-number">1.16.</span> <span class="toc-text">16. /var</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二-路径"><span class="toc-number">2.</span> <span class="toc-text">二. 路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三-点-和点点"><span class="toc-number">3.</span> <span class="toc-text">三. 点(.)和点点(..)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#四-访问权限"><span class="toc-number">4.</span> <span class="toc-text">四. 访问权限</span></a></li></ol>
-    </div>
-    
-    <div class="back-top iconfont-archer">&#xe639;</div>
-    <div class="sidebar sidebar-hide">
-    <ul class="sidebar-tabs sidebar-tabs-active-0">
-        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
-        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
-        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
-    </ul>
-    <div class="sidebar-content sidebar-content-show-archive">
-          <div class="sidebar-panel-archives">
-    <!-- 在ejs中将archive按照时间排序 -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <div class="total-and-search">
-        <div class="total-archive">
-        Total : 8
-        </div>
-        <!-- search  -->
         
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/01/08/springboot01/" rel="prev" title="Spring Boot">
+      <i class="fa fa-chevron-left"></i> Spring Boot
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/01/18/exception/" rel="next" title="异常">
+      异常 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
+      </footer>
     
-    <div class="post-archive">
-    
-    
-    
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/03</span><a class="archive-post-title" href="/2019/01/03/firstblog/">Follow your Heart, don`t run on gasoline</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/12/17/howtodeploy/">发布个人博客简单步骤</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/18</span><a class="archive-post-title" href="/2019/01/18/exception/">异常</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/08</span><a class="archive-post-title" href="/2019/01/08/linux01/">初识Linux</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/08</span><a class="archive-post-title" href="/2019/01/08/springboot01/">Spring Boot</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/08</span><a class="archive-post-title" href="/2019/01/08/git01/">git从github下载内容</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/08</span><a class="archive-post-title" href="/2019/01/08/linux02/">Linux命令</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/04</span><a class="archive-post-title" href="/2019/01/04/helloskills/">Java学习路线</a>
-        </li>
-    
-    </ul></div>
+  </article>
+  
+  
+  
+
   </div>
-        <div class="sidebar-panel-tags">
-    <div class="sidebar-tags-name">
-    
-    </div>
-    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
-    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
-    缺失模块。<br>
-    1、请确保node版本大于6.2<br>
-    2、在博客根目录（注意不是archer根目录）执行以下命令：<br>
-    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br>
-    3、在根目录_config.yml里添加配置：
-    <pre style="color: #787878; font-size: 0.6rem;">
-jsonContent:
-  meta: false
-  pages: false
-  posts:
-    title: true
-    date: true
-    path: true
-    text: false
-    raw: false
-    content: false
-    slug: false
-    updated: false
-    comments: false
-    link: false
-    permalink: false
-    excerpt: false
-    categories: true
-    tags: true</pre>
-    </div> 
-    <div class="sidebar-tags-list"></div>
-</div>
-        <div class="sidebar-panel-categories">
-    <div class="sidebar-categories-name">
-    
-    </div>
-    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
-    <div class="sidebar-categories-list"></div>
-</div>
-    </div>
-</div> 
-    <script>
-    var siteMeta = {
-        root: "/",
-        author: "Mr.Wang"
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
     }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
 </script>
-    <!-- CDN failover -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-    <script type="text/javascript">
-        if (typeof window.$ === 'undefined')
-        {
-            console.warn('jquery load from jsdelivr failed, will load local script')
-            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
-        }
-    </script>
-    <script src="/scripts/main.js"></script>
-    <!-- algolia -->
-    
-    <!-- busuanzi  -->
-    
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    
-    <!-- CNZZ  -->
-    
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Inhaltsverzeichnis
+        </li>
+        <li class="sidebar-nav-overview">
+          Übersicht
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一-目录"><span class="nav-number">1.</span> <span class="nav-text">一. 目录</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-“-“"><span class="nav-number">1.1.</span> <span class="nav-text">1. “/“</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-bin、-usr-bin"><span class="nav-number">1.2.</span> <span class="nav-text">2. /bin、/usr/bin</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-dev"><span class="nav-number">1.3.</span> <span class="nav-text">3. /dev</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-etc"><span class="nav-number">1.4.</span> <span class="nav-text">4. /etc</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-home"><span class="nav-number">1.5.</span> <span class="nav-text">5. /home</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-lib、-usr-lib、-usr-local-lib"><span class="nav-number">1.6.</span> <span class="nav-text">6. /lib、/usr/lib、/usr/local/lib</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-lost-fount"><span class="nav-number">1.7.</span> <span class="nav-text">7. /lost+fount</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-opt"><span class="nav-number">1.8.</span> <span class="nav-text">8. /opt</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#9-proc"><span class="nav-number">1.9.</span> <span class="nav-text">9. /proc</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#10-root"><span class="nav-number">1.10.</span> <span class="nav-text">10. /root</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#11-sbin、-usr-sbin、-usr-local-sbin"><span class="nav-number">1.11.</span> <span class="nav-text">11. /sbin、/usr/sbin、/usr/local/sbin</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#12-boot"><span class="nav-number">1.12.</span> <span class="nav-text">12. /boot</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#13-tmp"><span class="nav-number">1.13.</span> <span class="nav-text">13. /tmp</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#14-srv"><span class="nav-number">1.14.</span> <span class="nav-text">14. /srv</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#15-usr"><span class="nav-number">1.15.</span> <span class="nav-text">15. /usr</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#16-var"><span class="nav-number">1.16.</span> <span class="nav-text">16. /var</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二-路径"><span class="nav-number">2.</span> <span class="nav-text">二. 路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三-点-和点点"><span class="nav-number">3.</span> <span class="nav-text">三. 点(.)和点点(..)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四-访问权限"><span class="nav-number">4.</span> <span class="nav-text">四. 访问权限</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mr.Wang</p>
+  <div class="site-description" itemprop="description">To be or not to be, that is a question.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">Artikel</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
     </div>
-    <!-- async load share.js -->
-    
-        <script src="/scripts/share.js" async></script>    
-     
-    </body>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mr.Wang</span>
+</div>
+  <div class="powered-by">Erstellt mit  <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Design – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.6.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
 </html>
-
-
