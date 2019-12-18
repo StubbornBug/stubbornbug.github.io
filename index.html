@@ -180,6 +180,82 @@
   
   
   <article itemscope="" itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/18/Linux安装jdk1.8/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/itmonkey.jpg">
+      <meta itemprop="name" content="Mr.Wang">
+      <meta itemprop="description" content="To be or not to be, that is a question.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Footprints of Growth">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/18/Linux安装jdk1.8/" class="post-title-link" itemprop="url">未命名</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-12-18 16:56:18 / 修改时间：16:55:56" itemprop="dateCreated datePublished" datetime="2019-12-18T16:56:18+08:00">2019-12-18</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="Linux-Centos7-6-安装jdk1-8"><a href="#Linux-Centos7-6-安装jdk1-8" class="headerlink" title="Linux(Centos7.6)安装jdk1.8"></a>Linux(Centos7.6)安装jdk1.8</h5><ul>
+<li>yum方式安装</li>
+</ul>
+<ol>
+<li><p>查看yum源中是否有相关套件yum -y list java*</p>
+</li>
+<li><p>yum -y install java-1.8.0-openjdk-devel.x86_64</p>
+</li>
+<li><p>默认安装路径 /usr/lib/jvm<br>3.1 vim /etc/profile</p>
+</li>
+</ol>
+<p>export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.232.b09-0.el7_7.x86_64</p>
+<p>export PATH=.:$JAVA_HOME/bin:$PATH</p>
+<p>export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</p>
+<p>3.2 source /etc/profile</p>
+<ol start="4">
+<li>校验是否安装成功<br>java -version</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/18/firstblog/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -314,7 +390,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
