@@ -194,7 +194,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2019/12/18/Linux安装jdk1.8/" class="post-title-link" itemprop="url">未命名</a>
+            <a href="/2019/12/18/Linux安装jdk1.8/" class="post-title-link" itemprop="url">Linux命令</a>
         </h1>
 
         <div class="post-meta">
@@ -205,7 +205,18 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-12-18 16:56:18 / 修改时间：16:55:56" itemprop="dateCreated datePublished" datetime="2019-12-18T16:56:18+08:00">2019-12-18</time>
+              <time title="创建时间：2019-12-18 17:21:21 / 修改时间：17:27:15" itemprop="dateCreated datePublished" datetime="2019-12-18T17:21:21+08:00">2019-12-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux安装常用软件/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux安装常用软件</span>
+                  </a>
+                </span>
             </span>
 
           
@@ -219,23 +230,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h5 id="Linux-Centos7-6-安装jdk1-8"><a href="#Linux-Centos7-6-安装jdk1-8" class="headerlink" title="Linux(Centos7.6)安装jdk1.8"></a>Linux(Centos7.6)安装jdk1.8</h5><ul>
-<li>yum方式安装</li>
-</ul>
-<ol>
-<li><p>查看yum源中是否有相关套件yum -y list java*</p>
+          <h2 id="Linux-Centos7-6-安装jdk1-8"><a href="#Linux-Centos7-6-安装jdk1-8" class="headerlink" title="Linux(Centos7.6)安装jdk1.8"></a>Linux(Centos7.6)安装jdk1.8</h2><h3 id="yum方式安装"><a href="#yum方式安装" class="headerlink" title="yum方式安装"></a>yum方式安装</h3><ol>
+<li><p>查看yum源中是否有相关套件 </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y list java*</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>yum -y install java-1.8.0-openjdk-devel.x86_64</p>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install java-1.8.0-openjdk-devel.x86_64</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>默认安装路径 /usr/lib/jvm<br>3.1 vim /etc/profile</p>
+<li><p>默认安装路径 /usr/lib/jvm  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile  </span><br><span class="line">export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.232.b09-0.el7_7.x86_64  </span><br><span class="line">export PATH=.:$JAVA_HOME/bin:$PATH  </span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar  </span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
 </li>
-</ol>
-<p>export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.232.b09-0.el7_7.x86_64</p>
-<p>export PATH=.:$JAVA_HOME/bin:$PATH</p>
-<p>export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</p>
-<p>3.2 source /etc/profile</p>
-<ol start="4">
-<li>校验是否安装成功<br>java -version</li>
+<li><p>校验是否安装成功  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 
       
@@ -397,13 +403,13 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
