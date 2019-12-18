@@ -46,20 +46,20 @@
   };
 </script>
 
-  <meta name="description" content="Linux(Centos7.6)安装elasticsearch-7.1.1 下载：https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.1.1-linux-x86_64.tar.gz 上传到/opt文件夹并解压  1tar zxvf elasticsearch-7.1.1-linux-x86_64.tar.gz">
-<meta name="keywords" content="linux,elasticsearch7">
+  <meta name="description" content="Linux(Centos7.6)安装mysql-5.7.25 下载 https://downloads.mysql.com/archives/community/ 检测是否已经安装mysql1rpm -qa | grep mysql   如有类似 mysql-libs-5.1.52-1.el6_0.1.x86_64 进行卸载12rpm -e mysql-libs-5.1.52-1.el6_0.1.">
+<meta name="keywords" content="linux,mysql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux命令安装Elastic Search">
-<meta property="og:url" content="http://yoursite.com/2019/12/18/Linux安装elasticsearc7.1.1/index.html">
+<meta property="og:title" content="Linux命令安装Mysql">
+<meta property="og:url" content="http://yoursite.com/2019/12/18/Linux安装mysql5.7.25/index.html">
 <meta property="og:site_name" content="Footprints of Growth">
-<meta property="og:description" content="Linux(Centos7.6)安装elasticsearch-7.1.1 下载：https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.1.1-linux-x86_64.tar.gz 上传到/opt文件夹并解压  1tar zxvf elasticsearch-7.1.1-linux-x86_64.tar.gz">
+<meta property="og:description" content="Linux(Centos7.6)安装mysql-5.7.25 下载 https://downloads.mysql.com/archives/community/ 检测是否已经安装mysql1rpm -qa | grep mysql   如有类似 mysql-libs-5.1.52-1.el6_0.1.x86_64 进行卸载12rpm -e mysql-libs-5.1.52-1.el6_0.1.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-18T09:53:08.871Z">
+<meta property="og:updated_time" content="2019-12-18T10:18:13.270Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux命令安装Elastic Search">
-<meta name="twitter:description" content="Linux(Centos7.6)安装elasticsearch-7.1.1 下载：https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.1.1-linux-x86_64.tar.gz 上传到/opt文件夹并解压  1tar zxvf elasticsearch-7.1.1-linux-x86_64.tar.gz">
+<meta name="twitter:title" content="Linux命令安装Mysql">
+<meta name="twitter:description" content="Linux(Centos7.6)安装mysql-5.7.25 下载 https://downloads.mysql.com/archives/community/ 检测是否已经安装mysql1rpm -qa | grep mysql   如有类似 mysql-libs-5.1.52-1.el6_0.1.x86_64 进行卸载12rpm -e mysql-libs-5.1.52-1.el6_0.1.">
 
-<link rel="canonical" href="http://yoursite.com/2019/12/18/Linux安装elasticsearc7.1.1/">
+<link rel="canonical" href="http://yoursite.com/2019/12/18/Linux安装mysql5.7.25/">
 
 
 <script id="page-configurations">
@@ -71,7 +71,7 @@
   };
 </script>
 
-  <title>Linux命令安装Elastic Search | Footprints of Growth</title>
+  <title>Linux命令安装Mysql | Footprints of Growth</title>
   
 
 
@@ -181,7 +181,7 @@
   
   
   <article itemscope="" itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/18/Linux安装elasticsearc7.1.1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/18/Linux安装mysql5.7.25/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/itmonkey.jpg">
@@ -194,7 +194,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Linux命令安装Elastic Search
+          Linux命令安装Mysql
         </h1>
 
         <div class="post-meta">
@@ -205,7 +205,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-12-18 17:37:21 / 修改时间：17:53:08" itemprop="dateCreated datePublished" datetime="2019-12-18T17:37:21+08:00">2019-12-18</time>
+              <time title="创建时间：2019-12-18 17:55:21 / 修改时间：18:18:13" itemprop="dateCreated datePublished" datetime="2019-12-18T17:55:21+08:00">2019-12-18</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -230,38 +230,67 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Linux-Centos7-6-安装elasticsearch-7-1-1"><a href="#Linux-Centos7-6-安装elasticsearch-7-1-1" class="headerlink" title="Linux(Centos7.6)安装elasticsearch-7.1.1"></a>Linux(Centos7.6)安装elasticsearch-7.1.1</h2><ol>
-<li>下载：<a href="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.1.1-linux-x86_64.tar.gz" target="_blank" rel="noopener">https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.1.1-linux-x86_64.tar.gz</a></li>
-<li><p>上传到/opt文件夹并解压 </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf elasticsearch-7.1.1-linux-x86_64.tar.gz</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在解压后的elasticsearch目录里新建data目录  </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir data</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改config/elasticsearch.yml</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">vim /opt/elasticsearch-7.1.1/config/elasticsearch.yml</span><br><span class="line">cluster.name: my-application #集群名称</span><br><span class="line">node.name: node-1 #节点名称</span><br><span class="line">path.data: /opt/elasticsearch-7.1.1/data #数据和日志的存储目录</span><br><span class="line">path.logs: /opt/elasticsearch-7.1.1/logs</span><br><span class="line">network.host: 0.0.0.0 #设置绑定的ip，设置为0.0.0.0以后就可以让任何计算机节点访问到了</span><br><span class="line">http.port: 9200 #端口</span><br><span class="line">cluster.initial_master_nodes: ["node-1"] #设置在集群中的所有节点名称，这个节点名称就是之前所修改的，当然你也可以采用默认的也行，目前是单机，放入一个节点即可</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改内存 </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /opt/elasticsearch-7.1.1/config/jvm.options </span><br><span class="line">-Xms200m</span><br><span class="line">-Xmx200m</span><br></pre></td></tr></table></figure>
+        <h2 id="Linux-Centos7-6-安装mysql-5-7-25"><a href="#Linux-Centos7-6-安装mysql-5-7-25" class="headerlink" title="Linux(Centos7.6)安装mysql-5.7.25"></a>Linux(Centos7.6)安装mysql-5.7.25</h2><ol>
+<li>下载 <a href="https://downloads.mysql.com/archives/community/" target="_blank" rel="noopener">https://downloads.mysql.com/archives/community/</a></li>
+<li>检测是否已经安装mysql<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep mysql</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>注：解决报错：<br>Java HotSpot(TM) 64-Bit Server VM warning: INFO: os::commit_memory(0x00000000c5330000, 986513408, 0) failed; error=’Cannot allocate memory’ (errno=12)</p>
-<ol start="6">
-<li><p>es6.0版本往后的版本不支持root用户启动，需创建用户（es）</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">groupadd es #创建用户组</span><br><span class="line">useradd es -g es #创建用户</span><br><span class="line">chown -R es:es /opt/elasticsearch-7.1.1 #给用户增加权限</span><br></pre></td></tr></table></figure>
+<p>如有类似 mysql-libs-5.1.52-1.el6_0.1.x86_64 进行卸载<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -e mysql-libs-5.1.52-1.el6_0.1.x86_64　　// 普通删除模式</span><br><span class="line">rpm -e --nodeps mysql-libs-5.1.52-1.el6_0.1.x86_64　　// 强力删除模式，如果使用上面命令删除时，提示有依赖的其它文件，则用该命令可以对其进行强力删除</span><br></pre></td></tr></table></figure></p>
+<ol start="3">
+<li><p>检测系统是否有mariadb，若有，同上面步骤卸载</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep mariadb</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>解决报各种大小限制问题<br>7.1  </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/security/limits.conf</span><br><span class="line">es soft nofile 65536</span><br><span class="line">es hard nofile 65536</span><br><span class="line">es soft nproc 4096</span><br><span class="line">es hard nproc 4096</span><br></pre></td></tr></table></figure>
+<li><p>上传文件到服务器 /opt/mysql</p>
+</li>
+<li><p>解压文件 </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf mysql-5.7.25-linux-glibc2.12-x86_64.tar.gz</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重命名文件 </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv mysql-5.7.25-linux-glibc2.12-x86_64 mysql-5.7.25</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建mysql用户组和mysql用户<br>7.1 先检查是否存在</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/group | grep mysql</span><br><span class="line">cat /etc/passwd | grep mysql</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>7.2 将* 改为用户名（es）<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/security/limits.d/20-nproc.conf</span><br><span class="line">es          soft    nproc     4096</span><br><span class="line">root       soft    nproc     unlimited</span><br></pre></td></tr></table></figure></p>
-<p>7.3<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysctl.conf</span><br><span class="line">vm.max_map_count = 655360</span><br><span class="line">sysctl -p #执行查看是否生效</span><br></pre></td></tr></table></figure></p>
+<p>7.2 若无，添加<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">groupadd mysql</span><br><span class="line">useradd -r -g mysql mysql #useradd -r 参数表示mysql用户是系统用户，不可用于登录系统</span><br></pre></td></tr></table></figure></p>
 <ol start="8">
-<li><p>切换到es用户启动es</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/elasticsearch -d(后台启动)</span><br></pre></td></tr></table></figure>
+<li><p>创建data目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd mysql-5.7.25 &amp; mkdir data</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>查看进程 </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep elasticsearch</span><br></pre></td></tr></table></figure></li>
+<li><p>将/opt/mysql/mysql-5.7.25的所有者及所属组改为mysql</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown -R mysql:mysql /opt/mysql/mysql-5.7.25</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在/opt/mysql/mysql-5.7.25/support-files目录下创建my_default.cnf</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES</span><br><span class="line">basedir = /opt/mysql/mysql-5.7.25</span><br><span class="line">datadir = /opt/mysql/mysql-5.7.25/data</span><br><span class="line">port = 3306</span><br><span class="line">socket = /tmp/mysql.sock</span><br><span class="line">character-set-server=utf8</span><br><span class="line">log-error = /opt/mysql/mysql-5.7.25/data/mysqld.log</span><br><span class="line">pid-file = /opt/mysql/mysql-5.7.25/data/mysqld.pid</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>复制文件到/etc目录下<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp support-files/my_default.cnf /etc/my.cnf</span><br></pre></td></tr></table></figure></p>
+<ol start="11">
+<li>初始化mysqld<br>11.1 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/mysql/mysql-5.7.25</span><br><span class="line">./bin/mysqld --initialize --user=mysql --basedir=/opt/mysql/mysql-5.7.25/ --datadir=/opt/mysql/mysql-5.7.25/data/</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>11.2 查看日志，获取初始化密码  /opt/mysql/mysql-5.7.25/data/mysqld.log<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">example : 2019-04-08T06:14:29.790033Z 1 [Note] A temporary password is generated for root@localhost: a8?DQir=T+k+</span><br></pre></td></tr></table></figure></p>
+<ol start="12">
+<li><p>把启动脚本放到开机初始化目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp support-files/mysql.server /etc/init.d/mysql</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysql start</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建软连接使得在任意目录都可以执行mysql命令, 类似于windows桌面快捷方式</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /opt/mysql/mysql5.7.25/bin/mysql /usr/bin</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>登录mysql，密码为初始密码 </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p #Enter password: a8?DQir=T+k+</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改密码：root</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; set password=password('root');</span><br><span class="line">// 添加数据库访问权限（all）</span><br><span class="line">mysql&gt; grant all privileges on *.* to root@'%' identified by 'root';</span><br><span class="line">mysql&gt; flush privileges;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>退出mysql操作界面</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">quit</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启mysql生效</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysql restart</span><br></pre></td></tr></table></figure></li>
 </ol>
 
     </div>
@@ -273,7 +302,7 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/linux/" rel="tag"># linux</a>
-              <a href="/tags/elasticsearch7/" rel="tag"># elasticsearch7</a>
+              <a href="/tags/mysql/" rel="tag"># mysql</a>
           </div>
 
         
@@ -282,12 +311,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019/12/18/Linux安装maven3.6/" rel="prev" title="Linux命令安装Maven">
-      <i class="fa fa-chevron-left"></i> Linux命令安装Maven
+    <a href="/2019/12/18/Linux安装elasticsearc7.1.1/" rel="prev" title="Linux命令安装Elastic Search">
+      <i class="fa fa-chevron-left"></i> Linux命令安装Elastic Search
     </a></div>
       <div class="post-nav-item">
-    <a href="/2019/12/18/Linux安装mysql5.7.25/" rel="next" title="Linux命令安装Mysql">
-      Linux命令安装Mysql <i class="fa fa-chevron-right"></i>
+    <a href="/2019/12/18/Linux安装git2.17.0/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -348,7 +377,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-Centos7-6-安装elasticsearch-7-1-1"><span class="nav-number">1.</span> <span class="nav-text">Linux(Centos7.6)安装elasticsearch-7.1.1</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-Centos7-6-安装mysql-5-7-25"><span class="nav-number">1.</span> <span class="nav-text">Linux(Centos7.6)安装mysql-5.7.25</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
