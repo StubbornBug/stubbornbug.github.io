@@ -180,7 +180,7 @@
   
   
   <article itemscope="" itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/18/Linux安装git2.17.0/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/19/Linux安装elasticsearc7.1.1/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/itmonkey.jpg">
@@ -194,7 +194,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2019/12/18/Linux安装git2.17.0/" class="post-title-link" itemprop="url">Linux命令安装Git</a>
+            <a href="/2019/12/19/Linux安装elasticsearc7.1.1/" class="post-title-link" itemprop="url">Linux命令安装Elastic Search</a>
         </h1>
 
         <div class="post-meta">
@@ -205,7 +205,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-12-18 18:33:21 / 修改时间：18:45:21" itemprop="dateCreated datePublished" datetime="2019-12-18T18:33:21+08:00">2019-12-18</time>
+              <time title="创建时间：2019-12-19 10:05:06 / 修改时间：10:05:42" itemprop="dateCreated datePublished" datetime="2019-12-19T10:05:06+08:00">2019-12-19</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -230,28 +230,31 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="Linux-Centos7-6-安装git2-17-0"><a href="#Linux-Centos7-6-安装git2-17-0" class="headerlink" title="Linux(Centos7.6)安装git2.17.0"></a>Linux(Centos7.6)安装git2.17.0</h2><ol>
-<li>下载链接：<a href="https://github.com/git/git/archive/v2.17.0.tar.gz" target="_blank" rel="noopener">https://github.com/git/git/archive/v2.17.0.tar.gz</a></li>
-<li><p>解压：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf v2.17.0.tar.gz</span><br></pre></td></tr></table></figure>
+          <h2 id="Linux-Centos7-6-安装elasticsearch-7-1-1"><a href="#Linux-Centos7-6-安装elasticsearch-7-1-1" class="headerlink" title="Linux(Centos7.6)安装elasticsearch-7.1.1"></a>Linux(Centos7.6)安装elasticsearch-7.1.1</h2><ol>
+<li>下载：<a href="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.1.1-linux-x86_64.tar.gz" target="_blank" rel="noopener">https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.1.1-linux-x86_64.tar.gz</a></li>
+<li><p>上传到/opt文件夹并解压 </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf elasticsearch-7.1.1-linux-x86_64.tar.gz</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>安装依赖：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc perl-ExtUtils-MakeMaker</span><br></pre></td></tr></table></figure>
+<li><p>在解压后的elasticsearch目录里新建data目录  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir data</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>安装依赖时，yum自动安装了Git，需要卸载旧版本Git</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum remove git <span class="comment">#出现提示输入y即可</span></span><br></pre></td></tr></table></figure>
+<li><p>修改config/elasticsearch.yml</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">vim /opt/elasticsearch-7.1.1/config/elasticsearch.yml</span><br><span class="line">cluster.name: my-application #集群名称</span><br><span class="line">node.name: node-1 #节点名称</span><br><span class="line">path.data: /opt/elasticsearch-7.1.1/data #数据和日志的存储目录</span><br><span class="line">path.logs: /opt/elasticsearch-7.1.1/logs</span><br><span class="line">network.host: 0.0.0.0 #设置绑定的ip，设置为0.0.0.0以后就可以让任何计算机节点访问到了</span><br><span class="line">http.port: 9200 #端口</span><br><span class="line">cluster.initial_master_nodes: ["node-1"] #设置在集群中的所有节点名称，这个节点名称就是之前所修改的，当然你也可以采用默认的也行，目前是单机，放入一个节点即可</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>编译<br>cd git-2.17.0 &amp; make prefix=/usr/local/git all</p>
+<li><p>修改内存 </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim /opt/elasticsearch-7.1.1/config/jvm.options </span><br><span class="line">-Xms200m</span><br><span class="line">-Xmx200m</span><br><span class="line">解决报错：</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM warning: INFO: os::commit_memory(0x00000000c5330000, 986513408, 0) failed; error='Cannot allocate memory' (errno=12)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>安装Git至/usr/local/git路径</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make prefix=/usr/local/git <span class="keyword">install</span></span><br></pre></td></tr></table></figure>
+<li><p>es6.0版本往后的版本不支持root用户启动，需创建用户（es）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">groupadd es #创建用户组</span><br><span class="line">useradd es -g es #创建用户</span><br><span class="line">chown -R es:es /opt/elasticsearch-7.1.1 #给用户增加权限</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>配置环境变量</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br><span class="line">export PATH=$PATH:/usr/local/git/bin</span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+<li><p>解决报各种大小限制问题</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/security/limits.conf</span><br><span class="line">es soft nofile 65536</span><br><span class="line">es hard nofile 65536</span><br><span class="line">es soft nproc 4096</span><br><span class="line">es hard nproc 4096</span><br><span class="line">vim /etc/security/limits.d/20-nproc.conf</span><br><span class="line">es          soft    nproc     4096</span><br><span class="line">root       soft    nproc     unlimited</span><br><span class="line">vim /etc/sysctl.conf</span><br><span class="line">vm.max_map_count = 655360</span><br><span class="line">sysctl -p #执行查看是否生效</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>查看安装的git版本，有版本，安装成功</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="comment">--version</span></span><br></pre></td></tr></table></figure>
+<li><p>切换到es用户启动es</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/elasticsearch -d(后台启动)</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>查看进程 </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep elasticsearch</span><br></pre></td></tr></table></figure></li>
 </ol>
 
       
@@ -272,7 +275,7 @@
   
   
   <article itemscope="" itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/18/Linux安装redis3.2.8/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/19/Linux安装redis3.2.8/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/itmonkey.jpg">
@@ -286,7 +289,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2019/12/18/Linux安装redis3.2.8/" class="post-title-link" itemprop="url">Linux命令安装Redis</a>
+            <a href="/2019/12/19/Linux安装redis3.2.8/" class="post-title-link" itemprop="url">Linux命令安装Redis</a>
         </h1>
 
         <div class="post-meta">
@@ -297,7 +300,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-12-18 18:23:21 / 修改时间：18:45:40" itemprop="dateCreated datePublished" datetime="2019-12-18T18:23:21+08:00">2019-12-18</time>
+              <time title="创建时间：2019-12-19 10:05:05 / 修改时间：10:05:33" itemprop="dateCreated datePublished" datetime="2019-12-19T10:05:05+08:00">2019-12-19</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -349,8 +352,10 @@
 <li><p>配置其他信息</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim /opt/redis-3.2.8/redis.conf</span><br><span class="line">protected-mode no（远程可以访问redis，默认不允许）</span><br><span class="line">daemonize yes</span><br><span class="line">bind 0.0.0.0(注释绑定端口号)</span><br><span class="line">requirepass: 123456 (设置redis密码，默认没有密码)</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>执行使配置生效 </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server /opt/redis-3.2.8/redis.conf</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<p>7.3 执行使配置生效<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server /opt/redis-3.2.8/redis.conf</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -370,7 +375,7 @@
   
   
   <article itemscope="" itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/18/Linux安装mysql5.7.25/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/19/Linux安装mysql5.7.25/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/itmonkey.jpg">
@@ -384,7 +389,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2019/12/18/Linux安装mysql5.7.25/" class="post-title-link" itemprop="url">Linux命令安装Mysql</a>
+            <a href="/2019/12/19/Linux安装mysql5.7.25/" class="post-title-link" itemprop="url">Linux命令安装Mysql</a>
         </h1>
 
         <div class="post-meta">
@@ -395,7 +400,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-12-18 17:55:21 / 修改时间：18:18:13" itemprop="dateCreated datePublished" datetime="2019-12-18T17:55:21+08:00">2019-12-18</time>
+              <time title="创建时间：2019-12-19 10:05:04 / 修改时间：10:05:25" itemprop="dateCreated datePublished" datetime="2019-12-19T10:05:04+08:00">2019-12-19</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -425,7 +430,7 @@
 <li>检测是否已经安装mysql<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep mysql</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>如有类似 mysql-libs-5.1.52-1.el6_0.1.x86_64 进行卸载<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -e mysql-libs-5.1.52-1.el6_0.1.x86_64　　// 普通删除模式</span><br><span class="line">rpm -e --nodeps mysql-libs-5.1.52-1.el6_0.1.x86_64　　// 强力删除模式，如果使用上面命令删除时，提示有依赖的其它文件，则用该命令可以对其进行强力删除</span><br></pre></td></tr></table></figure></p>
+<p>2.1 如有类似 mysql-libs-5.1.52-1.el6_0.1.x86_64 进行卸载<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -e mysql-libs-5.1.52-1.el6_0.1.x86_64　　// 普通删除模式</span><br><span class="line">rpm -e --nodeps mysql-libs-5.1.52-1.el6_0.1.x86_64　　// 强力删除模式，如果使用上面命令删除时，提示有依赖的其它文件，则用该命令可以对其进行强力删除</span><br></pre></td></tr></table></figure></p>
 <ol start="3">
 <li><p>检测系统是否有mariadb，若有，同上面步骤卸载</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep mariadb</span><br></pre></td></tr></table></figure>
@@ -438,29 +443,24 @@
 <li><p>重命名文件 </p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv mysql-5.7.25-linux-glibc2.12-x86_64 mysql-5.7.25</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>创建mysql用户组和mysql用户<br>7.1 先检查是否存在</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/group | grep mysql</span><br><span class="line">cat /etc/passwd | grep mysql</span><br></pre></td></tr></table></figure>
+<li><p>创建mysql用户组和mysql用户(先检查是否存在，若不存在再添加)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/group | grep mysql</span><br><span class="line">cat /etc/passwd | grep mysql</span><br><span class="line">groupadd mysql</span><br><span class="line">useradd -r -g mysql mysql #useradd -r 参数表示mysql用户是系统用户，不可用于登录系统</span><br></pre></td></tr></table></figure>
 </li>
-</ol>
-<p>7.2 若无，添加<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">groupadd mysql</span><br><span class="line">useradd -r -g mysql mysql #useradd -r 参数表示mysql用户是系统用户，不可用于登录系统</span><br></pre></td></tr></table></figure></p>
-<ol start="8">
 <li><p>创建data目录</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd mysql-5.7.25 &amp; mkdir data</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>将/opt/mysql/mysql-5.7.25的所有者及所属组改为mysql</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown -R mysql:mysql /opt/mysql/mysql-5.7.25</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>在/opt/mysql/mysql-5.7.25/support-files目录下创建my_default.cnf</p>
+<li><p>在/opt/mysql/mysql-5.7.25/support-files目录下创建my_default.cnf<br>10.1 </p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES</span><br><span class="line">basedir = /opt/mysql/mysql-5.7.25</span><br><span class="line">datadir = /opt/mysql/mysql-5.7.25/data</span><br><span class="line">port = 3306</span><br><span class="line">socket = /tmp/mysql.sock</span><br><span class="line">character-set-server=utf8</span><br><span class="line">log-error = /opt/mysql/mysql-5.7.25/data/mysqld.log</span><br><span class="line">pid-file = /opt/mysql/mysql-5.7.25/data/mysqld.pid</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>复制文件到/etc目录下<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp support-files/my_default.cnf /etc/my.cnf</span><br></pre></td></tr></table></figure></p>
+<p>10.2 复制文件到/etc目录下<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp support-files/my_default.cnf /etc/my.cnf</span><br></pre></td></tr></table></figure></p>
 <ol start="11">
-<li>初始化mysqld<br>11.1 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/mysql/mysql-5.7.25</span><br><span class="line">./bin/mysqld --initialize --user=mysql --basedir=/opt/mysql/mysql-5.7.25/ --datadir=/opt/mysql/mysql-5.7.25/data/</span><br></pre></td></tr></table></figure>
+<li><p>初始化mysqld</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/mysql/mysql-5.7.25</span><br><span class="line">./bin/mysqld --initialize --user=mysql --basedir=/opt/mysql/mysql-5.7.25/ --datadir=/opt/mysql/mysql-5.7.25/data/</span><br><span class="line">/opt/mysql/mysql-5.7.25/data/mysqld.log #查看日志，获取初始化密码 example : 2019-04-08T06:14:29.790033Z 1 [Note] A temporary password is generated for root@localhost: a8?DQir=T+k+</span><br></pre></td></tr></table></figure>
 </li>
-</ol>
-<p>11.2 查看日志，获取初始化密码  /opt/mysql/mysql-5.7.25/data/mysqld.log<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">example : 2019-04-08T06:14:29.790033Z 1 [Note] A temporary password is generated for root@localhost: a8?DQir=T+k+</span><br></pre></td></tr></table></figure></p>
-<ol start="12">
 <li><p>把启动脚本放到开机初始化目录</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp support-files/mysql.server /etc/init.d/mysql</span><br></pre></td></tr></table></figure>
 </li>
@@ -501,7 +501,7 @@
   
   
   <article itemscope="" itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/18/Linux安装elasticsearc7.1.1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/19/Linux安装git2.17.0/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/itmonkey.jpg">
@@ -515,7 +515,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2019/12/18/Linux安装elasticsearc7.1.1/" class="post-title-link" itemprop="url">Linux命令安装Elastic Search</a>
+            <a href="/2019/12/19/Linux安装git2.17.0/" class="post-title-link" itemprop="url">Linux命令安装Git</a>
         </h1>
 
         <div class="post-meta">
@@ -526,7 +526,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-12-18 17:37:21 / 修改时间：17:53:08" itemprop="dateCreated datePublished" datetime="2019-12-18T17:37:21+08:00">2019-12-18</time>
+              <time title="创建时间：2019-12-19 10:05:03 / 修改时间：10:05:12" itemprop="dateCreated datePublished" datetime="2019-12-19T10:05:03+08:00">2019-12-19</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -551,38 +551,29 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="Linux-Centos7-6-安装elasticsearch-7-1-1"><a href="#Linux-Centos7-6-安装elasticsearch-7-1-1" class="headerlink" title="Linux(Centos7.6)安装elasticsearch-7.1.1"></a>Linux(Centos7.6)安装elasticsearch-7.1.1</h2><ol>
-<li>下载：<a href="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.1.1-linux-x86_64.tar.gz" target="_blank" rel="noopener">https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.1.1-linux-x86_64.tar.gz</a></li>
-<li><p>上传到/opt文件夹并解压 </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf elasticsearch-7.1.1-linux-x86_64.tar.gz</span><br></pre></td></tr></table></figure>
+          <h2 id="Linux-Centos7-6-安装git2-17-0"><a href="#Linux-Centos7-6-安装git2-17-0" class="headerlink" title="Linux(Centos7.6)安装git2.17.0"></a>Linux(Centos7.6)安装git2.17.0</h2><ol>
+<li>下载链接：<a href="https://github.com/git/git/archive/v2.17.0.tar.gz" target="_blank" rel="noopener">https://github.com/git/git/archive/v2.17.0.tar.gz</a></li>
+<li><p>解压：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf v2.17.0.tar.gz</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>在解压后的elasticsearch目录里新建data目录  </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir data</span><br></pre></td></tr></table></figure>
+<li><p>安装依赖：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc perl-ExtUtils-MakeMaker</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>修改config/elasticsearch.yml</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">vim /opt/elasticsearch-7.1.1/config/elasticsearch.yml</span><br><span class="line">cluster.name: my-application #集群名称</span><br><span class="line">node.name: node-1 #节点名称</span><br><span class="line">path.data: /opt/elasticsearch-7.1.1/data #数据和日志的存储目录</span><br><span class="line">path.logs: /opt/elasticsearch-7.1.1/logs</span><br><span class="line">network.host: 0.0.0.0 #设置绑定的ip，设置为0.0.0.0以后就可以让任何计算机节点访问到了</span><br><span class="line">http.port: 9200 #端口</span><br><span class="line">cluster.initial_master_nodes: ["node-1"] #设置在集群中的所有节点名称，这个节点名称就是之前所修改的，当然你也可以采用默认的也行，目前是单机，放入一个节点即可</span><br></pre></td></tr></table></figure>
+<li><p>安装依赖时，yum自动安装了Git，需要卸载旧版本Git</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum remove git <span class="comment">#出现提示输入y即可</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>修改内存 </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /opt/elasticsearch-7.1.1/config/jvm.options </span><br><span class="line">-Xms200m</span><br><span class="line">-Xmx200m</span><br></pre></td></tr></table></figure>
+<li><p>编译</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd git-2.17.0 &amp; make prefix=/usr/local/git all</span><br></pre></td></tr></table></figure>
 </li>
-</ol>
-<p>注：解决报错：<br>Java HotSpot(TM) 64-Bit Server VM warning: INFO: os::commit_memory(0x00000000c5330000, 986513408, 0) failed; error=’Cannot allocate memory’ (errno=12)</p>
-<ol start="6">
-<li><p>es6.0版本往后的版本不支持root用户启动，需创建用户（es）</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">groupadd es #创建用户组</span><br><span class="line">useradd es -g es #创建用户</span><br><span class="line">chown -R es:es /opt/elasticsearch-7.1.1 #给用户增加权限</span><br></pre></td></tr></table></figure>
+<li><p>安装Git至/usr/local/git路径</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make prefix=/usr/local/git <span class="keyword">install</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>解决报各种大小限制问题<br>7.1  </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/security/limits.conf</span><br><span class="line">es soft nofile 65536</span><br><span class="line">es hard nofile 65536</span><br><span class="line">es soft nproc 4096</span><br><span class="line">es hard nproc 4096</span><br></pre></td></tr></table></figure>
+<li><p>配置环境变量</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br><span class="line">export PATH=$PATH:/usr/local/git/bin</span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
 </li>
-</ol>
-<p>7.2 将* 改为用户名（es）<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/security/limits.d/20-nproc.conf</span><br><span class="line">es          soft    nproc     4096</span><br><span class="line">root       soft    nproc     unlimited</span><br></pre></td></tr></table></figure></p>
-<p>7.3<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysctl.conf</span><br><span class="line">vm.max_map_count = 655360</span><br><span class="line">sysctl -p #执行查看是否生效</span><br></pre></td></tr></table></figure></p>
-<ol start="8">
-<li><p>切换到es用户启动es</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/elasticsearch -d(后台启动)</span><br></pre></td></tr></table></figure>
+<li><p>查看安装的git版本，有版本，安装成功</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="comment">--version</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>查看进程 </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep elasticsearch</span><br></pre></td></tr></table></figure></li>
 </ol>
 
       
@@ -603,7 +594,7 @@
   
   
   <article itemscope="" itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/18/Linux安装maven3.6/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/19/Linux安装maven3.6/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/itmonkey.jpg">
@@ -617,7 +608,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2019/12/18/Linux安装maven3.6/" class="post-title-link" itemprop="url">Linux命令安装Maven</a>
+            <a href="/2019/12/19/Linux安装maven3.6/" class="post-title-link" itemprop="url">Linux命令安装Maven</a>
         </h1>
 
         <div class="post-meta">
@@ -628,7 +619,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-12-18 17:35:21 / 修改时间：17:53:44" itemprop="dateCreated datePublished" datetime="2019-12-18T17:35:21+08:00">2019-12-18</time>
+              <time title="创建时间：2019-12-19 10:05:02 / 修改时间：10:05:01" itemprop="dateCreated datePublished" datetime="2019-12-19T10:05:02+08:00">2019-12-19</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -661,12 +652,9 @@
 <li><p>解压到当前文件夹  </p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf maven*.tar.gz</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>添加阿里云镜像<br>4.1 </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /opt/maven/config/settings.xml</span><br></pre></td></tr></table></figure>
+<li><p>添加阿里云镜像</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vim /opt/maven/config/settings.xml</span><br><span class="line">```  </span><br><span class="line">```xml</span><br><span class="line">&lt;mirror&gt;</span><br><span class="line">  &lt;id&gt;alimaven&lt;/id&gt;</span><br><span class="line">  &lt;name&gt;aliyun maven&lt;/name&gt;</span><br><span class="line">  &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt;</span><br><span class="line">  &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;       </span><br><span class="line">&lt;/mirror&gt;</span><br></pre></td></tr></table></figure>
 </li>
-</ol>
-<p>4.2<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>       </span><br><span class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<ol start="5">
 <li><p>配置环境变量 </p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br><span class="line">export MAVEN_HOME=/opt/apache-maven-3.6.3</span><br><span class="line">export PATH=$MAVEN_HOME/bin:$PATH</span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
 </li>
@@ -692,7 +680,7 @@
   
   
   <article itemscope="" itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/18/Linux安装jdk1.8/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/19/Linux安装jdk1.8/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/itmonkey.jpg">
@@ -706,7 +694,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2019/12/18/Linux安装jdk1.8/" class="post-title-link" itemprop="url">Linux命令安装jdk</a>
+            <a href="/2019/12/19/Linux安装jdk1.8/" class="post-title-link" itemprop="url">Linux命令安装jdk</a>
         </h1>
 
         <div class="post-meta">
@@ -717,7 +705,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-12-18 17:21:21 / 修改时间：17:37:38" itemprop="dateCreated datePublished" datetime="2019-12-18T17:21:21+08:00">2019-12-18</time>
+              <time title="创建时间：2019-12-19 10:05:01 / 修改时间：10:05:58" itemprop="dateCreated datePublished" datetime="2019-12-19T10:05:01+08:00">2019-12-19</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -774,7 +762,7 @@
   
   
   <article itemscope="" itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/18/firstblog/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/03/firstblog/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/itmonkey.jpg">
@@ -788,7 +776,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2019/12/18/firstblog/" class="post-title-link" itemprop="url">Follow your Heart, don`t run on gasoline</a>
+            <a href="/2019/01/03/firstblog/" class="post-title-link" itemprop="url">Follow your Heart, don`t run on gasoline</a>
         </h1>
 
         <div class="post-meta">
@@ -797,21 +785,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2019-12-18 16:21:21 / 修改时间：16:38:32" itemprop="dateCreated datePublished" datetime="2019-12-18T16:21:21+08:00">2019-12-18</time>
+              <time title="创建时间：2019-01-03 11:47:33" itemprop="dateCreated datePublished" datetime="2019-01-03T11:47:33+08:00">2019-01-03</time>
             </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/first-blog/" itemprop="url" rel="index">
-                    <span itemprop="name">first blog</span>
-                  </a>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
                 </span>
-            </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-19 09:48:37" itemprop="dateModified" datetime="2019-12-19T09:48:37+08:00">2019-12-19</time>
+              </span>
 
           
 
