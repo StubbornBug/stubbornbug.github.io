@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.8.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="Linux系统没有盘符的概念, 只有一个根目录”/“, 所有的文件都在这个根目录下面 一. 目录1. “/“&amp;emsp;&amp;emsp;根目录，一般根目录下只存放目录，在Linux下有且只有一个根目录。所有的东西 都是从这里开始。当你在终端里输入“/home”，你其实是在告诉电脑，先从/（根目 录）开始，再进入到home目录。">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初识Linux">
+<meta property="og:url" content="http://yoursite.com/2019/12/19/linux01/index.html">
+<meta property="og:site_name" content="Footprints of Growth">
+<meta property="og:description" content="Linux系统没有盘符的概念, 只有一个根目录”/“, 所有的文件都在这个根目录下面 一. 目录1. “/“&amp;emsp;&amp;emsp;根目录，一般根目录下只存放目录，在Linux下有且只有一个根目录。所有的东西 都是从这里开始。当你在终端里输入“/home”，你其实是在告诉电脑，先从/（根目 录）开始，再进入到home目录。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://github.com/StubbornBug/stubbornbug.github.io/blob/master/images/clipboard.png?raw=true">
+<meta property="og:updated_time" content="2019-12-19T02:53:59.200Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初识Linux">
+<meta name="twitter:description" content="Linux系统没有盘符的概念, 只有一个根目录”/“, 所有的文件都在这个根目录下面 一. 目录1. “/“&amp;emsp;&amp;emsp;根目录，一般根目录下只存放目录，在Linux下有且只有一个根目录。所有的东西 都是从这里开始。当你在终端里输入“/home”，你其实是在告诉电脑，先从/（根目 录）开始，再进入到home目录。">
+<meta name="twitter:image" content="https://github.com/StubbornBug/stubbornbug.github.io/blob/master/images/clipboard.png?raw=true">
+
+<link rel="canonical" href="http://yoursite.com/2019/12/19/linux01/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>初识Linux | Footprints of Growth</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Footprints of Growth</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Note when going straight for success of Mr.Wang</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/19/linux01/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/itmonkey.jpg">
+      <meta itemprop="name" content="Mr.Wang">
+      <meta itemprop="description" content="To be or not to be, that is a question.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Footprints of Growth">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          初识Linux
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-12-19 10:53:01 / 修改时间：10:53:59" itemprop="dateCreated datePublished" datetime="2019-12-19T10:53:01+08:00">2019-12-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux学习/" itemprop="url" rel="index">
+                    <span itemprop="name">linux学习</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><strong>Linux系统没有盘符的概念, 只有一个根目录”/“, 所有的文件都在这个根目录下面</strong></p>
+<h4 id="一-目录"><a href="#一-目录" class="headerlink" title="一. 目录"></a>一. 目录</h4><h5 id="1-“-“"><a href="#1-“-“" class="headerlink" title="1. “/“"></a>1. “/“</h5><p>&emsp;&emsp;根目录，一般根目录下只存放目录，在Linux下有且只有一个根目录。所有的东西 都是从这里开始。当你在终端里输入“/home”，你其实是在告诉电脑，先从/（根目 录）开始，再进入到home目录。<br><a id="more"></a></p>
+<h5 id="2-bin、-usr-bin"><a href="#2-bin、-usr-bin" class="headerlink" title="2. /bin、/usr/bin"></a>2. /bin、/usr/bin</h5><p>&emsp;&emsp;可执行二进制文件的目录，如常用的命令ls、tar、mv、cat等。</p>
+<h5 id="3-dev"><a href="#3-dev" class="headerlink" title="3. /dev"></a>3. /dev</h5><p>&emsp;&emsp;存放linux系统下的设备文件，访问该目录下某个文件，相当于访问某个设备， 常用的是挂载光驱 mount /dev/cdrom /mnt。</p>
+<h5 id="4-etc"><a href="#4-etc" class="headerlink" title="4. /etc"></a>4. /etc</h5><p>&emsp;&emsp;系统配置文件存放的目录，不建议在此目录下存放可执行文件，重要的配置文 件有 /etc/inittab、/etc/fstab、/etc/init.d、/etc/X11、/etc/sysconfig、/etc/xinetd.d等。</p>
+<h5 id="5-home"><a href="#5-home" class="headerlink" title="5. /home"></a>5. /home</h5><p>&emsp;&emsp;系统默认的用户家目录，新增用户账号时，用户的家目录都存放在此目录 下，~表示当前用户的家目录，如: ~edu 表示用户 edu 的家目录。</p>
+<h5 id="6-lib、-usr-lib、-usr-local-lib"><a href="#6-lib、-usr-lib、-usr-local-lib" class="headerlink" title="6. /lib、/usr/lib、/usr/local/lib"></a>6. /lib、/usr/lib、/usr/local/lib</h5><p>&emsp;&emsp;系统使用的函数库的目录，程序在执行过程中，需要调 用一些额外的参数时需要函数库的协助。</p>
+<h5 id="7-lost-fount"><a href="#7-lost-fount" class="headerlink" title="7. /lost+fount"></a>7. /lost+fount</h5><p>&emsp;&emsp;系统异常产生错误时，会将一些遗失的片段放置于此目录下。</p>
+<h5 id="8-opt"><a href="#8-opt" class="headerlink" title="8. /opt"></a>8. /opt</h5><p>&emsp;&emsp;给主机额外安装软件所摆放的目录。</p>
+<h5 id="9-proc"><a href="#9-proc" class="headerlink" title="9. /proc"></a>9. /proc</h5><p>&emsp;&emsp;此目录的数据都在内存中，如系统核心，外部设备，网络状态，由于数据都存放于内存中，所以不占用磁盘空间，比较重要的目录有<br>/proc/cpuinfo、/proc/interrupts、/proc/dma、/proc/ioports、/proc/net/* 等。</p>
+<h5 id="10-root"><a href="#10-root" class="headerlink" title="10. /root"></a>10. /root</h5><p>&emsp;&emsp;系统管理员root的家目录。</p>
+<h5 id="11-sbin、-usr-sbin、-usr-local-sbin"><a href="#11-sbin、-usr-sbin、-usr-local-sbin" class="headerlink" title="11. /sbin、/usr/sbin、/usr/local/sbin"></a>11. /sbin、/usr/sbin、/usr/local/sbin</h5><p>&emsp;&emsp;放置系统管理员使用的可执行命令，如fdisk、 shutdown、mount 等。与 /bin 不同的是，这几个目录是给系统管理员 root使用的命 令，一般用户只能”查看”而不能设置和使用。</p>
+<h5 id="12-boot"><a href="#12-boot" class="headerlink" title="12. /boot"></a>12. /boot</h5><p>&emsp;&emsp;放置linux系统启动时用到的一些文件，如Linux的内核文件：/boot/vmlinuz</p>
+<h5 id="13-tmp"><a href="#13-tmp" class="headerlink" title="13. /tmp"></a>13. /tmp</h5><p>&emsp;&emsp;一般用户或正在执行的程序临时存放文件的目录，任何⼈都可以访问，重要数据不可放置在此目录下。</p>
+<h5 id="14-srv"><a href="#14-srv" class="headerlink" title="14. /srv"></a>14. /srv</h5><p>&emsp;&emsp;服务启动之后需要访问的数据目录，如 www 服务需要访问的⽹⻚数据存放在 /srv/www 内。</p>
+<h5 id="15-usr"><a href="#15-usr" class="headerlink" title="15. /usr"></a>15. /usr</h5><p>&emsp;&emsp;应用程序存放目录，/usr/bin 存放应用程序，/usr/share 存放共享数据，/usr/lib 存放不能直接运行的，却是许多程序运行所必需的一些函数库文件。/usr/local: 存放 软件升级包。/usr/share/doc: 系统说明文件存放目录。/usr/share/man: 程序说明文件存放目录。</p>
+<h5 id="16-var"><a href="#16-var" class="headerlink" title="16. /var"></a>16. /var</h5><p>&emsp;&emsp;放置系统执行过程中经常变化的文件，如随时更改的日志文件 /var/log，/var/log/message：所有的登录文件存放目录，/var/spool/mail：邮件存放 的目录，/var/run:程序或服务启动后，其PID存放在该目录下。</p>
+<h4 id="二-路径"><a href="#二-路径" class="headerlink" title="二. 路径"></a>二. 路径</h4><ol>
+<li>相对路径: 从当前位置开始描述的路径为相对路径</li>
+<li>绝对路径: 从”/“目录开始描述的路径为绝对路径</li>
+</ol>
+<h4 id="三-点-和点点"><a href="#三-点-和点点" class="headerlink" title="三. 点(.)和点点(..)"></a>三. 点(.)和点点(..)</h4><ol>
+<li>每个目录下都有点和点点</li>
+<li>点表示当前目录</li>
+<li>点点表示上一级目录也就是父目录</li>
+<li>“/“路径下的点和点点都表示当前目录</li>
+</ol>
+<h4 id="四-访问权限"><a href="#四-访问权限" class="headerlink" title="四. 访问权限"></a>四. 访问权限</h4><p><strong><em>用户能够控制一个给定的文件或目录的访问程度，一个文件或目录可能有读，写，及执行的权限</em></strong></p>
+<ol>
+<li>读权限（r） 对文件而言，具有读取文件内容的权限；对目录来说，具有浏览目录的 权限。</li>
+<li>写权限（w） 对文件而言，具有新增、修改文件内容的权限；对目录来说，具有删 除、移动目录内文件的权限。</li>
+<li>可执行权限（x） 对文件而言，具有执行文件的权限；对目录了来说该用户具有进入 目录的权限。</li>
+</ol>
+<p>注: </p>
+<p>&emsp;&emsp;<em>第1个字母代表文件的类型：“d” 代表文件夹、“-” 代表普通文件、“c” 代表硬件字符设 备、“b” 代表硬件块设备、“s”表示管道文件、“l” 代表软链接文件。 后 9 个字母分别代表三 组权限：文件所有者、用户组、其他用户拥有的权限。 每一个用户都有它自身的读、写和执行权限。</em><br>&emsp;&emsp;<em>这三组权限赋予用户不同类型（即所有者、用户组和其他用户）的读、写及执行权限就构 成了一个有9种类型的权限组。</em></p>
+<p><img src="https://github.com/StubbornBug/stubbornbug.github.io/blob/master/images/clipboard.png?raw=true" alt="附图"></p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Mr.Wang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2019/12/19/linux01/" title="初识Linux">http://yoursite.com/2019/12/19/linux01/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+	<div>
+	  
+		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------the end-------------</div>
+    
+</div>
+	  
+	</div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/12/19/exception/" rel="prev" title="异常">
+      <i class="fa fa-chevron-left"></i> 异常
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/12/19/linux02/" rel="next" title="Linux命令">
+      Linux命令 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一-目录"><span class="nav-number">1.</span> <span class="nav-text">一. 目录</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-“-“"><span class="nav-number">1.1.</span> <span class="nav-text">1. “/“</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-bin、-usr-bin"><span class="nav-number">1.2.</span> <span class="nav-text">2. /bin、/usr/bin</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-dev"><span class="nav-number">1.3.</span> <span class="nav-text">3. /dev</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-etc"><span class="nav-number">1.4.</span> <span class="nav-text">4. /etc</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-home"><span class="nav-number">1.5.</span> <span class="nav-text">5. /home</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-lib、-usr-lib、-usr-local-lib"><span class="nav-number">1.6.</span> <span class="nav-text">6. /lib、/usr/lib、/usr/local/lib</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-lost-fount"><span class="nav-number">1.7.</span> <span class="nav-text">7. /lost+fount</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-opt"><span class="nav-number">1.8.</span> <span class="nav-text">8. /opt</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#9-proc"><span class="nav-number">1.9.</span> <span class="nav-text">9. /proc</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#10-root"><span class="nav-number">1.10.</span> <span class="nav-text">10. /root</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#11-sbin、-usr-sbin、-usr-local-sbin"><span class="nav-number">1.11.</span> <span class="nav-text">11. /sbin、/usr/sbin、/usr/local/sbin</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#12-boot"><span class="nav-number">1.12.</span> <span class="nav-text">12. /boot</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#13-tmp"><span class="nav-number">1.13.</span> <span class="nav-text">13. /tmp</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#14-srv"><span class="nav-number">1.14.</span> <span class="nav-text">14. /srv</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#15-usr"><span class="nav-number">1.15.</span> <span class="nav-text">15. /usr</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#16-var"><span class="nav-number">1.16.</span> <span class="nav-text">16. /var</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二-路径"><span class="nav-number">2.</span> <span class="nav-text">二. 路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三-点-和点点"><span class="nav-number">3.</span> <span class="nav-text">三. 点(.)和点点(..)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四-访问权限"><span class="nav-number">4.</span> <span class="nav-text">四. 访问权限</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Mr.Wang" src="/images/itmonkey.jpg">
+  <p class="site-author-name" itemprop="name">Mr.Wang</p>
+  <div class="site-description" itemprop="description">To be or not to be, that is a question.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mr.Wang</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>

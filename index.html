@@ -180,6 +180,498 @@
   
   
   <article itemscope="" itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/19/springboot01/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/itmonkey.jpg">
+      <meta itemprop="name" content="Mr.Wang">
+      <meta itemprop="description" content="To be or not to be, that is a question.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Footprints of Growth">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/19/springboot01/" class="post-title-link" itemprop="url">Spring Boot</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-12-19 10:55:01 / 修改时间：10:55:50" itemprop="dateCreated datePublished" datetime="2019-12-19T10:55:01+08:00">2019-12-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Spring-Boot/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring Boot</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="初识Spring-Boot"><a href="#初识Spring-Boot" class="headerlink" title="初识Spring Boot"></a>初识Spring Boot</h2><h5 id="一-Spring的java配置方式"><a href="#一-Spring的java配置方式" class="headerlink" title="一. Spring的java配置方式"></a>一. Spring的java配置方式</h5><p>Spring4.x推荐的配置方式，可以完全替代xml配置, 常用注解:</p>
+<pre><code>@Configuration（作用于类上，相当于一个xml配置文件）；
+@Bean（作用于方法上，相当于xml配置中的bean标签）
+@ComponentScan（basePackages = &quot;配置类所在包&quot;）
+@PropertySource（value=&quot;指定配置文件&quot;，ignoreResourceNotFound = true）
+@Value（&quot;${key}&quot;）获取配置文件中的值
+</code></pre><h5 id="二-Spring-Boot"><a href="#二-Spring-Boot" class="headerlink" title="二. Spring Boot"></a>二. Spring Boot</h5><p> &emsp;&emsp;<strong>“习惯优于配置”（项目中存在大量的配置，此外还内置一个习惯性的配置，无需手动），项目独立运行（运行jar，内嵌Servlet容器），使用它可以不用或只需要很少的Spring配置。</strong><br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/12/19/springboot01/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </p></div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/19/linux02/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/itmonkey.jpg">
+      <meta itemprop="name" content="Mr.Wang">
+      <meta itemprop="description" content="To be or not to be, that is a question.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Footprints of Growth">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/19/linux02/" class="post-title-link" itemprop="url">Linux命令</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-12-19 10:54:01 / 修改时间：10:54:37" itemprop="dateCreated datePublished" datetime="2019-12-19T10:54:01+08:00">2019-12-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux学习/" itemprop="url" rel="index">
+                    <span itemprop="name">linux学习</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="一-Linux命令格式"><a href="#一-Linux命令格式" class="headerlink" title="一. Linux命令格式"></a>一. Linux命令格式</h4><p>command 【-options】 【parameter1】…</p>
+<p><em>注:</em></p>
+<p>&emsp;&emsp;<em>command：命令名，相应功能的英文单词或单词的缩写</em></p>
+<p>&emsp;&emsp;<em>【-options】：选项，可用来对命令进行控制，也可以省略</em></p>
+<p>&emsp;&emsp;<em>【parameter】：传给命令的参数，可以是0个1个或多个</em></p>
+<p>&emsp;&emsp;<em>[]里的内容是代表可选</em><br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/12/19/linux02/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </p></div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/19/linux01/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/itmonkey.jpg">
+      <meta itemprop="name" content="Mr.Wang">
+      <meta itemprop="description" content="To be or not to be, that is a question.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Footprints of Growth">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/19/linux01/" class="post-title-link" itemprop="url">初识Linux</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-12-19 10:53:01 / 修改时间：10:53:59" itemprop="dateCreated datePublished" datetime="2019-12-19T10:53:01+08:00">2019-12-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux学习/" itemprop="url" rel="index">
+                    <span itemprop="name">linux学习</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>Linux系统没有盘符的概念, 只有一个根目录”/“, 所有的文件都在这个根目录下面</strong></p>
+<h4 id="一-目录"><a href="#一-目录" class="headerlink" title="一. 目录"></a>一. 目录</h4><h5 id="1-“-“"><a href="#1-“-“" class="headerlink" title="1. “/“"></a>1. “/“</h5><p>&emsp;&emsp;根目录，一般根目录下只存放目录，在Linux下有且只有一个根目录。所有的东西 都是从这里开始。当你在终端里输入“/home”，你其实是在告诉电脑，先从/（根目 录）开始，再进入到home目录。<br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/12/19/linux01/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </p></div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/19/exception/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/itmonkey.jpg">
+      <meta itemprop="name" content="Mr.Wang">
+      <meta itemprop="description" content="To be or not to be, that is a question.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Footprints of Growth">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/19/exception/" class="post-title-link" itemprop="url">异常</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-12-19 10:50:01 / 修改时间：10:51:51" itemprop="dateCreated datePublished" datetime="2019-12-19T10:50:01+08:00">2019-12-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/exception/" itemprop="url" rel="index">
+                    <span itemprop="name">exception</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="初识异常"><a href="#初识异常" class="headerlink" title="初识异常"></a>初识异常</h2><h5 id="emsp-emsp-异常处理机制能让程序在异常发生时，按照代码的预先设定的异常处理逻辑，针对性地处理异常，让程序尽最大可能恢复正常并继续执行，且保持代码的清晰。"><a href="#emsp-emsp-异常处理机制能让程序在异常发生时，按照代码的预先设定的异常处理逻辑，针对性地处理异常，让程序尽最大可能恢复正常并继续执行，且保持代码的清晰。" class="headerlink" title="&emsp;&emsp;异常处理机制能让程序在异常发生时，按照代码的预先设定的异常处理逻辑，针对性地处理异常，让程序尽最大可能恢复正常并继续执行，且保持代码的清晰。"></a>&emsp;&emsp;异常处理机制能让程序在异常发生时，按照代码的预先设定的异常处理逻辑，针对性地处理异常，让程序尽最大可能恢复正常并继续执行，且保持代码的清晰。</h5><h5 id="emsp-emsp-Throwable类是Java异常类型的顶级父类-其又派生出Error类和Exception类-JDK中创建了一些常用的异常类-当然也可以通过自定义的方式创建异常"><a href="#emsp-emsp-Throwable类是Java异常类型的顶级父类-其又派生出Error类和Exception类-JDK中创建了一些常用的异常类-当然也可以通过自定义的方式创建异常" class="headerlink" title="&emsp;&emsp;Throwable类是Java异常类型的顶级父类, 其又派生出Error类和Exception类; JDK中创建了一些常用的异常类, 当然也可以通过自定义的方式创建异常."></a>&emsp;&emsp;Throwable类是Java异常类型的顶级父类, 其又派生出Error类和Exception类; JDK中创建了一些常用的异常类, 当然也可以通过自定义的方式创建异常.</h5><pre><code>Error类以及他的子类的实例，代表了JVM本身的错误。错误不能通过代码处理.
+
+Exception以及他的子类，代表程序运行时发送的各种不期望发生的事件,可以被Java异常处理机制使用，是异常处理的核心。
+</code></pre>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/12/19/exception/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/19/git01/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/itmonkey.jpg">
+      <meta itemprop="name" content="Mr.Wang">
+      <meta itemprop="description" content="To be or not to be, that is a question.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Footprints of Growth">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/19/git01/" class="post-title-link" itemprop="url">git从github下载内容</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-12-19 10:49:01 / 修改时间：10:52:32" itemprop="dateCreated datePublished" datetime="2019-12-19T10:49:01+08:00">2019-12-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/git-github/" itemprop="url" rel="index">
+                    <span itemprop="name">git&github</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="git和github相关操作"><a href="#git和github相关操作" class="headerlink" title="git和github相关操作"></a>git和github相关操作</h2><ol>
+<li><p>右键选择”Git Bash Here”，在弹出的命令框中，输入： </p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/12/19/git01/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </li></ol></div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/19/helloskills/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/itmonkey.jpg">
+      <meta itemprop="name" content="Mr.Wang">
+      <meta itemprop="description" content="To be or not to be, that is a question.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Footprints of Growth">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/19/helloskills/" class="post-title-link" itemprop="url">Java学习路线</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-12-19 10:45:01 / 修改时间：10:52:12" itemprop="dateCreated datePublished" datetime="2019-12-19T10:45:01+08:00">2019-12-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java技术栈/" itemprop="url" rel="index">
+                    <span itemprop="name">Java技术栈</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="java技术栈"><a href="#java技术栈" class="headerlink" title="java技术栈"></a>java技术栈</h2><h3 id="java基础"><a href="#java基础" class="headerlink" title="java基础"></a>java基础</h3><ul>
+<li><strong>异常</strong></li>
+<li><strong>反射</strong></li>
+<li><strong>枚举</strong></li>
+<li><strong>注解</strong></li>
+<li><strong>继承和多态</strong></li>
+<li><strong>泛型</strong></li>
+<li><strong>数据结构</strong></li>
+<li><strong>内存与JVM</strong></li>
+<li><strong>集合</strong></li>
+<li><strong>内部类</strong></li>
+<li><strong>JDK新特性</strong></li>
+<li><strong>设计模式</strong></li>
+<li><strong>线程</strong></li>
+<li><strong>I/O</strong>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/12/19/helloskills/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </li></ul></div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/19/Linux安装elasticsearc7.1.1/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -488,229 +980,12 @@
   
   
 
-        
-  
-  
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/19/Linux安装maven3.6/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/itmonkey.jpg">
-      <meta itemprop="name" content="Mr.Wang">
-      <meta itemprop="description" content="To be or not to be, that is a question.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Footprints of Growth">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/12/19/Linux安装maven3.6/" class="post-title-link" itemprop="url">Linux命令安装Maven</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2019-12-19 10:05:02 / 修改时间：10:30:57" itemprop="dateCreated datePublished" datetime="2019-12-19T10:05:02+08:00">2019-12-19</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux安装常用软件/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux安装常用软件</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Linux-Centos7-6-安装maven3-6"><a href="#Linux-Centos7-6-安装maven3-6" class="headerlink" title="Linux(Centos7.6)安装maven3.6"></a>Linux(Centos7.6)安装maven3.6</h2><ol>
-<li>下载文件：<a href="http://maven.apache.org/download.cgi" target="_blank" rel="noopener">http://maven.apache.org/download.cgi</a>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/12/19/Linux安装maven3.6/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </li></ol></div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/19/Linux安装jdk1.8/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/itmonkey.jpg">
-      <meta itemprop="name" content="Mr.Wang">
-      <meta itemprop="description" content="To be or not to be, that is a question.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Footprints of Growth">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/12/19/Linux安装jdk1.8/" class="post-title-link" itemprop="url">Linux命令安装jdk</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2019-12-19 10:05:01 / 修改时间：10:31:07" itemprop="dateCreated datePublished" datetime="2019-12-19T10:05:01+08:00">2019-12-19</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux安装常用软件/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux安装常用软件</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Linux-Centos7-6-安装jdk1-8"><a href="#Linux-Centos7-6-安装jdk1-8" class="headerlink" title="Linux(Centos7.6)安装jdk1.8"></a>Linux(Centos7.6)安装jdk1.8</h2><h3 id="yum方式安装"><a href="#yum方式安装" class="headerlink" title="yum方式安装"></a>yum方式安装</h3>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/12/19/Linux安装jdk1.8/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/03/firstblog/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/itmonkey.jpg">
-      <meta itemprop="name" content="Mr.Wang">
-      <meta itemprop="description" content="To be or not to be, that is a question.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Footprints of Growth">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/01/03/firstblog/" class="post-title-link" itemprop="url">Follow your Heart, don`t run on gasoline</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-01-03 11:47:33" itemprop="dateCreated datePublished" datetime="2019-01-03T11:47:33+08:00">2019-01-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-19 09:48:37" itemprop="dateModified" datetime="2019-12-19T09:48:37+08:00">2019-12-19</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Make a little progress every day and make yourself stronger! </p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -776,20 +1051,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
