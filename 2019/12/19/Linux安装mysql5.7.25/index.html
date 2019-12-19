@@ -46,18 +46,18 @@
   };
 </script>
 
-  <meta name="description" content="Linux(Centos7.6)安装mysql-5.7.25 下载 https://downloads.mysql.com/archives/community/ 检测是否已经安装mysql1rpm -qa | grep mysql   2.1 如有类似 mysql-libs-5.1.52-1.el6_0.1.x86_64 进行卸载12rpm -e mysql-libs-5.1.52-1.el6_">
+  <meta name="description" content="Linux(Centos7.6)安装mysql-5.7.25 下载 https://downloads.mysql.com/archives/community/ 检测是否已经安装mysql 123rpm -qa | grep mysql #如有类似 mysql-libs-5.1.52-1.el6_0.1.x86_64 进行卸载rpm -e mysql-libs-5.1.52-1.el6_0.1.">
 <meta name="keywords" content="linux,mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux命令安装Mysql">
 <meta property="og:url" content="http://yoursite.com/2019/12/19/Linux安装mysql5.7.25/index.html">
 <meta property="og:site_name" content="Footprints of Growth">
-<meta property="og:description" content="Linux(Centos7.6)安装mysql-5.7.25 下载 https://downloads.mysql.com/archives/community/ 检测是否已经安装mysql1rpm -qa | grep mysql   2.1 如有类似 mysql-libs-5.1.52-1.el6_0.1.x86_64 进行卸载12rpm -e mysql-libs-5.1.52-1.el6_">
+<meta property="og:description" content="Linux(Centos7.6)安装mysql-5.7.25 下载 https://downloads.mysql.com/archives/community/ 检测是否已经安装mysql 123rpm -qa | grep mysql #如有类似 mysql-libs-5.1.52-1.el6_0.1.x86_64 进行卸载rpm -e mysql-libs-5.1.52-1.el6_0.1.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-19T02:05:25.349Z">
+<meta property="og:updated_time" content="2019-12-19T02:10:20.022Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux命令安装Mysql">
-<meta name="twitter:description" content="Linux(Centos7.6)安装mysql-5.7.25 下载 https://downloads.mysql.com/archives/community/ 检测是否已经安装mysql1rpm -qa | grep mysql   2.1 如有类似 mysql-libs-5.1.52-1.el6_0.1.x86_64 进行卸载12rpm -e mysql-libs-5.1.52-1.el6_">
+<meta name="twitter:description" content="Linux(Centos7.6)安装mysql-5.7.25 下载 https://downloads.mysql.com/archives/community/ 检测是否已经安装mysql 123rpm -qa | grep mysql #如有类似 mysql-libs-5.1.52-1.el6_0.1.x86_64 进行卸载rpm -e mysql-libs-5.1.52-1.el6_0.1.">
 
 <link rel="canonical" href="http://yoursite.com/2019/12/19/Linux安装mysql5.7.25/">
 
@@ -205,7 +205,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-12-19 10:05:04 / 修改时间：10:05:25" itemprop="dateCreated datePublished" datetime="2019-12-19T10:05:04+08:00">2019-12-19</time>
+              <time title="创建时间：2019-12-19 10:05:04 / 修改时间：10:10:20" itemprop="dateCreated datePublished" datetime="2019-12-19T10:05:04+08:00">2019-12-19</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -232,11 +232,9 @@
       
         <h2 id="Linux-Centos7-6-安装mysql-5-7-25"><a href="#Linux-Centos7-6-安装mysql-5-7-25" class="headerlink" title="Linux(Centos7.6)安装mysql-5.7.25"></a>Linux(Centos7.6)安装mysql-5.7.25</h2><ol>
 <li>下载 <a href="https://downloads.mysql.com/archives/community/" target="_blank" rel="noopener">https://downloads.mysql.com/archives/community/</a></li>
-<li>检测是否已经安装mysql<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep mysql</span><br></pre></td></tr></table></figure>
+<li><p>检测是否已经安装mysql</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep mysql #如有类似 mysql-libs-5.1.52-1.el6_0.1.x86_64 进行卸载</span><br><span class="line">rpm -e mysql-libs-5.1.52-1.el6_0.1.x86_64　　#普通删除模式</span><br><span class="line">rpm -e --nodeps mysql-libs-5.1.52-1.el6_0.1.x86_64　　#强力删除模式，如果使用上面命令删除时，提示有依赖的其它文件，则用该命令可以对其进行强力删除</span><br></pre></td></tr></table></figure>
 </li>
-</ol>
-<p>2.1 如有类似 mysql-libs-5.1.52-1.el6_0.1.x86_64 进行卸载<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -e mysql-libs-5.1.52-1.el6_0.1.x86_64　　// 普通删除模式</span><br><span class="line">rpm -e --nodeps mysql-libs-5.1.52-1.el6_0.1.x86_64　　// 强力删除模式，如果使用上面命令删除时，提示有依赖的其它文件，则用该命令可以对其进行强力删除</span><br></pre></td></tr></table></figure></p>
-<ol start="3">
 <li><p>检测系统是否有mariadb，若有，同上面步骤卸载</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep mariadb</span><br></pre></td></tr></table></figure>
 </li>
@@ -257,12 +255,9 @@
 <li><p>将/opt/mysql/mysql-5.7.25的所有者及所属组改为mysql</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown -R mysql:mysql /opt/mysql/mysql-5.7.25</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>在/opt/mysql/mysql-5.7.25/support-files目录下创建my_default.cnf<br>10.1 </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES</span><br><span class="line">basedir = /opt/mysql/mysql-5.7.25</span><br><span class="line">datadir = /opt/mysql/mysql-5.7.25/data</span><br><span class="line">port = 3306</span><br><span class="line">socket = /tmp/mysql.sock</span><br><span class="line">character-set-server=utf8</span><br><span class="line">log-error = /opt/mysql/mysql-5.7.25/data/mysqld.log</span><br><span class="line">pid-file = /opt/mysql/mysql-5.7.25/data/mysqld.pid</span><br></pre></td></tr></table></figure>
+<li><p>在/opt/mysql/mysql-5.7.25/support-files目录下创建my_default.cnf</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES</span><br><span class="line">basedir = /opt/mysql/mysql-5.7.25</span><br><span class="line">datadir = /opt/mysql/mysql-5.7.25/data</span><br><span class="line">port = 3306</span><br><span class="line">socket = /tmp/mysql.sock</span><br><span class="line">character-set-server=utf8</span><br><span class="line">log-error = /opt/mysql/mysql-5.7.25/data/mysqld.log</span><br><span class="line">pid-file = /opt/mysql/mysql-5.7.25/data/mysqld.pid</span><br><span class="line">复制文件到/etc目录下</span><br><span class="line">cp support-files/my_default.cnf /etc/my.cnf</span><br></pre></td></tr></table></figure>
 </li>
-</ol>
-<p>10.2 复制文件到/etc目录下<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp support-files/my_default.cnf /etc/my.cnf</span><br></pre></td></tr></table></figure></p>
-<ol start="11">
 <li><p>初始化mysqld</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/mysql/mysql-5.7.25</span><br><span class="line">./bin/mysqld --initialize --user=mysql --basedir=/opt/mysql/mysql-5.7.25/ --datadir=/opt/mysql/mysql-5.7.25/data/</span><br><span class="line">/opt/mysql/mysql-5.7.25/data/mysqld.log #查看日志，获取初始化密码 example : 2019-04-08T06:14:29.790033Z 1 [Note] A temporary password is generated for root@localhost: a8?DQir=T+k+</span><br></pre></td></tr></table></figure>
 </li>
