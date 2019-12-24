@@ -46,19 +46,20 @@
   };
 </script>
 
-  <meta name="description" content="To be or not to be, that is a question.">
-<meta name="keywords" content="Interest Stubborn Persevere">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Footprints of Growth">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="##面向对象设计原则之迪米特法则 ###定义迪米特法则(Law of  Demeter, LoD)：一个软件实体应当尽可能少地与其他实体发生相互作用。 ###了解&amp;emsp;&amp;emsp;如果一个系统符合迪米特法则，那么当其中某一个模块发生修改时，就会尽量少地影响其他模块，扩展会相对容易，这是对软件实体之间通信的限制，迪米特法则要求限制软件实体之间通信的宽度和深度。迪米特法则可降低系统的耦合度，使类">
+<meta name="keywords" content="面向对象,设计模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面向对象设计原则之迪米特法则">
+<meta property="og:url" content="http://yoursite.com/2019/12/24/lod/index.html">
 <meta property="og:site_name" content="Footprints of Growth">
-<meta property="og:description" content="To be or not to be, that is a question.">
+<meta property="og:description" content="##面向对象设计原则之迪米特法则 ###定义迪米特法则(Law of  Demeter, LoD)：一个软件实体应当尽可能少地与其他实体发生相互作用。 ###了解&amp;emsp;&amp;emsp;如果一个系统符合迪米特法则，那么当其中某一个模块发生修改时，就会尽量少地影响其他模块，扩展会相对容易，这是对软件实体之间通信的限制，迪米特法则要求限制软件实体之间通信的宽度和深度。迪米特法则可降低系统的耦合度，使类">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-24T10:29:18.790Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Footprints of Growth">
-<meta name="twitter:description" content="To be or not to be, that is a question.">
+<meta name="twitter:title" content="面向对象设计原则之迪米特法则">
+<meta name="twitter:description" content="##面向对象设计原则之迪米特法则 ###定义迪米特法则(Law of  Demeter, LoD)：一个软件实体应当尽可能少地与其他实体发生相互作用。 ###了解&amp;emsp;&amp;emsp;如果一个系统符合迪米特法则，那么当其中某一个模块发生修改时，就会尽量少地影响其他模块，扩展会相对容易，这是对软件实体之间通信的限制，迪米特法则要求限制软件实体之间通信的宽度和深度。迪米特法则可降低系统的耦合度，使类">
 
-<link rel="canonical" href="http://yoursite.com/archives/">
+<link rel="canonical" href="http://yoursite.com/2019/12/24/lod/">
 
 
 <script id="page-configurations">
@@ -66,11 +67,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false
+    isPost: true
   };
 </script>
 
-  <title>归档 | Footprints of Growth</title>
+  <title>面向对象设计原则之迪米特法则 | Footprints of Growth</title>
   
 
 
@@ -175,132 +176,122 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 20 篇日志。 继续努力。</span>
-      </div>
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/24/lod/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/itmonkey.jpg">
+      <meta itemprop="name" content="Mr.Wang">
+      <meta itemprop="description" content="To be or not to be, that is a question.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Footprints of Growth">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          面向对象设计原则之迪米特法则
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-12-24 18:11:07 / 修改时间：18:29:18" itemprop="dateCreated datePublished" datetime="2019-12-24T18:11:07+08:00">2019-12-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2019</h1>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-12-24T18:11:07+08:00"
-              content="2019-12-24">
-          12-24
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/12/24/lod/" itemprop="url">
-            <span itemprop="name">面向对象设计原则之迪米特法则</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-12-24T18:11:06+08:00"
-              content="2019-12-24">
-          12-24
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/12/24/crp/" itemprop="url">
-            <span itemprop="name">面向对象设计原则之合成复用原则</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-12-24T18:11:05+08:00"
-              content="2019-12-24">
-          12-24
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/12/24/isp/" itemprop="url">
-            <span itemprop="name">面向对象设计原则之接口隔离原则</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-12-24T18:11:04+08:00"
-              content="2019-12-24">
-          12-24
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/12/24/dip/" itemprop="url">
-            <span itemprop="name">面向对象设计原则之依赖倒转原则</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-12-24T18:11:03+08:00"
-              content="2019-12-24">
-          12-24
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/12/24/lsp/" itemprop="url">
-            <span itemprop="name">面向对象设计原则之里氏代换原则</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
+        <p>##面向对象设计原则之迪米特法则</p>
+<p>###定义<br><strong>迪米特法则(Law of  Demeter, LoD)：一个软件实体应当尽可能少地与其他实体发生相互作用。</strong></p>
+<p>###了解<br>&emsp;&emsp;如果一个系统符合迪米特法则，那么当其中某一个模块发生修改时，就会尽量少地影响其他模块，扩展会相对容易，这是对软件实体之间通信的限制，迪米特法则要求限制软件实体之间通信的宽度和深度。迪米特法则可降低系统的耦合度，使类与类之间保持松散的耦合关系。<br>&emsp;&emsp;应该尽量减少对象之间的交互，如果两个对象之间不必彼此直接通信，那么这两个对象就不应当发生任何直接的相互作用，如果其中的一个对象需要调用另一个对象的某一个方法的话，可以通过第三者转发这个调用。简言之，就是通过引入一个合理的第三者来降低现有对象之间的耦合度。</p>
+<p>###注意事项<br>&emsp;&emsp;在类的划分上，应当尽量创建松耦合的类，类之间的耦合度越低，就越有利于复用，一个处在松耦合中的类一旦被修改，不会对关联的类造成太大波及；在类的结构设计上，每一个类都应当尽量降低其成员变量和成员函数的访问权限；在类的设计上，只要有可能，一个类型应当设计成不变类；在对其他类的引用上，一个对象对其他对象的引用应当降到最低。</p>
+<p>###相关资料<br><a href="https://blog.csdn.net/LoveLion/article/details/17517213" target="_blank" rel="noopener">https://blog.csdn.net/LoveLion/article/details/17517213</a></p>
 
     </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Mr.Wang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2019/12/24/lod/" title="面向对象设计原则之迪米特法则">http://yoursite.com/2019/12/24/lod/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+	<div>
+	  
+		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------the end-------------</div>
+    
+</div>
+	  
+	</div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/面向对象/" rel="tag"><i class="fa fa-tag"></i> 面向对象</a>
+              <a href="/tags/设计模式/" rel="tag"><i class="fa fa-tag"></i> 设计模式</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/12/24/crp/" rel="prev" title="面向对象设计原则之合成复用原则">
+      <i class="fa fa-chevron-left"></i> 面向对象设计原则之合成复用原则
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
   </div>
-  
-  
-  
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
 
 
           </div>
