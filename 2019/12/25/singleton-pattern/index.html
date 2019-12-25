@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.8.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="设计模式之单例模式定义&amp;emsp;&amp;emsp;单例模式(Singleton Pattern)：确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例，这个类称为单例类，它提供全局访问的方法。单例模式是一种对象创建型模式。">
+<meta name="keywords" content="设计模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="单例模式">
+<meta property="og:url" content="http://yoursite.com/2019/12/25/singleton-pattern/index.html">
+<meta property="og:site_name" content="Footprints of Growth">
+<meta property="og:description" content="设计模式之单例模式定义&amp;emsp;&amp;emsp;单例模式(Singleton Pattern)：确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例，这个类称为单例类，它提供全局访问的方法。单例模式是一种对象创建型模式。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/images/singleton-pattern1.gif">
+<meta property="og:image" content="http://yoursite.com/images/singleton-pattern2.gif">
+<meta property="og:image" content="http://yoursite.com/images/singleton-pattern3.gif">
+<meta property="og:image" content="http://yoursite.com/images/singleton-pattern4.gif">
+<meta property="og:updated_time" content="2019-12-25T10:51:01.538Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="单例模式">
+<meta name="twitter:description" content="设计模式之单例模式定义&amp;emsp;&amp;emsp;单例模式(Singleton Pattern)：确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例，这个类称为单例类，它提供全局访问的方法。单例模式是一种对象创建型模式。">
+<meta name="twitter:image" content="http://yoursite.com/images/singleton-pattern1.gif">
+
+<link rel="canonical" href="http://yoursite.com/2019/12/25/singleton-pattern/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>单例模式 | Footprints of Growth</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Footprints of Growth</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Note when going straight for success of Mr.Wang</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/25/singleton-pattern/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/itmonkey.jpg">
+      <meta itemprop="name" content="Mr.Wang">
+      <meta itemprop="description" content="To be or not to be, that is a question.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Footprints of Growth">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          单例模式
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-12-25 11:22:36 / 修改时间：18:51:01" itemprop="dateCreated datePublished" datetime="2019-12-25T11:22:36+08:00">2019-12-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="设计模式之单例模式"><a href="#设计模式之单例模式" class="headerlink" title="设计模式之单例模式"></a>设计模式之单例模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>&emsp;&emsp;<strong>单例模式(Singleton Pattern)：确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例，这个类称为单例类，它提供全局访问的方法。单例模式是一种对象创建型模式。</strong><br><a id="more"></a></p>
+<h3 id="了解"><a href="#了解" class="headerlink" title="了解"></a>了解</h3><p>&emsp;&emsp;单例模式有三个要点：一是<strong>某个类只能有一个实例</strong>；二是它<strong>必须自行创建这个实例</strong>；三是它<strong>必须自行向整个系统提供这个实例</strong>。<br><!--more--></p>
+<h3 id="结构图"><a href="#结构图" class="headerlink" title="结构图"></a>结构图</h3><p>单例模式是结构最简单的设计模式一，在它的核心结构中只包含一个被称为单例类的特殊类<br><img src="/images/singleton-pattern1.gif" alt="alt"><br><strong>Singleton</strong>（单例）：在单例类的内部实现只生成一个实例，同时它提供一个静态的getInstance()工厂方法，让客户可以访问它的唯一实例；为了防止在外部对其实例化，将其构造函数设计为私有；在单例类内部定义了一个Singleton类型的静态对象，作为外部共享的唯一实例。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p><img src="/images/singleton-pattern2.gif" alt="alt"></p>
+<h3 id="饿汉式单例与懒汉式单例"><a href="#饿汉式单例与懒汉式单例" class="headerlink" title="饿汉式单例与懒汉式单例"></a>饿汉式单例与懒汉式单例</h3><h4 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h4><p><img src="/images/singleton-pattern3.gif" alt="alt"><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EagerSingleton</span> </span>&#123; </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> EagerSingleton instance = <span class="keyword">new</span> EagerSingleton(); </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">EagerSingleton</span><span class="params">()</span> </span>&#123; &#125; </span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> EagerSingleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance; </span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;当类被加载时，静态变量instance会被初始化，此时类的私有构造函数会被调用，单例类的唯一实例将被创建。如果使用饿汉式单例来实现负载均衡器LoadBalancer类的设计，则不会出现创建多个单例对象的情况，可确保单例对象的唯一性。</p>
+<h4 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h4><p><img src="/images/singleton-pattern4.gif" alt="alt"><br>&emsp;&emsp;懒汉式单例在第一次调用getInstance()方法时实例化，在类加载时并不自行实例化，这种技术又称为<strong>延迟加载(Lazy Load)</strong>技术<br>避免多线程环境下出现问题（实例化多个对象）:</p>
+<ul>
+<li><strong>synchronized关键字</strong>：可加在类上，也可加在判空后的初始化对象方法上，后者效率更高</li>
+<li><strong>双重检查锁定(Double-Check Locking)</strong></li>
+<li><strong>volatile修饰符</strong>：被volatile修饰的成员变量可以确保多个线程都能够正确处理，但volatile关键字会屏蔽Java虚拟机所做的一些代码优化，可能会导致系统运行效率降低</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LazySingleton</span> </span>&#123; </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> LazySingleton instance = <span class="keyword">null</span>; </span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">LazySingleton</span><span class="params">()</span> </span>&#123; &#125; </span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> LazySingleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123; </span><br><span class="line">        <span class="comment">//第一重判断</span></span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">//锁定代码块</span></span><br><span class="line">            <span class="keyword">synchronized</span> (LazySingleton.class) &#123;</span><br><span class="line">                <span class="comment">//第二重判断</span></span><br><span class="line">                <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    instance = <span class="keyword">new</span> LazySingleton(); <span class="comment">//创建单例实例</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h4><ol>
+<li>&emsp;&emsp;饿汉式单例类在类被加载时就将自己实例化，它的优点在于无须考虑多线程访问问题，可以确保实例的唯一性；从调用速度和反应时间角度来讲，由于单例对象一开始就得以创建，因此要优于懒汉式单例。但是无论系统在运行时是否需要使用该单例对象，由于在类加载时该对象就需要创建，因此从资源利用效率角度来讲，饿汉式单例不及懒汉式单例，而且在系统加载时由于需要创建饿汉式单例对象，加载时间可能会比较长。</li>
+<li>&emsp;&emsp;懒汉式单例类在第一次使用时创建，无须一直占用系统资源，实现了延迟加载，但是必须处理好多个线程同时访问的问题，特别是当单例类作为资源控制器，在实例化时必然涉及资源初始化，而资源初始化很有可能耗费大量时间，这意味着出现多线程同时首次引用此类的机率变得较大，需要通过双重检查锁定等机制进行控制，这将导致系统性能受到一定影响。</li>
+</ol>
+<h3 id="Initialization-Demand-Holder-IoDH"><a href="#Initialization-Demand-Holder-IoDH" class="headerlink" title="Initialization Demand Holder (IoDH)"></a>Initialization Demand Holder (IoDH)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Initialization on Demand Holder</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">HolderClass</span> </span>&#123;</span><br><span class="line">            <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	    <span class="keyword">return</span> HolderClass.instance;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">	    Singleton s1, s2; </span><br><span class="line">            s1 = Singleton.getInstance();</span><br><span class="line">	    s2 = Singleton.getInstance();</span><br><span class="line">	    System.out.println(s1==s2);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;在IoDH中，我们在单例类中增加一个静态(static)内部类，在该内部类中创建单例对象，再将该单例对象通过getInstance()方法返回给外部使用<br>&emsp;&emsp;由于静态单例对象没有作为Singleton的成员变量直接实例化，因此<strong>类加载时不会实例化</strong>Singleton，第一次调用getInstance()时将加载内部类HolderClass，在该内部类中定义了一个static类型的变量instance，此时会首先初始化这个成员变量，<strong>由Java虚拟机来保证其线程安全性</strong>，确保该成员变量只能初始化一次。由于getInstance()方法没有任何线程锁定，因此其<strong>性能不会造成任何影响。</strong><br>&emsp;&emsp;通过使用IoDH，我们既可以实现延迟加载，又可以保证线程安全，不影响系统性能，不失为一种最好的Java语言单例模式实现方式，但是其<strong>与编程语言本身的特性相关</strong>，很多面向对象语言不支持IoDH。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>&emsp;&emsp;单例模式作为一种目标明确、结构简单、理解容易的设计模式，在软件开发中使用频率相当高，在很多应用软件和框架中都得以广泛应用。</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>单例模式提供了对唯一实例的受控访问。因为单例类封装了它的唯一实例，所以它可以严格控制客户怎样以及何时访问它。</li>
+<li>由于在系统内存中只存在一个对象，因此可以节约系统资源，对于一些需要频繁创建和销毁的对象单例模式无疑可以提高系统的性能。</li>
+<li>允许可变数目的实例。基于单例模式我们可以进行扩展，使用与单例控制相似的方法来获得指定个数的对象实例，既节省系统资源，又解决了单例单例对象共享过多有损性能的问题。</li>
+</ol>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>由于单例模式中没有抽象层，因此单例类的扩展有很大的困难。</li>
+<li>单例类的职责过重，在一定程度上违背了“单一职责原则”。因为单例类既充当了工厂角色，提供了工厂方法，同时又充当了产品角色，包含一些业务方法，将产品的创建和产品的本身的功能融合到一起。</li>
+<li>现在很多面向对象语言(如Java、C#)的运行环境都提供了自动垃圾回收的技术，因此，如果实例化的共享对象长时间不被利用，系统会认为它是垃圾，会自动销毁并回收资源，下次利用时又将重新实例化，这将导致共享的单例对象状态的丢失。</li>
+</ol>
+<h4 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h4><ol>
+<li>系统只需要一个实例对象，如系统要求提供一个唯一的序列号生成器或资源管理器，或者需要考虑资源消耗太大而只允许创建一个对象。</li>
+<li>客户调用类的单个实例只允许使用一个公共访问点，除了该公共访问点，不能通过其他途径访问该实例。</li>
+</ol>
+<h3 id="code"><a href="#code" class="headerlink" title="code"></a>code</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.xml.crypto.dsig.spec.DigestMethodParameterSpec;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Wangzy</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: 负载均衡器</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 17:01 2019/12/25</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoadBalancer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 饿汉式单例模式</span></span><br><span class="line"><span class="comment">//    private static final LoadBalancer loadBalancer = new LoadBalancer();</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Description</span>: （懒汉式单例模式）静态变量引用 volatile 关键字保证确保多个线程都能够正确处理，但volatile关键字会屏蔽Java虚拟机所做的一些代码优化，可能会导致系统运行效率降低</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> Wangzy</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 17:53 2019/12/25</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"><span class="comment">//    private volatile static LoadBalancer loadBalancer = null;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 各个服务器集合 */</span></span><br><span class="line">    <span class="keyword">private</span> List&lt;String&gt; serverList;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Description</span>: 私有构造方法</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> Wangzy</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 17:02 2019/12/25</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">LoadBalancer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 默认负载均衡器自带服务器容器</span></span><br><span class="line">       serverList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Description</span>: 提供整个系统的实例化对象方法  加锁和双重检查锁定都是为了解决多线程产生的问题</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> Wangzy</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 17:04 2019/12/25</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"><span class="comment">//    public static LoadBalancer getInstance() &#123;</span></span><br><span class="line"><span class="comment">////        if (null == loadBalancer) &#123;</span></span><br><span class="line"><span class="comment">////            // 加锁</span></span><br><span class="line"><span class="comment">////            synchronized (LoadBalancer.class) &#123;</span></span><br><span class="line"><span class="comment">////                // 双重检查锁定</span></span><br><span class="line"><span class="comment">////                if (null == loadBalancer) &#123;</span></span><br><span class="line"><span class="comment">////                    loadBalancer = new LoadBalancer();</span></span><br><span class="line"><span class="comment">////                &#125;</span></span><br><span class="line"><span class="comment">////            &#125;</span></span><br><span class="line"><span class="comment">////        &#125;</span></span><br><span class="line"><span class="comment">////        return loadBalancer;</span></span><br><span class="line"><span class="comment">////    &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Description</span>: IoDH  要实例化的类不会加载此类；jvm会自动优化线程问题；效率最高，但受语言限制</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> Wangzy</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 18:05 2019/12/25</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ClassHolder</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> LoadBalancer loadBalancer = <span class="keyword">new</span> LoadBalancer();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> LoadBalancer <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ClassHolder.loadBalancer;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Description</span>: 添加服务器</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> Wangzy</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 17:06 2019/12/25</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addServer</span><span class="params">(String server)</span> </span>&#123;</span><br><span class="line">        serverList.add(server);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Description</span>: 移除服务器</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> Wangzy</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 17:06 2019/12/25</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeServer</span><span class="params">(String server)</span> </span>&#123;</span><br><span class="line">        serverList.remove(server);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Description</span>: 查询服务器(负载均衡实现，随机算法)</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> Wangzy</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 17:06 2019/12/25</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getServer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; serverList = <span class="keyword">this</span>.serverList;</span><br><span class="line">        Random random = <span class="keyword">new</span> Random();</span><br><span class="line">        <span class="keyword">int</span> i = random.nextInt(serverList.size());</span><br><span class="line">        <span class="keyword">return</span> serverList.get(i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Wangzy</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: 启动类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 17:12 2019/12/25</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Boot</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 获取负载均衡服务器（模拟多个用户共享一个实例）</span></span><br><span class="line">        LoadBalancer loadBalancer = LoadBalancer.getInstance();</span><br><span class="line">        LoadBalancer loadBalancer1 = LoadBalancer.getInstance();</span><br><span class="line">        LoadBalancer loadBalancer2 = LoadBalancer.getInstance();</span><br><span class="line">        <span class="comment">// 判断是否是同一个负载均衡器(是否获取的是同一个实例)</span></span><br><span class="line">        <span class="keyword">if</span> (loadBalancer == loadBalancer1 &amp;&amp; loadBalancer1 == loadBalancer2) &#123;</span><br><span class="line">            System.out.println(<span class="string">"服务器负载均衡器具有唯一性！"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 给负载均衡服务器添加服务器</span></span><br><span class="line">        loadBalancer.addServer(<span class="string">"server1"</span>);</span><br><span class="line">        loadBalancer.addServer(<span class="string">"server2"</span>);</span><br><span class="line">        loadBalancer.addServer(<span class="string">"server3"</span>);</span><br><span class="line">        <span class="comment">// 模拟客户端请求分发</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">"分发请求至服务器"</span> + loadBalancer.getServer() + <span class="string">"服务器!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h3><p><a href="https://blog.csdn.net/lovelion/article/details/7420883" target="_blank" rel="noopener">https://blog.csdn.net/lovelion/article/details/7420883</a><br><a href="https://blog.csdn.net/lovelion/article/details/7420885" target="_blank" rel="noopener">https://blog.csdn.net/lovelion/article/details/7420885</a><br><a href="https://blog.csdn.net/lovelion/article/details/9319423" target="_blank" rel="noopener">https://blog.csdn.net/lovelion/article/details/9319423</a><br><a href="https://blog.csdn.net/lovelion/article/details/7420888" target="_blank" rel="noopener">https://blog.csdn.net/lovelion/article/details/7420888</a><br><a href="https://blog.csdn.net/lovelion/article/details/7420889" target="_blank" rel="noopener">https://blog.csdn.net/lovelion/article/details/7420889</a></p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Mr.Wang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2019/12/25/singleton-pattern/" title="单例模式">http://yoursite.com/2019/12/25/singleton-pattern/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+	<div>
+	  
+		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------the end-------------</div>
+    
+</div>
+	  
+	</div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/设计模式/" rel="tag"><i class="fa fa-tag"></i> 设计模式</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/12/25/abstract-factory/" rel="prev" title="抽象工厂模式">
+      <i class="fa fa-chevron-left"></i> 抽象工厂模式
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#设计模式之单例模式"><span class="nav-number">1.</span> <span class="nav-text">设计模式之单例模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#了解"><span class="nav-number">1.2.</span> <span class="nav-text">了解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结构图"><span class="nav-number">1.3.</span> <span class="nav-text">结构图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例"><span class="nav-number">1.4.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#饿汉式单例与懒汉式单例"><span class="nav-number">1.5.</span> <span class="nav-text">饿汉式单例与懒汉式单例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#饿汉式"><span class="nav-number">1.5.1.</span> <span class="nav-text">饿汉式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#懒汉式"><span class="nav-number">1.5.2.</span> <span class="nav-text">懒汉式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#比较"><span class="nav-number">1.5.3.</span> <span class="nav-text">比较</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Initialization-Demand-Holder-IoDH"><span class="nav-number">1.6.</span> <span class="nav-text">Initialization Demand Holder (IoDH)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.7.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">1.7.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-number">1.7.2.</span> <span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#适用场景"><span class="nav-number">1.7.3.</span> <span class="nav-text">适用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#code"><span class="nav-number">1.8.</span> <span class="nav-text">code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关资料"><span class="nav-number">1.9.</span> <span class="nav-text">相关资料</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Mr.Wang" src="/images/itmonkey.jpg">
+  <p class="site-author-name" itemprop="name">Mr.Wang</p>
+  <div class="site-description" itemprop="description">To be or not to be, that is a question.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mr.Wang</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
