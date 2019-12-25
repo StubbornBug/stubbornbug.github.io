@@ -203,10 +203,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2019-12-24 18:11:07 / 修改时间：18:32:15" itemprop="dateCreated datePublished" datetime="2019-12-24T18:11:07+08:00">2019-12-24</time>
+              <time title="创建时间：2019-12-24 18:11:07" itemprop="dateCreated datePublished" datetime="2019-12-24T18:11:07+08:00">2019-12-24</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-25 11:17:39" itemprop="dateModified" datetime="2019-12-25T11:17:39+08:00">2019-12-25</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -233,6 +239,8 @@
           <h2 id="面向对象设计原则之迪米特法则"><a href="#面向对象设计原则之迪米特法则" class="headerlink" title="面向对象设计原则之迪米特法则"></a>面向对象设计原则之迪米特法则</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p><strong>迪米特法则(Law of  Demeter, LoD)：一个软件实体应当尽可能少地与其他实体发生相互作用。</strong></p>
 <h3 id="了解"><a href="#了解" class="headerlink" title="了解"></a>了解</h3><p>&emsp;&emsp;如果一个系统符合迪米特法则，那么当其中某一个模块发生修改时，就会尽量少地影响其他模块，扩展会相对容易，这是对软件实体之间通信的限制，迪米特法则要求限制软件实体之间通信的宽度和深度。迪米特法则可降低系统的耦合度，使类与类之间保持松散的耦合关系。<br>&emsp;&emsp;应该尽量减少对象之间的交互，如果两个对象之间不必彼此直接通信，那么这两个对象就不应当发生任何直接的相互作用，如果其中的一个对象需要调用另一个对象的某一个方法的话，可以通过第三者转发这个调用。简言之，就是通过引入一个合理的第三者来降低现有对象之间的耦合度。</p>
 <h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>&emsp;&emsp;在类的划分上，应当尽量创建松耦合的类，类之间的耦合度越低，就越有利于复用，一个处在松耦合中的类一旦被修改，不会对关联的类造成太大波及；在类的结构设计上，每一个类都应当尽量降低其成员变量和成员函数的访问权限；在类的设计上，只要有可能，一个类型应当设计成不变类；在对其他类的引用上，一个对象对其他对象的引用应当降到最低。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><h4 id="old"><a href="#old" class="headerlink" title="old"></a>old</h4><p><img src="/images/lod1.jpg" alt="alt"></p>
+<h4 id="new"><a href="#new" class="headerlink" title="new"></a>new</h4><p><img src="/images/lod2.jpg" alt="alt"></p>
 <h3 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h3><p><a href="https://blog.csdn.net/LoveLion/article/details/17517213" target="_blank" rel="noopener">https://blog.csdn.net/LoveLion/article/details/17517213</a></p>
 
       
@@ -276,10 +284,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2019-12-24 18:11:06 / 修改时间：18:32:07" itemprop="dateCreated datePublished" datetime="2019-12-24T18:11:06+08:00">2019-12-24</time>
+              <time title="创建时间：2019-12-24 18:11:06" itemprop="dateCreated datePublished" datetime="2019-12-24T18:11:06+08:00">2019-12-24</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-25 11:17:27" itemprop="dateModified" datetime="2019-12-25T11:17:27+08:00">2019-12-25</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -305,6 +319,8 @@
       
           <h2 id="面向对象设计原则之合成复用原则"><a href="#面向对象设计原则之合成复用原则" class="headerlink" title="面向对象设计原则之合成复用原则"></a>面向对象设计原则之合成复用原则</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p><strong>合成复用原则(Composite Reuse Principle, CRP)：尽量使用对象组合，而不是继承来达到复用的目的。</strong></p>
 <h3 id="了解"><a href="#了解" class="headerlink" title="了解"></a>了解</h3><p>&emsp;&emsp;合成复用原则就是在一个新的对象里通过关联关系（包括组合关系和聚合关系）来使用一些已有的对象，使之成为新对象的一部分；新对象通过委派调用已有对象的方法达到复用功能的目的。简言之：复用时要尽量使用组合/聚合关系（关联关系），少用继承。<br>&emsp;&emsp;在面向对象设计中，可以通过两种方法在不同的环境中复用已有的设计和实现，即通过组合/聚合关系或通过继承，但首先应该考虑使用组合/聚合，组合/聚合可以使系统更加灵活，降低类与类之间的耦合度，一个类的变化对其他类造成的影响相对较少；其次才考虑继承，在使用继承时，需要严格遵循里氏代换原则，有效使用继承会有助于对问题的理解，降低复杂度，而滥用继承反而会增加系统构建和维护的难度以及系统的复杂度，因此需要慎重使用继承复用。<br>&emsp;&emsp;通过继承来进行复用的主要问题在于继承复用会破坏系统的封装性，因为继承会将基类的实现细节暴露给子类，由于基类的内部细节通常对子类来说是可见的，所以这种复用又称“白箱”复用，如果基类发生改变，那么子类的实现也不得不发生改变；从基类继承而来的实现是静态的，不可能在运行时发生改变，没有足够的灵活性；而且继承只能在有限的环境中使用（如类没有声明为不能被继承）。<br>&emsp;&emsp;由于组合或聚合关系可以将已有的对象（也可称为成员对象）纳入到新对象中，使之成为新对象的一部分，因此新对象可以调用已有对象的功能，这样做可以使得成员对象的内部实现细节对于新对象不可见，所以这种复用又称为“黑箱”复用，相对继承关系而言，其耦合度相对较低，成员对象的变化对新对象的影响不大，可以在新对象中根据实际需要有选择性地调用成员对象的操作；合成复用可以在运行时动态进行，新对象可以动态地引用与成员对象类型相同的其他对象。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><h4 id="old"><a href="#old" class="headerlink" title="old"></a>old</h4><p><img src="/images/crp1.jpg" alt="alt"></p>
+<h4 id="new"><a href="#new" class="headerlink" title="new"></a>new</h4><p><img src="/images/crp2.jpg" alt="alt"></p>
 <h3 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h3><p><a href="https://blog.csdn.net/lovelion/article/details/7563441" target="_blank" rel="noopener">https://blog.csdn.net/lovelion/article/details/7563441</a></p>
 
       
@@ -348,10 +364,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2019-12-24 18:11:05 / 修改时间：18:31:56" itemprop="dateCreated datePublished" datetime="2019-12-24T18:11:05+08:00">2019-12-24</time>
+              <time title="创建时间：2019-12-24 18:11:05" itemprop="dateCreated datePublished" datetime="2019-12-24T18:11:05+08:00">2019-12-24</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-25 11:16:55" itemprop="dateModified" datetime="2019-12-25T11:16:55+08:00">2019-12-25</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -384,6 +406,8 @@
 </li>
 </ol>
 <h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>&emsp;&emsp;在使用接口隔离原则时，我们需要注意控制接口的粒度，接口不能太小，如果太小会导致系统中接口泛滥，不利于维护；接口也不能太大，太大的接口将违背接口隔离原则，灵活性较差，使用起来很不方便。一般而言，接口中仅包含为某一类用户定制的方法即可，不应该强迫客户依赖于那些它们不用的方法。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><h4 id="old"><a href="#old" class="headerlink" title="old"></a>old</h4><p><img src="/images/isp1.jpg" alt="alt"></p>
+<h4 id="new"><a href="#new" class="headerlink" title="new"></a>new</h4><p><img src="/images/isp2.jpg" alt="alt"></p>
 <h3 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h3><p><a href="https://blog.csdn.net/lovelion/article/details/7562842" target="_blank" rel="noopener">https://blog.csdn.net/lovelion/article/details/7562842</a></p>
 
       
@@ -427,10 +451,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2019-12-24 18:11:04 / 修改时间：18:32:02" itemprop="dateCreated datePublished" datetime="2019-12-24T18:11:04+08:00">2019-12-24</time>
+              <time title="创建时间：2019-12-24 18:11:04" itemprop="dateCreated datePublished" datetime="2019-12-24T18:11:04+08:00">2019-12-24</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-25 11:17:13" itemprop="dateModified" datetime="2019-12-25T11:17:13+08:00">2019-12-25</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -456,6 +486,8 @@
       
           <h2 id="面向对象设计原则之依赖倒转原则"><a href="#面向对象设计原则之依赖倒转原则" class="headerlink" title="面向对象设计原则之依赖倒转原则"></a>面向对象设计原则之依赖倒转原则</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>&emsp;&emsp;<strong>依赖倒转原则(Dependency Inversion  Principle, DIP)：抽象不应该依赖于细节，细节应当依赖于抽象。换言之，要针对接口编程，而不是针对实现编程。</strong></p>
 <h3 id="了解"><a href="#了解" class="headerlink" title="了解"></a>了解</h3><p>&emsp;&emsp;依赖倒转原则要求我们在程序代码中传递参数时或在关联关系中，尽量引用层次高的抽象层类，即使用接口和抽象类进行变量类型声明、参数类型声明、方法返回类型声明，以及数据类型的转换等，而不要用具体类来做这些事情。为了确保该原则的应用，一个具体类应当只实现接口或抽象类中声明过的方法，而不要给出多余的方法，否则将无法调用到在子类中增加的新方法。<br>&emsp;&emsp;在引入抽象层后，系统将具有很好的灵活性，在程序中尽量使用抽象层进行编程，而将具体类写在配置文件中，这样一来，如果系统行为发生变化，只需要对抽象层进行扩展，并修改配置文件，而无须修改原有系统的源代码，在不修改的情况下来扩展系统的功能，满足开闭原则的要求。<br>&emsp;&emsp;在实现依赖倒转原则时，我们需要针对抽象层编程，而将具体类的对象通过依赖注入(DependencyInjection, DI)的方式注入到其他对象中，依赖注入是指当一个对象要与其他对象发生依赖关系时，通过抽象来注入所依赖的对象。常用的注入方式有三种，分别是：构造注入，设值注入（Setter注入）和接口注入。构造注入是指通过构造函数来传入具体类的对象，设值注入是指通过Setter方法来传入具体类的对象，而接口注入是指通过在接口中声明的业务方法来传入具体类的对象。这些方法在定义时使用的是抽象类型，在运行时再传入具体类型的对象，由子类对象来覆盖父类对象。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><h4 id="old"><a href="#old" class="headerlink" title="old"></a>old</h4><p><img src="/images/dip1.jpg" alt="alt"></p>
+<h4 id="new"><a href="#new" class="headerlink" title="new"></a>new</h4><p><img src="/images/dip2.jpg" alt="alt"></p>
 <h3 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h3><p><a href="https://blog.csdn.net/lovelion/article/details/7562783" target="_blank" rel="noopener">https://blog.csdn.net/lovelion/article/details/7562783</a></p>
 
       
@@ -499,10 +531,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2019-12-24 18:11:03 / 修改时间：18:31:47" itemprop="dateCreated datePublished" datetime="2019-12-24T18:11:03+08:00">2019-12-24</time>
+              <time title="创建时间：2019-12-24 18:11:03" itemprop="dateCreated datePublished" datetime="2019-12-24T18:11:03+08:00">2019-12-24</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-25 11:16:26" itemprop="dateModified" datetime="2019-12-25T11:16:26+08:00">2019-12-25</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -532,9 +570,11 @@
 <li><p>子类的所有方法必须在父类中声明，或<strong>子类必须实现父类中声明的所有方法</strong>。根据里氏代换原则，为了保证系统的扩展性，在程序中通常使用父类来进行定义，如果一个方法只存在子类中，在父类中不提供相应的声明，则无法在以父类定义的对象中使用该方法。</p>
 </li>
 <li><p>我们在运用里氏代换原则时，尽量把父类设计为抽象类或者接口，让子类继承父类或实现父接口，并实现在父类中声明的方法，运行时，子类实例替换父类实例，我们可以很方便地扩展系统的功能，同时无须修改原有子类的代码，增加新的功能可以通过增加一个新的子类来实现。里氏代换原则是开闭原则的具体实现手段之一。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><h4 id="old"><a href="#old" class="headerlink" title="old"></a>old</h4><p><img src="/images/lsp1.jpg" alt="alt"></p>
+<h4 id="new"><a href="#new" class="headerlink" title="new"></a>new</h4><p><img src="/images/lsp2.jpg" alt="alt"></p>
+<h3 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h3><p><a href="https://blog.csdn.net/lovelion/article/details/7540445" target="_blank" rel="noopener">https://blog.csdn.net/lovelion/article/details/7540445</a></p>
 </li>
 </ul>
-<h3 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h3><p><a href="https://blog.csdn.net/lovelion/article/details/7540445" target="_blank" rel="noopener">https://blog.csdn.net/lovelion/article/details/7540445</a></p>
 
       
     </div>
@@ -577,10 +617,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2019-12-24 18:11:02 / 修改时间：18:31:38" itemprop="dateCreated datePublished" datetime="2019-12-24T18:11:02+08:00">2019-12-24</time>
+              <time title="创建时间：2019-12-24 18:11:02" itemprop="dateCreated datePublished" datetime="2019-12-24T18:11:02+08:00">2019-12-24</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-25 11:16:40" itemprop="dateModified" datetime="2019-12-25T11:16:40+08:00">2019-12-25</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -606,6 +652,8 @@
       
           <h2 id="面向对象设计原则之开闭原则"><a href="#面向对象设计原则之开闭原则" class="headerlink" title="面向对象设计原则之开闭原则"></a>面向对象设计原则之开闭原则</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>&emsp;&emsp;<strong>开闭原则(Open-Closed Principle, OCP)：一个软件实体应当对扩展开放，对修改关闭。即软件实体应尽量在不修改原有代码的情况下进行扩展。</strong></p>
 <p>###了解<br>&emsp;&emsp;任何软件都需要面临一个很重要的问题，即它们的需求会随时间的推移而发生变化。当软件系统需要面对新的需求时，我们应该尽量保证系统的设计框架是稳定的。如果一个软件设计符合开闭原则，那么可以非常方便地对系统进行扩展，而且在扩展时无须修改现有代码，使得软件系统在拥有适应性和灵活性的同时具备较好的稳定性和延续性。随着软件规模越来越大，软件寿命越来越长，软件维护成本越来越高，设计满足开闭原则的软件系统也变得越来越重要。<br>&emsp;&emsp;为了满足开闭原则，需要对系统进行抽象化设计，抽象化是开闭原则的关键。如在java中可以为系统定义一个相对稳定的抽象层，而将不同的实现行为移至具体的实现层中完成。在很多面向对象编程语言中都提供了接口、抽象类等机制，可以通过它们定义系统的抽象层，再通过具体类来进行扩展。如果需要修改系统的行为，无须对抽象层进行任何改动，只需要增加新的具体类来实现新的业务功能即可，实现在不修改已有代码的基础上扩展系统的功能，达到开闭原则的要求。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><h4 id="old"><a href="#old" class="headerlink" title="old"></a>old</h4><p><img src="/images/ocp1.jpg" alt="alt"></p>
+<h4 id="new"><a href="#new" class="headerlink" title="new"></a>new</h4><p><img src="/images/ocp2.jpg" alt="alt"></p>
 <h3 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h3><p><a href="https://blog.csdn.net/lovelion/article/details/7537584" target="_blank" rel="noopener">https://blog.csdn.net/lovelion/article/details/7537584</a></p>
 
       

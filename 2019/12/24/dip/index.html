@@ -54,10 +54,13 @@
 <meta property="og:site_name" content="Footprints of Growth">
 <meta property="og:description" content="面向对象设计原则之依赖倒转原则定义&amp;emsp;&amp;emsp;依赖倒转原则(Dependency Inversion  Principle, DIP)：抽象不应该依赖于细节，细节应当依赖于抽象。换言之，要针对接口编程，而不是针对实现编程。 了解&amp;emsp;&amp;emsp;依赖倒转原则要求我们在程序代码中传递参数时或在关联关系中，尽量引用层次高的抽象层类，即使用接口和抽象类进行变量类型声明、参数类型声明、方">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-24T10:32:02.054Z">
+<meta property="og:image" content="http://yoursite.com/images/dip1.jpg">
+<meta property="og:image" content="http://yoursite.com/images/dip2.jpg">
+<meta property="og:updated_time" content="2019-12-25T03:17:13.478Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面向对象设计原则之依赖倒转原则">
 <meta name="twitter:description" content="面向对象设计原则之依赖倒转原则定义&amp;emsp;&amp;emsp;依赖倒转原则(Dependency Inversion  Principle, DIP)：抽象不应该依赖于细节，细节应当依赖于抽象。换言之，要针对接口编程，而不是针对实现编程。 了解&amp;emsp;&amp;emsp;依赖倒转原则要求我们在程序代码中传递参数时或在关联关系中，尽量引用层次高的抽象层类，即使用接口和抽象类进行变量类型声明、参数类型声明、方">
+<meta name="twitter:image" content="http://yoursite.com/images/dip1.jpg">
 
 <link rel="canonical" href="http://yoursite.com/2019/12/24/dip/">
 
@@ -203,10 +206,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2019-12-24 18:11:04 / 修改时间：18:32:02" itemprop="dateCreated datePublished" datetime="2019-12-24T18:11:04+08:00">2019-12-24</time>
+              <time title="创建时间：2019-12-24 18:11:04" itemprop="dateCreated datePublished" datetime="2019-12-24T18:11:04+08:00">2019-12-24</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-25 11:17:13" itemprop="dateModified" datetime="2019-12-25T11:17:13+08:00">2019-12-25</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -232,6 +241,8 @@
       
         <h2 id="面向对象设计原则之依赖倒转原则"><a href="#面向对象设计原则之依赖倒转原则" class="headerlink" title="面向对象设计原则之依赖倒转原则"></a>面向对象设计原则之依赖倒转原则</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>&emsp;&emsp;<strong>依赖倒转原则(Dependency Inversion  Principle, DIP)：抽象不应该依赖于细节，细节应当依赖于抽象。换言之，要针对接口编程，而不是针对实现编程。</strong></p>
 <h3 id="了解"><a href="#了解" class="headerlink" title="了解"></a>了解</h3><p>&emsp;&emsp;依赖倒转原则要求我们在程序代码中传递参数时或在关联关系中，尽量引用层次高的抽象层类，即使用接口和抽象类进行变量类型声明、参数类型声明、方法返回类型声明，以及数据类型的转换等，而不要用具体类来做这些事情。为了确保该原则的应用，一个具体类应当只实现接口或抽象类中声明过的方法，而不要给出多余的方法，否则将无法调用到在子类中增加的新方法。<br>&emsp;&emsp;在引入抽象层后，系统将具有很好的灵活性，在程序中尽量使用抽象层进行编程，而将具体类写在配置文件中，这样一来，如果系统行为发生变化，只需要对抽象层进行扩展，并修改配置文件，而无须修改原有系统的源代码，在不修改的情况下来扩展系统的功能，满足开闭原则的要求。<br>&emsp;&emsp;在实现依赖倒转原则时，我们需要针对抽象层编程，而将具体类的对象通过依赖注入(DependencyInjection, DI)的方式注入到其他对象中，依赖注入是指当一个对象要与其他对象发生依赖关系时，通过抽象来注入所依赖的对象。常用的注入方式有三种，分别是：构造注入，设值注入（Setter注入）和接口注入。构造注入是指通过构造函数来传入具体类的对象，设值注入是指通过Setter方法来传入具体类的对象，而接口注入是指通过在接口中声明的业务方法来传入具体类的对象。这些方法在定义时使用的是抽象类型，在运行时再传入具体类型的对象，由子类对象来覆盖父类对象。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><h4 id="old"><a href="#old" class="headerlink" title="old"></a>old</h4><p><img src="/images/dip1.jpg" alt="alt"></p>
+<h4 id="new"><a href="#new" class="headerlink" title="new"></a>new</h4><p><img src="/images/dip2.jpg" alt="alt"></p>
 <h3 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h3><p><a href="https://blog.csdn.net/lovelion/article/details/7562783" target="_blank" rel="noopener">https://blog.csdn.net/lovelion/article/details/7562783</a></p>
 
     </div>
@@ -343,7 +354,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象设计原则之依赖倒转原则"><span class="nav-number">1.</span> <span class="nav-text">面向对象设计原则之依赖倒转原则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#了解"><span class="nav-number">1.2.</span> <span class="nav-text">了解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关资料"><span class="nav-number">1.3.</span> <span class="nav-text">相关资料</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象设计原则之依赖倒转原则"><span class="nav-number">1.</span> <span class="nav-text">面向对象设计原则之依赖倒转原则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#了解"><span class="nav-number">1.2.</span> <span class="nav-text">了解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例"><span class="nav-number">1.3.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#old"><span class="nav-number">1.3.1.</span> <span class="nav-text">old</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#new"><span class="nav-number">1.3.2.</span> <span class="nav-text">new</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关资料"><span class="nav-number">1.4.</span> <span class="nav-text">相关资料</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
