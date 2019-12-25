@@ -56,9 +56,9 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/singleton-pattern1.gif">
 <meta property="og:image" content="http://yoursite.com/images/singleton-pattern2.gif">
-<meta property="og:image" content="http://yoursite.com/images/singleton-pattern3.gif">
+<meta property="og:image" content="http://yoursite.com/images/single-pattern3.gif">
 <meta property="og:image" content="http://yoursite.com/images/singleton-pattern4.gif">
-<meta property="og:updated_time" content="2019-12-25T10:51:01.538Z">
+<meta property="og:updated_time" content="2019-12-25T10:54:12.758Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="单例模式">
 <meta name="twitter:description" content="设计模式之单例模式定义&amp;emsp;&amp;emsp;单例模式(Singleton Pattern)：确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例，这个类称为单例类，它提供全局访问的方法。单例模式是一种对象创建型模式。">
@@ -210,7 +210,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-12-25 11:22:36 / 修改时间：18:51:01" itemprop="dateCreated datePublished" datetime="2019-12-25T11:22:36+08:00">2019-12-25</time>
+              <time title="创建时间：2019-12-25 11:22:36 / 修改时间：18:54:12" itemprop="dateCreated datePublished" datetime="2019-12-25T11:22:36+08:00">2019-12-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -239,7 +239,7 @@
 <h3 id="了解"><a href="#了解" class="headerlink" title="了解"></a>了解</h3><p>&emsp;&emsp;单例模式有三个要点：一是<strong>某个类只能有一个实例</strong>；二是它<strong>必须自行创建这个实例</strong>；三是它<strong>必须自行向整个系统提供这个实例</strong>。<br><!--more--></p>
 <h3 id="结构图"><a href="#结构图" class="headerlink" title="结构图"></a>结构图</h3><p>单例模式是结构最简单的设计模式一，在它的核心结构中只包含一个被称为单例类的特殊类<br><img src="/images/singleton-pattern1.gif" alt="alt"><br><strong>Singleton</strong>（单例）：在单例类的内部实现只生成一个实例，同时它提供一个静态的getInstance()工厂方法，让客户可以访问它的唯一实例；为了防止在外部对其实例化，将其构造函数设计为私有；在单例类内部定义了一个Singleton类型的静态对象，作为外部共享的唯一实例。</p>
 <h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p><img src="/images/singleton-pattern2.gif" alt="alt"></p>
-<h3 id="饿汉式单例与懒汉式单例"><a href="#饿汉式单例与懒汉式单例" class="headerlink" title="饿汉式单例与懒汉式单例"></a>饿汉式单例与懒汉式单例</h3><h4 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h4><p><img src="/images/singleton-pattern3.gif" alt="alt"><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EagerSingleton</span> </span>&#123; </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> EagerSingleton instance = <span class="keyword">new</span> EagerSingleton(); </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">EagerSingleton</span><span class="params">()</span> </span>&#123; &#125; </span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> EagerSingleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance; </span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="饿汉式单例与懒汉式单例"><a href="#饿汉式单例与懒汉式单例" class="headerlink" title="饿汉式单例与懒汉式单例"></a>饿汉式单例与懒汉式单例</h3><h4 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h4><p><img src="/images/single-pattern3.gif" alt="alt"><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EagerSingleton</span> </span>&#123; </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> EagerSingleton instance = <span class="keyword">new</span> EagerSingleton(); </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">EagerSingleton</span><span class="params">()</span> </span>&#123; &#125; </span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> EagerSingleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance; </span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>&emsp;&emsp;当类被加载时，静态变量instance会被初始化，此时类的私有构造函数会被调用，单例类的唯一实例将被创建。如果使用饿汉式单例来实现负载均衡器LoadBalancer类的设计，则不会出现创建多个单例对象的情况，可确保单例对象的唯一性。</p>
 <h4 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h4><p><img src="/images/singleton-pattern4.gif" alt="alt"><br>&emsp;&emsp;懒汉式单例在第一次调用getInstance()方法时实例化，在类加载时并不自行实例化，这种技术又称为<strong>延迟加载(Lazy Load)</strong>技术<br>避免多线程环境下出现问题（实例化多个对象）:</p>
 <ul>
