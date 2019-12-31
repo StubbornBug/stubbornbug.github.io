@@ -180,6 +180,93 @@
   
   
   <article itemscope="" itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/24/isp/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/itmonkey.jpg">
+      <meta itemprop="name" content="Mr.Wang">
+      <meta itemprop="description" content="To be or not to be, that is a question.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Footprints of Growth">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/24/isp/" class="post-title-link" itemprop="url">面向对象设计原则之接口隔离原则</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-24 18:11:05" itemprop="dateCreated datePublished" datetime="2019-12-24T18:11:05+08:00">2019-12-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-25 11:16:55" itemprop="dateModified" datetime="2019-12-25T11:16:55+08:00">2019-12-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="面向对象设计原则之接口隔离原则"><a href="#面向对象设计原则之接口隔离原则" class="headerlink" title="面向对象设计原则之接口隔离原则"></a>面向对象设计原则之接口隔离原则</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p><strong>接口隔离原则(Interface  Segregation Principle, ISP)：使用多个专门的接口，而不使用单一的总接口，即客户端不应该依赖那些它不需要的接口。</strong></p>
+<h3 id="了解"><a href="#了解" class="headerlink" title="了解"></a>了解</h3><p>&emsp;&emsp;根据接口隔离原则，当一个接口太大时，我们需要将它分割成一些更细小的接口，使用该接口的客户端仅需知道与之相关的方法即可。每一个接口应该承担一种相对独立的角色，不干不该干的事，该干的事都要干。这里的“接口”往往有两种不同的含义：一种是指一个类型所具有的方法特征的集合，仅仅是一种逻辑上的抽象；另外一种是指某种语言具体的“接口”定义，有严格的定义和结构，比如Java语言中的1. interface。对于这两种不同的含义，ISP的表达方式以及含义都有所不同：</p>
+<ol start="2">
+<li><p>当把“接口”理解成一个类型所提供的所有方法特征的集合的时候，这就是一种逻辑上的概念，接口的划分将直接带来类型的划分。可以把接口理解成角色，一个接口只能代表一个角色，每个角色都有它特定的一个接口，此时，这个原则可以叫做“角色隔离原则”。</p>
+</li>
+<li><p>如果把“接口”理解成狭义的特定语言的接口，那么ISP表达的意思是指接口仅仅提供客户端需要的行为，客户端不需要的行为则隐藏起来，应当为客户端提供尽可能小的单独的接口，而不要提供大的总接口。在面向对象编程语言中，实现一个接口就需要实现该接口中定义的所有方法，因此大的总接口使用起来不一定很方便，为了使接口的职责单一，需要将大接口中的方法根据其职责不同分别放在不同的小接口中，以确保每个接口使用起来都较为方便，并都承担某一单一角色。接口应该尽量细化，同时接口中的方法应该尽量少，每个接口中只包含一个客户端（如子模块或业务逻辑类）所需的方法即可，这种机制也称为“定制服务”，即为不同的客户端提供宽窄不同的接口。</p>
+</li>
+</ol>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>&emsp;&emsp;在使用接口隔离原则时，我们需要注意控制接口的粒度，接口不能太小，如果太小会导致系统中接口泛滥，不利于维护；接口也不能太大，太大的接口将违背接口隔离原则，灵活性较差，使用起来很不方便。一般而言，接口中仅包含为某一类用户定制的方法即可，不应该强迫客户依赖于那些它们不用的方法。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><h4 id="old"><a href="#old" class="headerlink" title="old"></a>old</h4><p><img src="/images/isp1.jpg" alt="alt"></p>
+<h4 id="new"><a href="#new" class="headerlink" title="new"></a>new</h4><p><img src="/images/isp2.jpg" alt="alt"></p>
+<h3 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h3><p><a href="https://blog.csdn.net/lovelion/article/details/7562842" target="_blank" rel="noopener">https://blog.csdn.net/lovelion/article/details/7562842</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/24/dip/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -903,97 +990,6 @@ Exception以及他的子类，代表程序运行时发送的各种不期望发�
   
   
 
-        
-  
-  
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/19/helloskills/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/itmonkey.jpg">
-      <meta itemprop="name" content="Mr.Wang">
-      <meta itemprop="description" content="To be or not to be, that is a question.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Footprints of Growth">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/12/19/helloskills/" class="post-title-link" itemprop="url">Java学习路线</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2019-12-19 10:45:01 / 修改时间：10:52:12" itemprop="dateCreated datePublished" datetime="2019-12-19T10:45:01+08:00">2019-12-19</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java技术栈/" itemprop="url" rel="index">
-                    <span itemprop="name">Java技术栈</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="java技术栈"><a href="#java技术栈" class="headerlink" title="java技术栈"></a>java技术栈</h2><h3 id="java基础"><a href="#java基础" class="headerlink" title="java基础"></a>java基础</h3><ul>
-<li><strong>异常</strong></li>
-<li><strong>反射</strong></li>
-<li><strong>枚举</strong></li>
-<li><strong>注解</strong></li>
-<li><strong>继承和多态</strong></li>
-<li><strong>泛型</strong></li>
-<li><strong>数据结构</strong></li>
-<li><strong>内存与JVM</strong></li>
-<li><strong>集合</strong></li>
-<li><strong>内部类</strong></li>
-<li><strong>JDK新特性</strong></li>
-<li><strong>设计模式</strong></li>
-<li><strong>线程</strong></li>
-<li><strong>I/O</strong>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/12/19/helloskills/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </li></ul></div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1065,7 +1061,7 @@ Exception以及他的子类，代表程序运行时发送的各种不期望发�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
