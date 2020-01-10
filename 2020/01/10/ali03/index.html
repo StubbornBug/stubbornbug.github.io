@@ -46,20 +46,20 @@
   };
 </script>
 
-  <meta name="description" content="命名风格 命名均不能以下划线（）或美元符号($)开始，也不能以下划线（）或美元符号($)结束。反例：name / __name / $name / name / name$ / name__reason：python下划线开头是内部变量.">
+  <meta name="description" content="代码格式 如果是大括号内为空，则简洁地写成{}即可，大括号中间无需换行和空格；如果是非空代码块：1） 左大括号前不换行。2） 左大括号后换行。3） 右大括号前换行。4） 右大括号后还有 else 等代码则不换行；表示终止的右大括号后必须换行。  左小括号和字符之间不出现空格；同样，右小括号和字符之间也不出现空格  if/for/while/switch/do 等保留字与括号之间都必须加空格。  任">
 <meta name="keywords" content="编码规约">
 <meta property="og:type" content="article">
-<meta property="og:title" content="命名风格">
-<meta property="og:url" content="http://yoursite.com/2020/01/10/ali01/index.html">
+<meta property="og:title" content="代码格式">
+<meta property="og:url" content="http://yoursite.com/2020/01/10/ali03/index.html">
 <meta property="og:site_name" content="Footprints of Growth">
-<meta property="og:description" content="命名风格 命名均不能以下划线（）或美元符号($)开始，也不能以下划线（）或美元符号($)结束。反例：name / __name / $name / name / name$ / name__reason：python下划线开头是内部变量.">
+<meta property="og:description" content="代码格式 如果是大括号内为空，则简洁地写成{}即可，大括号中间无需换行和空格；如果是非空代码块：1） 左大括号前不换行。2） 左大括号后换行。3） 右大括号前换行。4） 右大括号后还有 else 等代码则不换行；表示终止的右大括号后必须换行。  左小括号和字符之间不出现空格；同样，右小括号和字符之间也不出现空格  if/for/while/switch/do 等保留字与括号之间都必须加空格。  任">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-10T10:40:39.995Z">
+<meta property="og:updated_time" content="2020-01-10T12:41:24.906Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="命名风格">
-<meta name="twitter:description" content="命名风格 命名均不能以下划线（）或美元符号($)开始，也不能以下划线（）或美元符号($)结束。反例：name / __name / $name / name / name$ / name__reason：python下划线开头是内部变量.">
+<meta name="twitter:title" content="代码格式">
+<meta name="twitter:description" content="代码格式 如果是大括号内为空，则简洁地写成{}即可，大括号中间无需换行和空格；如果是非空代码块：1） 左大括号前不换行。2） 左大括号后换行。3） 右大括号前换行。4） 右大括号后还有 else 等代码则不换行；表示终止的右大括号后必须换行。  左小括号和字符之间不出现空格；同样，右小括号和字符之间也不出现空格  if/for/while/switch/do 等保留字与括号之间都必须加空格。  任">
 
-<link rel="canonical" href="http://yoursite.com/2020/01/10/ali01/">
+<link rel="canonical" href="http://yoursite.com/2020/01/10/ali03/">
 
 
 <script id="page-configurations">
@@ -71,7 +71,7 @@
   };
 </script>
 
-  <title>命名风格 | Footprints of Growth</title>
+  <title>代码格式 | Footprints of Growth</title>
   
 
 
@@ -181,7 +181,7 @@
   
   
   <article itemscope="" itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/10/ali01/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/10/ali03/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/itmonkey.jpg">
@@ -194,7 +194,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          命名风格
+          代码格式
         </h1>
 
         <div class="post-meta">
@@ -205,7 +205,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-01-10 16:18:00 / 修改时间：18:40:39" itemprop="dateCreated datePublished" datetime="2020-01-10T16:18:00+08:00">2020-01-10</time>
+              <time title="创建时间：2020-01-10 19:20:00 / 修改时间：20:41:24" itemprop="dateCreated datePublished" datetime="2020-01-10T19:20:00+08:00">2020-01-10</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -230,49 +230,37 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="命名风格"><a href="#命名风格" class="headerlink" title="命名风格"></a>命名风格</h2><ol>
-<li><p><strong>命名均不能以下划线（<em>）或美元符号($)开始，也不能以下划线（</em>）或美元符号($)结束。</strong><br>反例：<em>name / __name / $name / name</em> / name$ / name__<br>reason：python下划线开头是内部变量.</p>
-<a id="more"></a>
+        <h2 id="代码格式"><a href="#代码格式" class="headerlink" title="代码格式"></a>代码格式</h2><ol>
+<li><p><strong>如果是大括号内为空，则简洁地写成{}即可，大括号中间无需换行和空格；如果是非空代码块：</strong><br>1） 左大括号前不换行。<br>2） 左大括号后换行。<br>3） 右大括号前换行。<br>4） 右大括号后还有 else 等代码则不换行；表示终止的右大括号后必须换行。</p>
 </li>
-<li><p><strong>严禁使用拼音与英文混合的方式，更不允许直接使用中文的方式。</strong><br>正例：renminbi / alibaba / taobao / youku / hangzhou 等国际通用的名称，可视同英文。<br>反例：DaZhePromotion [打折] / getPingfenByName() [评分] / int 某变量 = 3<br>reason: 正确的英文拼写和语法可以让阅读者易于理解，避免歧义. 中文拼音有同音字（Pingfen：评分，平分），汉字会有编码问题。</p>
+<li><p><strong>左小括号和字符之间不出现空格；同样，右小括号和字符之间也不出现空格</strong></p>
 </li>
-<li><p><strong>类名使用 UpperCamelCase 风格，但以下情形例外：DO / BO / DTO / VO / AO / PO / UID 等。</strong><br>正例：JavaServerlessPlatform / UserDO / XmlService / TcpUdpDeal / TaPromotion</p>
+<li><p><strong>if/for/while/switch/do 等保留字与括号之间都必须加空格。</strong></p>
 </li>
-<li><p><strong>方法名、参数名、成员变量、局部变量都统一使用 lowerCamelCase 风格，必须遵从驼峰形式。</strong><br>正例： localValue / getHttpMessage() / inputUserId</p>
+<li><p><strong>任何二目、三目运算符的左右两边都需要加一个空格</strong></p>
 </li>
-<li><p><strong>常量命名全部大写，单词间用下划线隔开，力求语义表达完整清楚，不要嫌名字长。</strong><br>正例：MAX_STOCK_COUNT / CACHE_EXPIRED_TIME</p>
+<li><p><strong>采用 4 个空格缩进，禁止使用 tab 字符</strong><br>reason: 国标是4个空格，一个tab字符不一定是四个空格，若使用tab，必须对编译器设置：<br>&emsp;&emsp;&emsp;&emsp;<strong>idea</strong>设置方式：todo：<br>code：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FormatClass</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 缩进 4 个空格</span></span><br><span class="line">        String say = <span class="string">"hello"</span>;</span><br><span class="line">        <span class="comment">// 运算符的左右必须有一个空格</span></span><br><span class="line">        <span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 关键词 if 与括号之间必须有一个空格，括号内的 f 与左括号，0 与右括号不需要空格</span></span><br><span class="line">        <span class="keyword">if</span> (flag == <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(say);</span><br><span class="line">            <span class="comment">// 左大括号前加空格且不换行；左大括号后换行</span></span><br><span class="line">            <span class="keyword">if</span> (flag == <span class="number">1</span>) &#123;</span><br><span class="line">                System.out.println(<span class="string">"world"</span>);</span><br><span class="line">                <span class="comment">// 右大括号前换行，右大括号后有 else，不用换行</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">"ok"</span>);</span><br><span class="line">                <span class="comment">// 在右大括号后直接结束，则必须换行</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>抽象类命名使用 Abstract 或 Base 开头；异常类命名使用 Exception 结尾；测试类命名以它要测试的类的名称开始，以 Test 结尾。</strong></p>
+<li><p><strong>注释的双斜线与注释内容之间有且仅有一个空格</strong></p>
 </li>
-<li><p><strong>类型与中括号紧挨相连来表示数组。</strong><br>正例：定义整形数组 int[] arrayDemo<br>reason: <strong>便于阅读</strong>，一下就知道是数组。</p>
+<li><p><strong>在进行类型强制转换时，右括号与强制转换值之间不需要任何空格隔开</strong><br>正例：<br>long first = 1000000000000L;<br>int second = (int)first + 2;</p>
 </li>
-<li><p><strong>POJO 类中布尔类型变量都不要加 is 前缀，否则部分框架解析会引起序列化错误。</strong><br>todo:</p>
+<li><p><strong>单行字符数限制不超过 120 个，超出需要换行</strong><br>1）第二行相对第一行缩进 4 个空格，从第三行开始，不再继续缩进。<br>2）运算符与下文一起换行。<br>3）方法调用的点符号与下文一起换行。<br>4）方法调用中的多个参数需要换行时，在逗号后进行。<br>5）<strong>在括号前不要换行</strong><br>code: </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 正例</span></span><br><span class="line">StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"><span class="comment">// 超过 120 个字符的情况下，换行缩进 4 个空格，点号和方法名称一起换行</span></span><br><span class="line">sb.append(<span class="string">"Jack"</span>).append(<span class="string">"Ma"</span>)...</span><br><span class="line">    .append(<span class="string">"alibaba"</span>)...</span><br><span class="line">    .append(<span class="string">"alibaba"</span>)...</span><br><span class="line">    .append(<span class="string">"alibaba"</span>);</span><br><span class="line"><span class="comment">// 反例</span></span><br><span class="line">StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"><span class="comment">// 超过 120 个字符的情况下，不要在括号前换行</span></span><br><span class="line">sb.append(<span class="string">"Jack"</span>).append(<span class="string">"Ma"</span>)...append</span><br><span class="line">    (<span class="string">"alibaba"</span>);</span><br><span class="line"><span class="comment">// 参数很多的方法调用可能超过 120 个字符，不要在逗号前换行 </span></span><br><span class="line">method(args1, args2, args3, ...</span><br><span class="line">    , argsX);</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>包名统一使用小写，点分隔符之间有且仅有一个自然语义的英语单词。包名统一使用单数形式，但是类名如果有复数含义，类名可以使用复数形式。</strong><br>正例：应用工具类包名为 com.alibaba.ai.util、类名为 MessageUtils</p>
+<li><p><strong>方法参数在定义和传入时，多个参数逗号后边必须加空格</strong><br>正例：method(args1, args2, args3)</p>
 </li>
-<li><p><strong>避免在子父类的成员变量之间、或者不同代码块的局部变量之间采用完全相同的命名，使可读性降低。</strong><br>reason：子类、父类成员变量名相同，即使是 public 类型的变量也是<strong>能够通过编译</strong>，而局部变量在同一方法内的不同代码块中同名也是合法的，但是要<strong>避免使用</strong>。对于非 setter/getter 的参数名称也要避免与成员变量名称相同。<br>code:</p>
+<li><p><strong>IDE 的 text file encoding 设置为 UTF-8; IDE 中文件的换行符使用 Unix 格式，不要使用 Windows 格式。</strong><br>reason: 很多windows格式会有问题，比如记事本开头添加0xefbbbf（十六进制）的字符,会导致文本问题<br>配置方式：todo:</p>
 </li>
-<li><p><strong>杜绝完全不规范的缩写</strong><br>reason：严重降低代码的可读性</p>
+<li><p><strong>单个方法的总行数不超过 80 行(除<em>注释</em>之外的方法签名、左右大括号、方法内代码、空行、回车及任何不可见字符的总行数不超过<br>80行, 建议把独立的逻辑抽取出来形成单独的方法，清晰明了)</strong></p>
 </li>
-<li><p><strong>任何自定义编程元素在命名时，使用尽量完整的单词组合来表达其意</strong>。<br>正例：在 JDK 中，表达原子更新的类名为：AtomicReferenceFieldUpdater<br>reason: 实现<strong>代码自解释</strong></p>
+<li><p><strong>没有必要增加若干空格来使变量的赋值等号与上一行对应位置的等号对齐。</strong><br>reason: 并不好看；变量比较多的情况下会非常麻烦；<br>正例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> one = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">long</span> two = <span class="number">2L</span>;</span><br><span class="line"><span class="keyword">float</span> three = <span class="number">3F</span>;</span><br><span class="line">StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>在常量与变量的命名时，表示类型的名词放在词尾，以提升辨识度</strong><br>reason: nameList 和 listName 一个表示名字集合，一个表示集合名称，很容易混淆。</p>
-</li>
-<li><p><strong>如果模块、接口、类、方法使用了设计模式，在命名时需体现出具体模式。</strong><br>正例：<br>public class OrderFactory;<br>public class LoginProxy;<br>public class ResourceObserver;<br>reason:有利于阅读者快速理解架构设计理念</p>
-</li>
-<li><p><strong>接口类中的方法和属性不要加任何修饰符号，保持代码的简洁性，并加上有效的 Javadoc 注释。尽量不要在接口里定义变量，如果一定要定义变量，肯定是与接口方法相关，并且是整个应用的基础常量</strong><br>正例：接口方法签名 void commit();<br>&emsp;&emsp;&emsp;接口基础常量 String COMPANY = “edutech”;<br>&emsp;&emsp;&emsp;<strong>JDK8</strong> 中接口允许有默认实现，那么这个 default 方法，是<strong>对所有实现类都有价值</strong>的默认实现。<br>reason:接口变量默认省略 <strong>public static final</strong>，接口方法默认省略 <strong>public abstract</strong></p>
-</li>
-<li><p><strong>对于 Service 和 DAO 类，基于 SOA（Service-Oriented Architecture） 的理念，暴露出来的服务一定是接口，内部的实现类用 Impl 的后缀与接口区别；如果是形容能力的接口名称，取对应的形容词为接口名（通常是–able 的形容词）</strong><br>正例：CacheServiceImpl 实现 CacheService 接口；<br>&emsp;&emsp;&emsp;AbstractTranslator 实现 Translatable 接口；</p>
-</li>
-<li><p><strong>枚举类名带上 Enum 后缀，枚举成员名称需要全大写，单词间用下划线隔开。</strong><br>正例：枚举名字为 ProcessStatusEnum 的成员名称：SUCCESS / UNKNOWN_REASON</p>
-</li>
-<li><p><strong>各层命名规约</strong></p>
+<li><p><strong>不同逻辑、不同语义、不同业务的代码之间插入一个（仅仅一行就够了）空行分隔开来以提升可读性。</strong></p>
 </li>
 </ol>
-<ul>
-<li>Service/DAO 层方法命名规约<br>1） 获取单个对象的方法用 get 做前缀。<br>2） 获取多个对象的方法用 list 做前缀，复数形式结尾如：listObjects。<br>3） 获取统计值的方法用 count 做前缀。<br>4） 插入的方法用 save/insert 做前缀。<br>5） 删除的方法用 remove/delete 做前缀。<br>6） 修改的方法用 update 做前缀。</li>
-<li>领域模型命名规约<br>1） 数据对象：xxxDO，xxx 即为数据表名。<br>2） 数据传输对象：xxxDTO，xxx 为业务领域相关的名称。<br>3） 展示对象：xxxVO，xxx 一般为网页名称。<br>4） POJO 是 DO/DTO/BO/VO 的统称，禁止命名成 xxxPOJO。<br>知识点：领域模型是一个分析模型，帮助系统分析人员、用户认识现实业务的工具，描述的是业务中涉及到的实体及其相互之间的关系，它是需求分析的产物，与问题域相关。<br><strong>知识点</strong>：<br><strong>DO（ Data Object）</strong>：与数据库表结构一一对应，通过DAO层向上传输数据源对象。<br><strong>DTO（ Data Transfer Object）</strong>：数据传输对象，Service或Manager向外传输的对象。<br><strong>BO（ Business Object）</strong>：业务对象。 由Service层输出的封装业务逻辑的对象。<br><strong>VO（ View Object）</strong>：显示层对象，通常是Web向模板渲染引擎层传输的对象。<br><strong>AO (Application Object)</strong> :应用对象,在 Web 层与 Service 层之间抽象的复用对象模型,极为贴近展示层,复用度不高。<br><strong>POJO </strong>是 DO / DTO / BO / VO 的统称， 命名时禁止使用XXPOJO。</li>
-</ul>
 
     </div>
 
@@ -288,7 +276,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2020/01/10/ali01/" title="命名风格">http://yoursite.com/2020/01/10/ali01/</a>
+    <a href="http://yoursite.com/2020/01/10/ali03/" title="代码格式">http://yoursite.com/2020/01/10/ali03/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -316,13 +304,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/01/10/strategy-pattern/" rel="prev" title="策略模式">
-      <i class="fa fa-chevron-left"></i> 策略模式
+    <a href="/2020/01/10/ali02/" rel="prev" title="常量定义">
+      <i class="fa fa-chevron-left"></i> 常量定义
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/01/10/ali02/" rel="next" title="常量定义">
-      常量定义 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -382,7 +367,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#命名风格"><span class="nav-number">1.</span> <span class="nav-text">命名风格</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码格式"><span class="nav-number">1.</span> <span class="nav-text">代码格式</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
