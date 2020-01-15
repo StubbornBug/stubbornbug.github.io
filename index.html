@@ -180,6 +180,89 @@
   
   
   <article itemscope="" itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/15/ali06/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/itmonkey.jpg">
+      <meta itemprop="name" content="Mr.Wang">
+      <meta itemprop="description" content="To be or not to be, that is a question.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Footprints of Growth">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/01/15/ali06/" class="post-title-link" itemprop="url">其他</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-01-15 10:31:00 / 修改时间：10:41:19" itemprop="dateCreated datePublished" datetime="2020-01-15T10:31:00+08:00">2020-01-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/编码规约/" itemprop="url" rel="index">
+                    <span itemprop="name">编码规约</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ol>
+<li><p><strong>在使用正则表达式时，利用好其预编译功能，可以有效加快正则匹配速度。</strong><br>反例：<br>Pattern pattern = Pattern.compile(“regex”);<br>//todo: reason: why?</p>
+</li>
+<li><p><strong>注意 Math.random() 这个方法返回是 double 类型，注意取值的范围 0≤x&lt;1（能够取到零值，注意除零异常），如果想获取整数类型的随机数，不要将 x 放大 10 的若干倍然后取整，直接使用 Random 对象的 nextInt 或者 nextLong 方法。</strong><br>// todo：</p>
+</li>
+<li><p>获取当前毫秒数 System.currentTimeMillis(); 而不是 new Date().getTime();<br>reason：为什么不用new Date（），看源码，是多此一举。先用 System.currentTimeMillis()，在getTime获取System.currentTimeMillis()。<br>正例：如果想获取更加精确的纳秒级时间值，使用 System.nanoTime()的方式。在 JDK8 中，针对统计时间等场景，推荐使用 Instant 类。<br><a href="https://blog.csdn.net/weixin_41987908/article/details/89204729" target="_blank" rel="noopener">https://blog.csdn.net/weixin_41987908/article/details/89204729</a></p>
+</li>
+<li><p>日期格式化：<br>yyyy 表示当天所在的年，而大写的 YYYY 代表是 week in which year（JDK7 之后引入的概念），意思是当天所在的周属于的年份，一周从周日开始，周六结束，只要本周跨年，返回的 YYYY 就是下一年。另外需要注意：<br>表示月份是大写的 M<br>表示分钟则是小写的 m 24 小时制的是大写的 H 12 小时制的则是小写的 h<br>正例：<em>yyyy-MM-dd HH:mm:ss</em></p>
+</li>
+<li><p><strong>任何数据结构的构造或初始化，都应指定大小，避免数据结构无限增长吃光内存</strong></p>
+</li>
+<li><p><strong>及时清理不再使用的代码段或配置信息。</strong><br>正例：对于暂时被注释掉，后续可能恢复使用的代码片断，在注释代码上方，统一规定使用<strong>三个斜杠(///)</strong>来说明注释掉代码的理由。</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/15/ali05/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -205,7 +288,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-01-15 09:50:00 / 修改时间：10:22:47" itemprop="dateCreated datePublished" datetime="2020-01-15T09:50:00+08:00">2020-01-15</time>
+              <time title="创建时间：2020-01-15 09:50:00 / 修改时间：10:28:58" itemprop="dateCreated datePublished" datetime="2020-01-15T09:50:00+08:00">2020-01-15</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -232,32 +315,16 @@
       
           <h2 id="注释规约"><a href="#注释规约" class="headerlink" title="注释规约"></a>注释规约</h2><ol>
 <li><p><strong>类、类属性、类方法的注释必须使用 Javadoc 规范，使用/</strong>内容*/格式，不得使用// xxx 方式。**<br>reason： 增强可读性（工程调用方法时，不进入方法即可悬浮提示方法、参数、返回值的意义，提高阅读效率。）</p>
-</li>
-<li><p><strong>所有的抽象方法（包括接口中的方法）必须要用 Javadoc 注释、除了返回值、参数、异常说明外，还必须指出该方法做什么事情，实现什么功能，对子类的实现要求，或者调用注意事项，也要一并说明</strong></p>
-</li>
-<li><p><strong>所有的类都必须添加创建者和创建日期</strong></p>
-</li>
-<li><p><strong>方法内部单行注释，在被注释语句上方另起一行，使用//注释。方法内部多行注释使用/<em> </em>/注释。</strong></p>
-</li>
-<li><p><strong>所有的枚举类型字段必须要有注释，要说明每个数据项的用途</strong></p>
-</li>
-<li><p><strong>推荐用中文注释把问题说清楚（专有名词与关键字保持英文原文即可）</strong></p>
-</li>
-<li><p><strong>代码修改的同时，注释也要进行相应的修改，尤其是参数、返回值、异常、核心逻辑等的修改</strong></p>
-</li>
-<li><p><strong>不要轻易注释掉代码。后面可能会恢复此段代码逻辑的需在在上方详细说明；如果永久不用的直接删除即可（仓库会保存历史版本代码）。</strong></p>
-</li>
-<li><p><strong>要求注释既能够准确反映设计思想和代码逻辑又能够清楚描述业务含义，使自己之后或者别的程序员能够迅速了解代码背后的信息。</strong></p>
-</li>
-<li><p><strong>注释力求精简准确、表达到位，而不应过多过滥，不必要可以不写注释（遵守命名格式规范的代码是自解释的）。</strong><br>反例：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// put elephant into fridge</span></span><br><span class="line">put(elephant, fridge);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>特殊注释标记并注意及时（通过标记扫描）处理这些标记。线上故障有时候就是来源于这些标记处的代码。<br>知识点：TODO和FIXME<br>1） 待办事宜（TODO）:（标记人，标记时间，[预计处理时间]）<br>&emsp;&emsp;表示需要实现，但目前还未实现的功能。这实际上是一个 Javadoc 的标签，目前的 Javadoc 还没有实现，但已经被广泛使用。只能应用于类，接口和方法（因为它是一个 Javadoc 标签）。<br>2） 错误，不能工作（FIXME）:（标记人，标记时间，[预计处理时间]）<br>&emsp;&emsp;在注释中用 FIXME 标记某代码是错误的，而且不能工作，需要及时纠正的情况。</p>
-</li>
-</ol>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/01/15/ali05/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
-    </div>
+    </li></ol></div>
 
     
     
@@ -297,10 +364,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-01-10 20:50:00 / 修改时间：21:59:08" itemprop="dateCreated datePublished" datetime="2020-01-10T20:50:00+08:00">2020-01-10</time>
+              <time title="创建时间：2020-01-10 20:50:00" itemprop="dateCreated datePublished" datetime="2020-01-10T20:50:00+08:00">2020-01-10</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-15 10:28:17" itemprop="dateModified" datetime="2020-01-15T10:28:17+08:00">2020-01-15</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -326,41 +399,16 @@
       
           <h2 id="控制语句"><a href="#控制语句" class="headerlink" title="控制语句"></a>控制语句</h2><ol>
 <li><p><strong>在一个 switch 块内，每个 case 要么通过 continue/break/return 等来终止，要么注释说明程序将继续执行到哪一个 case 为止；在一个 switch 块内，都必须包含一个 default 语句并且放在最后，即使它什么代码也没有。</strong><br>reason: 有确定性的退出程序，不然以后程序会执行到哪个地方自己都搞不清楚</p>
-</li>
-<li><p><strong>当 switch 括号内的变量类型为 String 并且此变量为外部参数时，必须先进行 null 判断</strong><br>reason：根本不会进入语句体，直接NPE（NullPointerException）</p>
-</li>
-<li><p><strong>在 if/else/for/while/do 语句中必须使用大括号(哪怕只有一行逻辑代码)</strong></p>
-</li>
-<li><p><strong>在高并发场景中，避免使用”等于”判断作为中断或退出的条件（使用大于或小于的区间判断条件来代替）</strong><br>reason: 如果并发控制没有处理好，容易产生等值判断被<strong>“击穿”</strong>的情况 栗子：判断剩余奖品数量等于 0 时，终止发放奖品，但因为并发处理错误导致奖品数量瞬间变成了负数，这样的话，活动无法终止。</p>
-</li>
-<li><p>表达异常的分支时，少用 if-else 方式<br>reason: 后期代码维护困难<br>正例：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">	...</span><br><span class="line">	<span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 接着写 else 的业务逻辑代码</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>if else 语句不要超过 3 层（超过 3 层的 if-else 的逻辑判断代码可以使用卫语句、策略模式、状态模式等来实现）<br>知识点：<strong>卫语句</strong>即代码逻辑先考虑失败、异常、中断、退出等直接返回的情况，以方法多个出口的方式，解决代码中判断分支嵌套的问题</p>
-</li>
-<li><p><strong> 除常用方法（如 getXxx/isXxx）等外，不要在条件判断中执行其它复杂的语句，将复杂逻辑判断的结果赋值给一个有意义的布尔变量名，以提高可读性</strong></p>
-</li>
-<li><p><strong>不要在其它表达式（尤其是条件表达式）中插入赋值语句（赋值语句单独占一行来执行）。</strong><br>reason: 提高代码可读性<br>反例：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Lock <span class="title">getLock</span><span class="params">(<span class="keyword">boolean</span> fair)</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 算术表达式中出现赋值操作，容易忽略 count 值已经被改变</span></span><br><span class="line">	threshold = (count = Integer.MAX_VALUE) - <span class="number">1</span>;</span><br><span class="line">	<span class="comment">// 条件表达式中出现赋值操作，容易误认为是 sync==fair</span></span><br><span class="line">	<span class="keyword">return</span> (sync = fair) ? <span class="keyword">new</span> FairSync() : <span class="keyword">new</span> NonfairSync();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>循环体中的语句要考量性能，以下操作尽量移至循环体外处理，如定义对象、变量、获取数据库连接，进行不必要的 try-catch 操作（这个 try-catch 是否可以移至循环体外）</strong></p>
-</li>
-<li><p><strong>避免采用取反逻辑运算符</strong><br>reason：提高代码可读性<br>正例：使用 if (x &lt; 628) 来表达 x 小于 628。<br>反例：使用 if (!(x &gt;= 628)) 来表达 x 小于 628。</p>
-</li>
-<li><p>接口入参保护，这种场景常见的是用作批量操作的接口<br>todo： </p>
-</li>
-<li><p><strong>参数校验：</strong></p>
-</li>
-</ol>
-<ul>
-<li><p>需要参数校验得情形：<br>1） 调用频次低的方法。<br>2） 执行时间开销很大的方法。此情形中，参数校验时间几乎可以忽略不计，但如果因为参数错误导致中间执行回退，或者错误，那得不偿失。<br>3） 需要极高稳定性和可用性的方法。<br>4） 对外提供的开放接口，不管是 RPC/API/HTTP 接口。<br>5） 敏感权限入口。</p>
-</li>
-<li><p>不需要参数校验得情形：<br>1） 极有可能被循环调用的方法。但在方法说明里必须注明外部参数检查要求。<br>2） 底层调用频度比较高的方法。毕竟是像纯净水过滤的最后一道，参数错误不太可能到底层才会暴露问题。一般 DAO 层与 Service 层都在同一个应用中，部署在同一台服务器中，所以 DAO 的参数校验，可以省略。<br>3） 被声明成 private 只会被自己代码所调用的方法，如果能够确定调用方法的代码传入参数已经做过检查或者肯定不会有问题，此时可以不校验参数。</p>
-</li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/01/10/ali04/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
-    </div>
+    </li></ol></div>
 
     
     
@@ -500,10 +548,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-01-10 18:40:00 / 修改时间：18:58:24" itemprop="dateCreated datePublished" datetime="2020-01-10T18:40:00+08:00">2020-01-10</time>
+              <time title="创建时间：2020-01-10 18:40:00" itemprop="dateCreated datePublished" datetime="2020-01-10T18:40:00+08:00">2020-01-10</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-15 10:28:36" itemprop="dateModified" datetime="2020-01-15T10:28:36+08:00">2020-01-15</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -529,20 +583,16 @@
       
           <h2 id="常量定义"><a href="#常量定义" class="headerlink" title="常量定义"></a>常量定义</h2><ol>
 <li><p><strong>不允许任何魔法值（即未经预先定义的常量）直接出现在代码中</strong><br>反例：String key = “Id#taobao_” + tradeId;<br>&emsp;&emsp;&emsp;cache.put(key, value);<br>&emsp;&emsp;&emsp;代码复制时容易漏掉下划线，导致<strong>缓存击穿</strong>而出现问题</p>
-</li>
-<li><p><strong>在 long 或者 Long 赋值时，数值后使用大写的 L，不能是小写的 l，小写容易跟数字 1 混淆，造成误解</strong></p>
-</li>
-<li><p><strong>不要使用一个常量类维护所有常量，要按常量功能进行归类，分开维护</strong><br>正例：缓存相关常量放在类 CacheConsts 下；系统配置相关常量放在类 ConfigConsts 下。</p>
-</li>
-<li><p>根据常量的复用层次确定常量类应放的位置<br>1） <strong>跨应用共享常量</strong>：放置在<strong>二方库</strong>中，通常是 client.jar 中的 constant 目录下。<br>2） <strong>应用内共享常量</strong>：放置在<strong>一方库</strong>中，通常是子模块中的 constant 目录下。<br>反例：易懂变量也要统一定义成应用内共享常量，两位工程师在两个类中分别定义了“YES”的变量：<br>类 A 中：public static final String YES = “yes”;<br>类 B 中：public static final String YES = “y”;<br>A.YES.equals(B.YES)，<strong>预期是 true，但实际返回为 false</strong>，导致线上问题。<br>3） <strong>子工程内部共享常量</strong>：即在当前子工程的 constant 目录下。<br>4） <strong>包内共享常量</strong>：即在当前包下单独的 constant 目录下。<br>5） <strong>类内共享常量</strong>：直接在类内部 private static final 定义。<br>知识点：<br>一方库：todo：</p>
-</li>
-<li><p><strong>如果变量值仅在一个固定范围内变化用 enum 类型来定义</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// **存在名称之外的延伸属性**应使用 enum 类型，下面代码括号里的数字就是延伸信息，表示一年中的第几个季节</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> SeasonEnum &#123;</span><br><span class="line">    SPRING(<span class="number">1</span>), SUMMER(<span class="number">2</span>), AUTUMN(<span class="number">3</span>), WINTER(<span class="number">4</span>);</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> seq;</span><br><span class="line"></span><br><span class="line">    SeasonEnum(<span class="keyword">int</span> seq) &#123;</span><br><span class="line">        <span class="keyword">this</span>.seq = seq;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getSeq</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> seq;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/01/10/ali02/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
-    </div>
+    </li></ol></div>
 
     
     
@@ -957,84 +1007,6 @@
   
   
 
-        
-  
-  
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/06/composite-pattern/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/itmonkey.jpg">
-      <meta itemprop="name" content="Mr.Wang">
-      <meta itemprop="description" content="To be or not to be, that is a question.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Footprints of Growth">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/01/06/composite-pattern/" class="post-title-link" itemprop="url">组合模式</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-01-06 14:26:00 / 修改时间：15:11:10" itemprop="dateCreated datePublished" datetime="2020-01-06T14:26:00+08:00">2020-01-06</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="设计模式之组合模式"><a href="#设计模式之组合模式" class="headerlink" title="设计模式之组合模式"></a>设计模式之组合模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>&emsp;&emsp;<strong>组合模式(Composite Pattern)：组合多个对象形成树形结构以表示具有“整体—部分”关系的层次结构。组合模式对单个对象（即叶子对象）和组合对象（即容器对象）的使用具有一致性，组合模式又可以称为“整体—部分”(Part-Whole)模式，它是一种对象结构型模式。</strong></p>
-<h3 id="了解"><a href="#了解" class="headerlink" title="了解"></a>了解</h3><p>&emsp;&emsp;组合模式为处理树形结构提供了一种较为完美的解决方案，它描述了如何将容器和叶子进行递归组合，使得用户在使用时无须对它们进行区分，可以一致地对待容器和叶子。<br>&emsp;&emsp;对于树形结构，当容器对象（如文件夹）的某一个方法被调用时，将遍历整个树形结构，寻找也包含这个方法的成员对象（可以是容器对象，也可以是叶子对象）并调用执行，牵一而动百，其中使用了递归调用的机制来对整个结构进行处理。由于容器对象和叶子对象在功能上的区别，在使用这些对象的代码中必须有区别地对待容器对象和叶子对象，而实际上大多数情况下我们希望一致地处理它们，因为对于这些对象的区别对待将会使得程序非常复杂。组合模式为解决此类问题而诞生，它可以让叶子对象和容器对象的使用具有一致性。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/01/06/composite-pattern/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1106,7 +1078,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-count">40</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
